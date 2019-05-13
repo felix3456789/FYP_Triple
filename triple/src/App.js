@@ -4,6 +4,7 @@ import Test from "./page/test";
 import { Route, Switch } from "react-router-dom";
 import "materialize-css/dist/css/materialize.css";
 import "materialize-css/dist/js/materialize";
+import "./css/icon.css";
 function App() {
   return (
     <div>
