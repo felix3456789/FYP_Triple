@@ -1,0 +1,96 @@
+html {
+  background: white;
+}
+html * {
+  font-family: Noto Sans TC;
+}
+.loginBox {
+  width: 469px;
+  height: 327px;
+  background-color: rgba(232, 236, 241, 0.3) !important;
+  border-radius: 10px !important;
+}
+.loginBox__text--color {
+  color: #0d47a1;
+}
+.loginBox__caption {
+  font-size: 56px;
+}
+
+.loginBox .input-field > label {
+  color: #0d47a1 !important;
+}
+
+.loginBox__input:focus {
+  border-bottom: 1px solid #0d47a1 !important;
+  box-shadow: 0 1px 0 0 #0d47a1 !important;
+}
+
+.loginBox__cardContent--layout {
+  margin: 0px 46px;
+  padding-top: 14px !important;
+}
+
+.login__btnGroup {
+  text-align: center;
+}
+.loginBox__btn {
+  width: 94px;
+  height: 36px;
+  font-family: Noto Sans TC;
+}
+.loginBox__btn--register {
+  color: #0d47a1 !important;
+  background-color: white !important;
+  margin-right: 48px;
+}
+.loginBox__btn--login {
+  background-color: #0d47a1 !important;
+  color: white !important;
+  margin-left: 48px;
+}
+.loginBox input.valid:not([type]),
+input.valid:not([type]):focus,
+input.valid[type="text"]:not(.browser-default),
+input.valid[type="text"]:not(.browser-default):focus,
+input.valid[type="password"]:not(.browser-default),
+input.valid[type="password"]:not(.browser-default):focus,
+input.valid[type="email"]:not(.browser-default),
+input.valid[type="email"]:not(.browser-default):focus,
+input.valid[type="url"]:not(.browser-default),
+input.valid[type="url"]:not(.browser-default):focus,
+input.valid[type="time"]:not(.browser-default),
+input.valid[type="time"]:not(.browser-default):focus,
+input.valid[type="date"]:not(.browser-default),
+input.valid[type="date"]:not(.browser-default):focus,
+input.valid[type="datetime"]:not(.browser-default),
+input.valid[type="datetime"]:not(.browser-default):focus,
+input.valid[type="datetime-local"]:not(.browser-default),
+input.valid[type="datetime-local"]:not(.browser-default):focus,
+input.valid[type="tel"]:not(.browser-default),
+input.valid[type="tel"]:not(.browser-default):focus,
+input.valid[type="number"]:not(.browser-default),
+input.valid[type="number"]:not(.browser-default):focus,
+input.valid[type="search"]:not(.browser-default),
+input.valid[type="search"]:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid > input.select-dropdown {
+  border-bottom: 1px solid #0d47a1 !important;
+  box-shadow: 0 1px 0 0 #0d47a1 !important;
+}
+
+.loginNav--ul {
+  display: inline-block;
+  margin-left: 35%;
+}
+
+.loginNav__textColor a {
+  color: #0d47a1 !important;
+}
+
+.login__background--img {
+  height: 100vh;
+  background: url("/image/background.jpg") no-repeat;
+  background-size: cover;
+}
