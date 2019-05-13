@@ -42,7 +42,10 @@ class Test extends Component {
             rating={this.state.rating}
             starDimension={this.state.starDimension}
           />
+        </TestSection>
+        <TestSection title="Comment">
           <CommentBox />
+          圖要正方形._.''
         </TestSection>
       </React.Fragment>
     );
