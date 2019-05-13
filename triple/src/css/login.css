@@ -7,7 +7,7 @@ html * {
 .loginBox {
   width: 469px;
   height: 327px;
-  background-color: rgba(232, 236, 241, 0.3) !important;
+  background-color: rgba(232, 236, 241, 0.5) !important;
   border-radius: 10px !important;
 }
 .loginBox__text--color {
