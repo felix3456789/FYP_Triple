@@ -94,3 +94,8 @@ textarea.materialize-textarea.valid:focus,
   background: url("/image/background.jpg") no-repeat;
   background-size: cover;
 }
+
+.loginBox__layout {
+  margin-top: 300px;
+  margin-left: 140px;
+}

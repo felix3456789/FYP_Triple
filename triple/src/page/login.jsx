@@ -8,7 +8,7 @@ class Login extends Component {
     return (
       <div className="login__background--img">
         <LoginNav />
-        <div>
+        <div className="loginBox__layout">
           <LoginBox />
         </div>
       </div>

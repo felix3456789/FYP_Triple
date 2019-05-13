@@ -31,19 +31,17 @@ class NavBar extends Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down ">
             <li>
               <a href="/test">
-                <img src="/icon/search.svg" />
+                <img alt="search" src="/icon/search.svg" />
               </a>
             </li>
             <li>
               <a href="badges.html">
-                {" "}
-                <img src="/icon/bell.svg" />
+                <img alt="bell" src="/icon/bell.svg" />
               </a>
             </li>
             <li>
               <a href="collapsible.html">
-                {" "}
-                <img src="/icon/account.svg" />
+                <img alt="account" src="/icon/account.svg" />
               </a>
             </li>
           </ul>
