@@ -3,10 +3,18 @@ import LoginBox from "./../components/loginPage/loginBox/loginBox";
 import LoginNav from "../components/loginPage/nav/nav";
 import TestSection from "../components/test/testSection";
 import LikeButton from "../components/likeButton/likeButton";
+import CommentButton from "../components/commentBtn/commentBtn";
+import CommentBox from "../components/commentBox/comment";
+import StarRate from "../components/commentBox/star";
+
 import "../css/login.css";
 class Test extends Component {
   state = {
-    likeCount: 100
+    likeCount: 100,
+    liked: false,
+    commentCount: 9,
+    rating: 4.4,
+    starDimension: "20px"
   };
   render() {
     return (
@@ -19,8 +27,22 @@ class Test extends Component {
           <LoginNav />
         </TestSection>
 
-        <TestSection title="LikeButton">
-          <LikeButton likeCount={this.state.likeCount} />
+        <TestSection title="Like Button">
+          <LikeButton
+            likeCount={this.state.likeCount}
+            liked={this.state.liked}
+          />
+        </TestSection>
+
+        <TestSection title="Comment Button">
+          <CommentButton commentCount={this.state.commentCount} />
+        </TestSection>
+        <TestSection title="rating">
+          <StarRate
+            rating={this.state.rating}
+            starDimension={this.state.starDimension}
+          />
+          <CommentBox />
         </TestSection>
       </React.Fragment>
     );
