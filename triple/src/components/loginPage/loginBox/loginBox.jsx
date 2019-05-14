@@ -1,10 +1,21 @@
 import React from "react";
 import Form from "../../common/form";
+import Popup from "../../common/popup";
+import Register from "../register/register";
 class LoginBox extends Form {
   state = {
-    userAccount: "",
-    password: ""
+    data: {
+      userAccount: "",
+      password: ""
+    },
+    showOTP: false
   };
+  toggleOTP() {
+    this.setState({
+      showOTP: !this.state.showOTP
+    });
+    console.log(this.state.showOTP);
+  }
   render() {
     return (
       <div className="card loginBox">
@@ -36,6 +47,7 @@ class LoginBox extends Form {
                 <div className="login__btnGroup">
                   <button
                     type="button"
+                    onClick={this.toggleOTP.bind(this)}
                     className="waves-effect waves-light btn-small loginBox__btn loginBox__btn--register"
                   >
                     註冊
@@ -51,6 +63,11 @@ class LoginBox extends Form {
             </form>
           </div>
         </div>
+        {this.state.showOTP ? (
+          <Popup
+            message={<Register closePopup={this.toggleOTP.bind(this)} />}
+          />
+        ) : null}
       </div>
     );
   }
