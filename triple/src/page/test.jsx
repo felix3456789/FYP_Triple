@@ -8,6 +8,10 @@ import CommentBox from "../components/commentBox/comment";
 import StarRate from "../components/commentBox/star";
 
 import "../css/login.css";
+
+import Slider from "./../components/mainPage/slider/slider";
+import Tag from "./../components/tag/tag";
+
 class Test extends Component {
   state = {
     likeCount: 100,
@@ -44,6 +48,16 @@ class Test extends Component {
           />
           <CommentBox />
         </TestSection>
+
+        <TestSection title="photoslider">
+          <Slider />
+        </TestSection>
+
+        <TestSection title="tag">
+          <Tag />
+        </TestSection>
+
+        
       </React.Fragment>
     );
   }
