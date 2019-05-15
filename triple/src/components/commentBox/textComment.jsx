@@ -37,14 +37,14 @@ class TextComment extends Component {
             />
           </div>
 
-          <div class="col s5">
-            <div class="row">
-              <div class="input-field col s12">
-                <Icon class="material-icons prefix">textsms</Icon>
+          <div className="col s5">
+            <div className="row">
+              <div className="input-field col s12">
+                <Icon className="material-icons prefix">textsms</Icon>
                 <textarea
                   type="text"
                   id="comment-input"
-                  class="materialize-textarea"
+                  className="materialize-textarea"
                 />
                 <label for="comment-input">我的評論</label>
               </div>
@@ -53,7 +53,7 @@ class TextComment extends Component {
 
           <div className="col s2">
             <button
-              class="btn waves-effect waves-light"
+              className="btn waves-effect waves-light"
               type="submit"
               name="action"
             >
