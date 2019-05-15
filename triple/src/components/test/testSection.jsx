@@ -5,10 +5,10 @@ class TestSection extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-12">
+          <div className="col s12">
             <h5> {this.props.title}</h5>
           </div>
-          <div className="col-12">{this.props.children}</div>
+          <div className="col s12 ">{this.props.children}</div>
           <hr />
         </div>
       </div>

@@ -46,7 +46,6 @@ class Test extends Component {
         </TestSection>
         <TestSection title="Comment">
           <CommentBox />
-          圖要正方形._.''
         </TestSection>
         <TestSection title="Detail Tabs">
           <DetailTabs />
