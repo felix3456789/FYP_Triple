@@ -13,7 +13,7 @@ class Footer extends Component {
               <p className="textJustify">
                 我們願意為大家提供一個更好的旅行團一站色服務，讓大家能夠更輕易參加最適合自己的旅行團。若你對Triple感到滿意，又希望可以捐款支持我們，讓Triple可以更上一層樓。無論多與少，亦能成為我們一份努力的動力！
               </p>
-              <a class="waves-effect waves-light btn blue darken-2">支持</a>
+              <a className="waves-effect waves-light btn blue darken-2">支持</a>
             </div>
             <div className="col s4">
               <h5>合作夥伴</h5>
