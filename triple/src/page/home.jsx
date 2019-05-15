@@ -3,6 +3,15 @@ import Nav from "../components/common/nav/nav";
 import Enquiry from "../components/homePage/enquiry/enquiry";
 class Home extends Component {
   state = {};
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll(e) {
+    document.getElementsByClassName("enquiry__layout")[0].style.opacity =
+      1 - window.pageYOffset / 1000;
+  }
+
   render() {
     return (
       <React.Fragment>

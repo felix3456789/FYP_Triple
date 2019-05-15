@@ -99,3 +99,7 @@ textarea.materialize-textarea.valid:focus,
   margin-top: 300px;
   margin-left: 140px;
 }
+
+#loginNav {
+  position: relative;
+}

@@ -7,6 +7,7 @@ class Login extends Component {
     return (
       <div className="login__background--img">
         <LoginNav
+          id="loginNav"
           color="grey lighten-5 loginNav__textColor"
           textColor="loginNav--ul"
         />
