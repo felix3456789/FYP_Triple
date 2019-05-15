@@ -1,18 +1,14 @@
-html {
-  background: white;
-}
-html * {
-  font-family: Noto Sans TC;
-}
 .loginBox {
   width: 469px;
   height: 327px;
   background-color: rgba(232, 236, 241, 0.5) !important;
   border-radius: 10px !important;
 }
+
 .loginBox__text--color {
   color: #0d47a1;
 }
+
 .loginBox__caption {
   font-size: 56px;
 }
@@ -34,21 +30,25 @@ html * {
 .login__btnGroup {
   text-align: center;
 }
+
 .loginBox__btn {
   width: 94px;
   height: 36px;
   font-family: Noto Sans TC;
 }
+
 .loginBox__btn--register {
   color: #0d47a1 !important;
   background-color: white !important;
   margin-right: 48px;
 }
+
 .loginBox__btn--login {
   background-color: #0d47a1 !important;
   color: white !important;
   margin-left: 48px;
 }
+
 .loginBox input.valid:not([type]),
 input.valid:not([type]):focus,
 input.valid[type="text"]:not(.browser-default),
@@ -98,4 +98,8 @@ textarea.materialize-textarea.valid:focus,
 .loginBox__layout {
   margin-top: 300px;
   margin-left: 140px;
+}
+
+#loginNav {
+  position: relative;
 }

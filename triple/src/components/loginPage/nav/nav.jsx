@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Icon from "@material-ui/core/Icon";
+import "../../../css/nav.css";
+
 class NavBar extends Component {
   state = {};
   render() {
@@ -31,17 +34,17 @@ class NavBar extends Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down ">
             <li>
               <a href="/test">
-                <img alt="search" src="/icon/search.svg" />
+                <Icon className="vertMiddle">search</Icon>
               </a>
             </li>
             <li>
               <a href="badges.html">
-                <img alt="bell" src="/icon/bell.svg" />
+                <Icon className="vertMiddle">notifications</Icon>
               </a>
             </li>
             <li>
               <a href="collapsible.html">
-                <img alt="account" src="/icon/account.svg" />
+                <Icon className="vertMiddle">person</Icon>
               </a>
             </li>
           </ul>

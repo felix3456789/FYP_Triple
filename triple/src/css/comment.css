@@ -1,0 +1,9 @@
+.pict {
+    display: inline-block;
+
+}
+
+.commentBox label {
+    font-size: 15px;
+    margin: 0px 2px;
+}

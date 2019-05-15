@@ -1,0 +1,35 @@
+.home__background {
+  z-index: -1;
+  height: 100%;
+}
+
+#homeNav {
+  box-shadow: unset !important;
+}
+
+.enquiryCard__layout {
+  top: 0px;
+  margin-left: 5% !important;
+  margin-top: 18% !important;
+  width: 45%;
+  max-width: 700px;
+  height: 170px;
+  position: absolute !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 10px !important;
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  -o-transform: translate(0);
+  transform: translate(0);
+}
+
+.enquiryCard__title {
+  font-size: 36px;
+  color: #0d47a1;
+}
+.home__photoSlider {
+}
+.enquiry__layout {
+  overflow: hidden;
+}

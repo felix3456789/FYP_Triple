@@ -6,6 +6,9 @@ import LikeButton from "../components/likeButton/likeButton";
 import CommentButton from "../components/commentBtn/commentBtn";
 import CommentBox from "../components/commentBox/comment";
 import StarRate from "../components/commentBox/star";
+import DetailTabs from "../components/detailTabs/detailTabs";
+import TextComment from "../components/commentBox/textComment";
+import Footer from "../components/footer/footer";
 
 import "../css/login.css";
 
@@ -47,7 +50,16 @@ class Test extends Component {
             rating={this.state.rating}
             starDimension={this.state.starDimension}
           />
+        </TestSection>
+        <TestSection title="Comment">
           <CommentBox />
+          <TextComment />
+        </TestSection>
+        <TestSection title="Detail Tabs">
+          <DetailTabs />
+        </TestSection>
+        <TestSection title="Footer">
+          <Footer />
         </TestSection>
 
         <TestSection title="photoslider">
