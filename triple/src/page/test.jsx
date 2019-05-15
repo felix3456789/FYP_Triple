@@ -12,6 +12,7 @@ import "../css/login.css";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 
+
 class Test extends Component {
   state = {
     likeCount: 100,

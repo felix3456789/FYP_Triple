@@ -6,6 +6,7 @@ class Tag extends Component {
 
     
     state = { 
+            tag:['']
         
     };
     componentDidMount() {
@@ -33,8 +34,11 @@ class Tag extends Component {
         M.Chips.init(this.chips, options);
         
     }
-        
+    handleClick = () => {
+        alert('Click happened');
+      }   
     render() { 
+
         return (
                  <React.Fragment>
 
@@ -44,7 +48,7 @@ class Tag extends Component {
                     <input class="Tag"/> 
                 </div>
             <div class="card">
-                <div class="chip">澳門</div>
+                <div class="chip" onClick={this.handleClick}>澳門</div>
                 <div class="chip">日本</div>
                 <div class="chip">深度遊</div>
                 <div class="chip">美景遊</div>
