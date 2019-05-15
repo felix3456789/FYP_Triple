@@ -99,3 +99,13 @@ textarea.materialize-textarea.valid:focus,
   margin-top: 300px;
   margin-left: 140px;
 }
+.register__layout {
+  display: inline-block;
+  margin-top: 49px;
+  margin-left: 49px;
+  max-width: 40%;
+}
+.register__tnc--layout {
+  display: inline-block;
+  width: 50%;
+}
