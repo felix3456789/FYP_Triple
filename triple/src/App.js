@@ -6,6 +6,7 @@ import "materialize-css/dist/css/materialize.css";
 import "materialize-css/dist/js/materialize";
 import "materialize-css/dist/css/materialize.min.css";
 import "./css/icon.css";
+import "./css/style.css";
 function App() {
   return (
     <div>

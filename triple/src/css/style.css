@@ -1,0 +1,12 @@
+html {
+    background: white;
+}
+
+html * {
+    font-family: Noto Sans TC;
+}
+
+@font-face {
+    font-family: inkfree;
+    src: url('/font/inkfree.ttf');
+}
