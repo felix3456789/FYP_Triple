@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../../css/comment.css";
 import StarRatings from "../commentBox/star";
 class CommentBox extends Component {
-  state = {};
   render() {
     return (
       <React.Fragment className="row">
