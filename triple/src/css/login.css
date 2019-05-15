@@ -13,7 +13,7 @@
   font-size: 56px;
 }
 
-.loginBox .input-field>label {
+.loginBox .input-field > label {
   color: #0d47a1 !important;
 }
 
@@ -75,7 +75,7 @@ input.valid[type="search"]:not(.browser-default),
 input.valid[type="search"]:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus,
-.select-wrapper.valid>input.select-dropdown {
+.select-wrapper.valid > input.select-dropdown {
   border-bottom: 1px solid #0d47a1 !important;
   box-shadow: 0 1px 0 0 #0d47a1 !important;
 }
@@ -98,8 +98,4 @@ textarea.materialize-textarea.valid:focus,
 .loginBox__layout {
   margin-top: 300px;
   margin-left: 140px;
-}
-
-.brand-logo {
-  font-family: inkfree
 }
