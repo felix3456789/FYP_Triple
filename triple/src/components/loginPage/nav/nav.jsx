@@ -5,10 +5,9 @@ import "../../../css/nav.css";
 class NavBar extends Component {
   state = {};
   render() {
-    const { color, id } = this.props;
     return (
-      <nav id={id}>
-        <div className={"nav-wrapper  " + color}>
+      <nav>
+        <div className="nav-wrapper  grey lighten-5 loginNav__textColor">
           <a href="/test" className="brand-logo">
             Triple
           </a>

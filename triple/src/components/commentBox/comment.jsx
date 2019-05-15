@@ -4,7 +4,7 @@ import StarRatings from "../commentBox/star";
 class CommentBox extends Component {
   render() {
     return (
-      <React.Fragment className="row">
+      <div className="row">
         <div className="pict">
           <img
             src="../image/Felix.png"
@@ -20,7 +20,7 @@ class CommentBox extends Component {
             <p>Good~</p>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

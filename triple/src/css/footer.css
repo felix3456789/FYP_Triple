@@ -1,0 +1,24 @@
+.paddingLeft {
+    padding-left: 10px;
+}
+
+.paddingLeftMore {
+    padding-left: 25px;
+}
+
+.paddingLeftRight {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.textJustify {
+    text-align: justify;
+}
+
+.pictSize {
+    width: 66px;
+}
+
+.pictSizeFB {
+    width: 85px;
+}
