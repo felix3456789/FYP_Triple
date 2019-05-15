@@ -7,6 +7,7 @@ import CommentButton from "../components/commentBtn/commentBtn";
 import CommentBox from "../components/commentBox/comment";
 import StarRate from "../components/commentBox/star";
 import DetailTabs from "../components/detailTabs/detailTabs";
+import TextComment from "../components/commentBox/textComment";
 
 import "../css/login.css";
 class Test extends Component {
@@ -46,7 +47,7 @@ class Test extends Component {
         </TestSection>
         <TestSection title="Comment">
           <CommentBox />
-          圖要正方形._.''
+          <TextComment />
         </TestSection>
         <TestSection title="Detail Tabs">
           <DetailTabs />
