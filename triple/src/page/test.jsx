@@ -8,6 +8,7 @@ import CommentBox from "../components/commentBox/comment";
 import StarRate from "../components/commentBox/star";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import TextComment from "../components/commentBox/textComment";
+import Footer from "../components/footer/footer";
 
 import "../css/login.css";
 class Test extends Component {
@@ -51,6 +52,9 @@ class Test extends Component {
         </TestSection>
         <TestSection title="Detail Tabs">
           <DetailTabs />
+        </TestSection>
+        <TestSection title="Footer">
+          <Footer />
         </TestSection>
       </React.Fragment>
     );
