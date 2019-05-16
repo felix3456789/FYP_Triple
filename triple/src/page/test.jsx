@@ -11,6 +11,11 @@ import TextComment from "../components/commentBox/textComment";
 import Footer from "../components/footer/footer";
 import "../css/style.css";
 import "../css/login.css";
+
+import Slider from "./../components/mainPage/slider/slider";
+import Tag from "./../components/tag/tag";
+
+
 class Test extends Component {
   state = {
     likeCount: 100,
@@ -62,6 +67,16 @@ class Test extends Component {
         <TestSection title="Footer">
           <Footer />
         </TestSection>
+
+        <TestSection title="photoslider">
+          <Slider />
+        </TestSection>
+
+        <TestSection title="tag">
+          <Tag />
+        </TestSection>
+
+        
       </React.Fragment>
     );
   }
