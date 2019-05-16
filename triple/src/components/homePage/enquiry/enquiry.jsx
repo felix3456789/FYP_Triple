@@ -11,7 +11,7 @@ class Enquiry extends Component {
   render() {
     return (
       <React.Fragment>
-        <video className="home__background" id="myVideo" autoPlay loop>
+        <video className="home__background" id="myVideo" autoPlay muted loop>
           <source src="/bgVideo3.mp4" type="video/mp4" />
         </video>
         <EnquiryCard />

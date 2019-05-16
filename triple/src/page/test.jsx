@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LoginBox from "./../components/loginPage/loginBox/loginBox";
-import LoginNav from "../components/loginPage/nav/nav";
+import LoginNav from "../components/common/nav/nav";
 import TestSection from "../components/test/testSection";
 import LikeButton from "../components/likeButton/likeButton";
 import CommentButton from "../components/commentBtn/commentBtn";
@@ -9,7 +9,7 @@ import StarRate from "../components/commentBox/star";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import TextComment from "../components/commentBox/textComment";
 import Footer from "../components/footer/footer";
-
+import "../css/style.css";
 import "../css/login.css";
 class Test extends Component {
   state = {
@@ -27,7 +27,13 @@ class Test extends Component {
         </TestSection>
 
         <TestSection title="Login NavBar">
-          <LoginNav />
+          <div>
+            <LoginNav
+              id="testNav"
+              color="grey lighten-5 loginNav__textColor"
+              textColor="loginNav--ul"
+            />
+          </div>
         </TestSection>
 
         <TestSection title="Like Button">

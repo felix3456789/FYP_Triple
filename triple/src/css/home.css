@@ -33,3 +33,8 @@
 .enquiry__layout {
   overflow: hidden;
 }
+
+.feature__layout {
+  height: 300px;
+  width: 200px;
+}
