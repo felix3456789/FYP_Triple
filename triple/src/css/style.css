@@ -37,3 +37,8 @@ nav {
 #testNav {
   position: relative;
 }
+
+.dateSelector__title {
+  line-height: 3;
+  color: #0d47a1;
+}
