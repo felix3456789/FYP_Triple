@@ -14,7 +14,7 @@ import "../css/login.css";
 
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
-
+import DateSelector from "./../components/dateSelector/dateSelector";
 
 class Test extends Component {
   state = {
@@ -76,7 +76,10 @@ class Test extends Component {
           <Tag />
         </TestSection>
 
-        
+        <TestSection title="DateSelector">
+          <DateSelector />
+        </TestSection>
+
       </React.Fragment>
     );
   }
