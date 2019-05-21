@@ -9,6 +9,7 @@ import StarRate from "../components/commentBox/star";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import TextComment from "../components/commentBox/textComment";
 import Footer from "../components/footer/footer";
+import UserCard from "../components/userDashboardCard/userDashboardCard";
 import "../css/style.css";
 import "../css/login.css";
 
@@ -80,6 +81,9 @@ class Test extends Component {
           <DateSelector />
         </TestSection>
 
+        <TestSection title="UserCard">
+          <UserCard />
+        </TestSection>
       </React.Fragment>
     );
   }

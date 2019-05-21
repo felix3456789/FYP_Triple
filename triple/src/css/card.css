@@ -1,0 +1,47 @@
+.marginButtonZero {
+    margin-bottom: 0px !important;
+}
+
+.paddingleftZero {
+    padding-left: 0px !important;
+}
+
+.marginTop10 {
+    margin-top: 10px;
+}
+
+.panelPadding {
+    padding-top: 8px !important;
+    padding-bottom: 4px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+
+.radius5px {
+    border-radius: 5px !important;
+}
+
+.color {
+    color: #0d47a1 !important;
+}
+
+.fontSize {
+    font-size: 20px !important;
+}
+
+.fontPositon {
+    position: relative;
+    top: -12px;
+}
+
+.fontSize18 {
+    font-size: 18px;
+}
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize12 {
+    font-size: 12px;
+}
