@@ -10,12 +10,12 @@ import DetailTabs from "../components/detailTabs/detailTabs";
 import TextComment from "../components/commentBox/textComment";
 import Footer from "../components/footer/footer";
 import UserCard from "../components/userDashboardCard/userDashboardCard";
-import "../css/style.css";
-import "../css/login.css";
-
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
+import ProductBlock from "../components/common/productBlock/productBlock";
+import "../css/style.css";
+import "../css/login.css";
 
 class Test extends Component {
   state = {
@@ -83,6 +83,9 @@ class Test extends Component {
 
         <TestSection title="UserCard">
           <UserCard />
+        </TestSection>
+        <TestSection title="ProductBlock">
+          <ProductBlock img="/image/845.jpg" title="日本三日兩夜賞櫻團" />
         </TestSection>
       </React.Fragment>
     );

@@ -1,0 +1,7 @@
+.productBlock .card-image img:hover {
+  filter: brightness(50%) blur(3px);
+}
+.productBlock .card-image img {
+  filter: brightness(30%) blur(0px);
+  transition: 0.4s ease;
+}
