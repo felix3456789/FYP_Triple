@@ -96,16 +96,27 @@ textarea.materialize-textarea.valid:focus,
 }
 
 .loginBox__layout {
-  margin-top: 300px;
-  margin-left: 140px;
+  padding-top: 15%;
+  padding-left: 5%;
 }
 .register__layout {
-  display: inline-block;
-  margin-top: 49px;
-  margin-left: 49px;
-  max-width: 40%;
+  float: left;
+  height: inherit;
+  overflow: scroll;
+  width: 50%;
+  height: 100%;
+  padding: 48px;
 }
 .register__tnc--layout {
   display: inline-block;
-  width: 50%;
+  width: 40%;
+  height: 80%;
+  border: 2px solid #0d47a1;
+  margin: 33px 10px;
+}
+
+.register__title {
+  font-size: 60px;
+  float: left;
+  color: #0d47a1;
 }
