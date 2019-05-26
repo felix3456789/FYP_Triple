@@ -126,18 +126,21 @@ class userCard extends Component {
     text += start + " - " + end;
     return text;
   }
-
-  printPaid() {
+  checkPayment() {
     const payment = this.state.payment;
     let text = "";
-    text += payment ? "已付款" : "";
-    return text;
-  }
-  printPaid2() {
-    const payment = this.state.payment;
-    let text = "";
-    text += payment ? "" : "代付款";
-    return text;
+    text += payment ? "已付款" : "代付款";
+    if (payment) {
+      return <span className="col s12">{text}</span>;
+    } else {
+      return (
+        <span className="col s12">
+          <a href="/test">
+            <u className="red-text">{text}</u>
+          </a>
+        </span>
+      );
+    }
   }
 
   render() {
@@ -190,12 +193,7 @@ class userCard extends Component {
                     <div className="col s3 color paddingleftZero">
                       <span className="row">
                         <span className="col s12">付款情況: </span>
-                        <span className="col s12">
-                          <a href="/test">
-                            <u className="red-text">{this.printPaid2()}</u>
-                          </a>
-                        </span>
-                        <span className="col s12">{this.printPaid()}</span>
+                        {this.checkPayment()}
                       </span>
                     </div>
                   </div>
