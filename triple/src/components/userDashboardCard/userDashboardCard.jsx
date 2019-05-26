@@ -4,11 +4,26 @@ import { Icon } from "@material-ui/core";
 
 class userCard extends Component {
   state = {
-    tourName: "春の戀花 (未成團)",
+    tourName: "春の戀花",
     tourValid: false,
     bookmarked: false,
     basicDes: "中山、澳門 新春加班 2天直航團",
-    departDate: "2019/02/08 - 2019/02/09",
+    departDate: {
+      _start: "2019/02/08",
+      get start() {
+        return this._start;
+      },
+      set start(value) {
+        this._start = value;
+      },
+      _end: "2019/02/09",
+      get end() {
+        return this._end;
+      },
+      set end(value) {
+        this._end = value;
+      }
+    },
     custNum: {
       _adult: 2,
       get adult() {
@@ -54,6 +69,18 @@ class userCard extends Component {
   bookmarkOnClick = () => {
     this.state.bookmarked ? this.cancelBookmark() : this.bookmark();
   };
+
+  printTourValid() {
+    const valid = this.state.tourValid;
+    let text = "";
+    if (!valid) {
+      text += " (未成團)";
+    } else {
+      text += " (已成團)";
+    }
+    return text;
+  }
+
   printAdultNum() {
     const adult = this.state.custNum.adult;
     let text = "";
@@ -92,6 +119,14 @@ class userCard extends Component {
     return text;
   }
 
+  printDepartDate() {
+    const start = this.state.departDate.start;
+    const end = this.state.departDate.end;
+    let text = "";
+    text += start + " - " + end;
+    return text;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -115,6 +150,7 @@ class userCard extends Component {
                   <div className="row marginButtonZero">
                     <span className="col s12 fontPositon fontSize18 color">
                       {this.state.tourName}
+                      {this.printTourValid()}
                     </span>
                     <span className="col s12 fontPositon color fontSize14 ">
                       {this.state.basicDes}
@@ -122,7 +158,9 @@ class userCard extends Component {
                     <div className="col s5 color paddingleftZero">
                       <span className="row">
                         <span className="col s12">出發日子: </span>
-                        <span className="col s12">{this.state.departDate}</span>
+                        <span className="col s12">
+                          {this.printDepartDate()}
+                        </span>
                       </span>
                     </div>
                     <div className="col s4 color paddingleftZero">
