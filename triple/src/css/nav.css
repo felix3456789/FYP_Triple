@@ -1,6 +1,7 @@
 nav {
   position: absolute;
   top: 0;
+  box-shadow: unset !important;
 }
 .vertMiddle {
   vertical-align: middle;
