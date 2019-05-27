@@ -14,6 +14,7 @@ import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
 import ProductBlock from "../components/common/productBlock/productBlock";
+import SearchBox from "../components/search/searchBox";
 import "../css/style.css";
 import "../css/login.css";
 
@@ -22,8 +23,7 @@ class Test extends Component {
     likeCount: 100,
     liked: false,
     commentCount: 9,
-    rating: 4.4,
-    starDimension: "20px"
+    rating: 4.4
   };
   render() {
     return (
@@ -53,10 +53,7 @@ class Test extends Component {
           <CommentButton commentCount={this.state.commentCount} />
         </TestSection>
         <TestSection title="rating">
-          <StarRate
-            rating={this.state.rating}
-            starDimension={this.state.starDimension}
-          />
+          <StarRate rating={this.state.rating} />
         </TestSection>
         <TestSection title="Comment">
           <CommentBox />
@@ -84,6 +81,11 @@ class Test extends Component {
         <TestSection title="UserCard">
           <UserCard />
         </TestSection>
+
+        <TestSection title="searchBox">
+          <SearchBox />
+        </TestSection>
+
         <TestSection title="ProductBlock">
           <ProductBlock img="/image/845.jpg" title="日本三日兩夜賞櫻團" />
         </TestSection>

@@ -31,7 +31,7 @@
 
 .fontPositon {
     position: relative;
-    top: -12px;
+    top: -21px;
 }
 
 .fontSize18 {
@@ -44,4 +44,13 @@
 
 .fontSize12 {
     font-size: 12px;
+}
+
+.bgColor {
+    background-color: #ECF1F8 !important;
+}
+
+.starPosition {
+    position: relative !important;
+    top: -3px !important;
 }

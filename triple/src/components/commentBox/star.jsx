@@ -10,7 +10,7 @@ class StarRate extends Component {
       <React.Fragment>
         <StarRatings
           rating={this.props.rating}
-          starDimension={this.props.starDimension}
+          starDimension="15px"
           starSpacing="2px"
           starRatedColor="#0d47a1"
         />

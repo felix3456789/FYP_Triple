@@ -8,11 +8,12 @@ class TourDetailPage extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar
-          color="grey lighten-5 loginNav__textColor"
-          textColor="loginNav--ul"
-        />
-        <div className="body">hi</div>
+        <div className="marginBottom">
+          <NavBar
+            color="grey lighten-5 loginNav__textColor"
+            textColor="loginNav--ul"
+          />
+        </div>
       </React.Fragment>
     );
   }
