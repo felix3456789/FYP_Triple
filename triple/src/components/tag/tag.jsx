@@ -1,15 +1,18 @@
 import React, { Component } from "react";
+import Icon from "@material-ui/core/Icon";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-
+import "./style.css";
 class Tag extends Component {
   state = {
-    tag: ["hi"]
+    chipsData: [{ tag: "" }]
   };
   componentDidMount() {
     const options = {
-      onChipAdd() {
-        console.log("added");
+      onChipAdd(data) {
+        var newChip = data[0].M_Chips.chipsData;
+        this.handleChips(newChip);
+        console.log(this.state.chipsData);
       },
       onChipSelect() {
         console.log("Selected");
@@ -31,6 +34,10 @@ class Tag extends Component {
     };
     M.Chips.init(this.chips, options);
   }
+
+  async handleChips(data) {
+    await this.setState({ chipsData: data });
+  }
   handleClick(data) {
     console.log("Click happened", data);
     this.state.tag.push(data);
@@ -47,16 +54,14 @@ class Tag extends Component {
             this.chips = chips;
           }}
         >
-          {this.state.tag.map(item => (
-            <h1>hi</h1>
-          ))}
           <input className="Tag" />
         </div>
-        <div className="card">
-          <div className="chip" onClick={() => this.handleClick("澳門")}>
+        <div>
+          <div className="chip">
             澳門
+            <i class="material-icons close">close</i>
           </div>
-          <div className="chip">日本</div>
+          {/*<div className="chip">日本</div>
           <div className="chip">深度遊</div>
           <div className="chip">美景遊</div>
           <div className="chip">陽光與海灘</div>
@@ -77,7 +82,7 @@ class Tag extends Component {
           <div className="chip">富貴玩樂團</div>
           <div className="chip">文青系</div>
           <div className="chip">北韓深度遊</div>
-          <div className="chip">一日遊</div>
+          <div className="chip">一日遊</div>*/}
         </div>
       </React.Fragment>
     );
