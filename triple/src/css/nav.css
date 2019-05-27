@@ -1,3 +1,7 @@
+nav {
+  position: absolute;
+  top: 0;
+}
 .vertMiddle {
-    vertical-align: middle;
+  vertical-align: middle;
 }
