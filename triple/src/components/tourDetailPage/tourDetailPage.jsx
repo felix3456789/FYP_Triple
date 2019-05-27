@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import NavBar from "../components/common/nav/nav";
-import "../css/style.css";
-import "../css/tourDetailPage.css";
+import LoginNav from "../components/common/nav/nav";
 
 class TourDetailPage extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
-        <NavBar
+        <LoginNav
+          id="testNav"
           color="grey lighten-5 loginNav__textColor"
           textColor="loginNav--ul"
         />
-        <div className="body">hi</div>
+
+        <h1>HIHIHI</h1>
       </React.Fragment>
     );
   }
