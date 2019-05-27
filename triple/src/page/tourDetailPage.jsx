@@ -12,7 +12,7 @@ class TourDetailPage extends Component {
           color="grey lighten-5 loginNav__textColor"
           textColor="loginNav--ul"
         />
-        <div />
+        <div className="body">hi</div>
       </React.Fragment>
     );
   }
