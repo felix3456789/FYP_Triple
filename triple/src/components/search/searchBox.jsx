@@ -16,7 +16,7 @@ class SearchBox extends Component {
     commentCount: 3,
     likeCount: 4,
     liked: false,
-    originalPrice: 799,
+    originalPrice: 0,
 
     salePrice: 699
   };
@@ -48,18 +48,16 @@ class SearchBox extends Component {
   printPrice() {
     const originalPrice = this.state.originalPrice;
     const salePrice = this.state.salePrice;
-
+    const { items } = this.props;
     if (salePrice != null) {
       return (
         <span className="col s4 fontSize36 color right-align right pricePosition2">
           <span className="red-text salePricePosition">
             <span className="fontSize30">HK</span>
-            {this.state.salePrice}+
+            {items.salesPrice}+
           </span>
           <div>
-            <strike className="fontSize30">
-              HK{this.state.originalPrice}+
-            </strike>
+            <strike className="fontSize30">HK{items.originalPrice}+</strike>
           </div>
         </span>
       );
@@ -67,13 +65,14 @@ class SearchBox extends Component {
       return (
         <span className="col s4 fontSize36 color right-align right pricePosition">
           <span className="fontSize30">HK</span>
-          {this.state.originalPrice}+
+          {items.originalPrice}+
         </span>
       );
     }
   }
 
   render() {
+    const { items } = this.props;
     return (
       <React.Fragment>
         <div className="marginButtonZero row">
@@ -95,7 +94,8 @@ class SearchBox extends Component {
                 <div className="col s12 m7 l9">
                   <div className="row marginButtonZero">
                     <span className="col s11 fontPositon---21 fontSize18 color width60">
-                      {this.state.tourName}
+                      {/*{this.state.tourName}*/}
+                      {items.title}
                       {this.printTourValid()}
                       <span className="starPosition paddingLeft--3px">
                         <StarRate rating={this.state.rating} />

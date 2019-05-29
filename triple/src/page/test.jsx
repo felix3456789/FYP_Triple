@@ -24,15 +24,20 @@ class Test extends Component {
     likeCount: 100,
     liked: false,
     commentCount: 9,
-    rating: 4.4
+    rating: 4.4,
+    tour: {}
   };
   getTour = async () => {
-    return await TourServices.getTourById("AJSGS05N");
+    const tour = await TourServices.getTourById("AJSGS05N");
+
+    this.setState({ tour: tour[0] });
+    console.log("tour", tour[0]);
   };
   componentDidMount() {
-    console.log(this.getTour());
+    this.getTour();
   }
   render() {
+    const { tour } = this.state;
     return (
       <React.Fragment>
         <TestSection title="LoginBox">
@@ -90,7 +95,7 @@ class Test extends Component {
         </TestSection>
 
         <TestSection title="searchBox">
-          <SearchBox />
+          <SearchBox items={tour} />
         </TestSection>
 
         <TestSection title="ProductBlock">
