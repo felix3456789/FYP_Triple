@@ -151,7 +151,7 @@ class userCard extends Component {
             <div className="card-panel panelPadding">
               <a
                 onClick={this.bookmarkOnClick}
-                className="color right fontSize"
+                className="color right fontSize zIndex"
               >
                 <Icon>{this.icon()}</Icon>
               </a>
@@ -164,7 +164,7 @@ class userCard extends Component {
                 </div>
                 <div className="col s12 m7 l9">
                   <div className="row marginButtonZero">
-                    <span className="col s12 fontPositon fontSize18 color">
+                    <span className="col s12 fontPositon fontSize18 color width60">
                       {this.state.tourName}
                       {this.printTourValid()}
                     </span>
