@@ -15,6 +15,7 @@ import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
+import TourServices from "../services/tourServices";
 import "../css/style.css";
 import "../css/login.css";
 
@@ -25,6 +26,12 @@ class Test extends Component {
     commentCount: 9,
     rating: 4.4
   };
+  getTour = async () => {
+    return await TourServices.getTourById("AJSGS05N");
+  };
+  componentDidMount() {
+    console.log(this.getTour());
+  }
   render() {
     return (
       <React.Fragment>

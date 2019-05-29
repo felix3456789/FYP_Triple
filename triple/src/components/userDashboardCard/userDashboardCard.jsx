@@ -151,7 +151,7 @@ class userCard extends Component {
             <div className="card-panel panelPadding">
               <a
                 onClick={this.bookmarkOnClick}
-                className="color right fontSize zIndex"
+                className="color right fontSize"
               >
                 <Icon>{this.icon()}</Icon>
               </a>
@@ -162,13 +162,13 @@ class userCard extends Component {
                     src="./image/845.jpg"
                   />
                 </div>
-                <div className="col s12 m7 l9">
+                <div className="col s11 m7 l9">
                   <div className="row marginButtonZero">
-                    <span className="col s12 fontPositon fontSize18 color width60">
+                    <span className="col s12 fontPositon---21 fontSize18 color width60">
                       {this.state.tourName}
                       {this.printTourValid()}
                     </span>
-                    <span className="col s12 fontPositon color fontSize14 ">
+                    <span className="col s12 fontPositon---21 color fontSize14 ">
                       {this.state.basicDes}
                     </span>
                     <div className="col s5 color paddingleftZero">

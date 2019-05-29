@@ -15,7 +15,10 @@ class SearchBox extends Component {
     basicDes: "中山、澳門 新春加班 2天直航團",
     commentCount: 3,
     likeCount: 4,
-    liked: false
+    liked: false,
+    originalPrice: 799,
+
+    salePrice: 699
   };
 
   icon() {
@@ -42,6 +45,34 @@ class SearchBox extends Component {
     return text;
   }
 
+  printPrice() {
+    const originalPrice = this.state.originalPrice;
+    const salePrice = this.state.salePrice;
+
+    if (salePrice != null) {
+      return (
+        <span className="col s4 fontSize36 color right-align right pricePosition2">
+          <span className="red-text salePricePosition">
+            <span className="fontSize30">HK</span>
+            {this.state.salePrice}+
+          </span>
+          <div>
+            <strike className="fontSize30">
+              HK{this.state.originalPrice}+
+            </strike>
+          </div>
+        </span>
+      );
+    } else {
+      return (
+        <span className="col s4 fontSize36 color right-align right pricePosition">
+          <span className="fontSize30">HK</span>
+          {this.state.originalPrice}+
+        </span>
+      );
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -57,22 +88,26 @@ class SearchBox extends Component {
               <div className="marginButtonZero row">
                 <div className="col s12 m5 l3">
                   <img
-                    className="responsive-img marginTop10 radius5px"
+                    className="responsive-img marginTop10 radius5px top---2"
                     src="./image/845.jpg"
                   />
                 </div>
                 <div className="col s12 m7 l9">
                   <div className="row marginButtonZero">
-                    <span className="col s12 fontPositon fontSize18 color width60">
+                    <span className="col s11 fontPositon---21 fontSize18 color width60">
                       {this.state.tourName}
                       {this.printTourValid()}
                       <span className="starPosition paddingLeft--3px">
                         <StarRate rating={this.state.rating} />
                       </span>
                     </span>
-                    <span className="col s12 fontPositon color fontSize14 ">
+                    <span className="col s12 fontPositon---21 color fontSize14 ">
                       {this.state.basicDes}
                     </span>
+                    <div className="col s9 fontPositon---13">
+                      <span className="chip fontSize12">澳門</span>
+                      <span className="chip fontSize12">吃、喝、玩、樂</span>
+                    </div>
                     <span className="col s4 color fontSize14">
                       <LikeButton
                         likeCount={this.state.likeCount}
@@ -82,7 +117,7 @@ class SearchBox extends Component {
                         <CommentButton commentCount={this.state.commentCount} />
                       </a>
                     </span>
-                    <span className="col s4 offset-s4" />
+                    {this.printPrice()}
                   </div>
                 </div>
               </div>

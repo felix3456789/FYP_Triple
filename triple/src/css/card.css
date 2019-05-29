@@ -29,9 +29,14 @@
     font-size: 20px !important;
 }
 
-.fontPositon {
+.fontPositon---21 {
     position: relative;
     top: -21px;
+}
+
+.fontPositon---13 {
+    position: relative;
+    top: -13px;
 }
 
 .fontSize18 {
@@ -43,7 +48,7 @@
 }
 
 .fontSize12 {
-    font-size: 12px;
+    font-size: 12px !important;
 }
 
 .bgColor {
@@ -65,4 +70,38 @@
 
 .width60 {
     width: 95% !important;
+}
+
+.fontSize36 {
+    font-size: 36px;
+}
+
+.fontSize30 {
+    font-size: 30px;
+}
+
+
+
+.pricePosition {
+    height: 0px;
+    position: relative;
+    top: -23px;
+    padding-right: 15px;
+}
+
+.pricePosition2 {
+    height: 0px;
+    position: relative;
+    top: -80px;
+    padding-right: 15px;
+}
+
+.salePricePosition {
+    position: relative;
+    bottom: -20px;
+}
+
+.top---2 {
+    position: relative;
+    top: -2px;
 }
