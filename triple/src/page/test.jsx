@@ -99,7 +99,9 @@ class Test extends Component {
         </TestSection>
 
         <TestSection title="ProductBlock">
-          <ProductBlock img="/image/845.jpg" title="日本三日兩夜賞櫻團" />
+          <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
+          <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
         </TestSection>
       </React.Fragment>
     );
