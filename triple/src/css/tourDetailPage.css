@@ -1,8 +1,136 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .marginBottom {
-    margin-bottom: 65px;
+    margin-bottom: 120px;
 }
 
 .bgSize {
-    height: 1280px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
 
+.color {
+    color: #0d47a1 !important;
+}
+
+.fontSize {
+    font-size: 20px !important;
+}
+
+.bookmarkPosition {
+    position: relative;
+    top: -19px;
+    right: -18px;
+}
+
+.photoSize {
+    width: 250px;
+    border-radius: 5px;
+}
+
+.photoPosition {
+    position: relative;
+    right: -15px;
+    top: 10px;
+}
+
+.tourName {
+    font-size: 30px;
+    color: #0d47a1;
+    position: relative;
+    top: 10px;
+}
+
+.basicDes {
+    position: relative;
+    top: 10px;
+    font-size: 18px;
+    color: #0d47a1;
+}
+
+.starPosition {
+    position: relative !important;
+    top: -8px !important;
+    right: -10px;
+}
+
+.tagPosition {
+    position: relative;
+    top: 23px;
+}
+
+.tagSize {
+    font-size: 15px !important;
+}
+
+.fontSize30 {
+    font-size: 30px;
+}
+
+.fontSize36 {
+    font-size: 36px;
+}
+
+.fontSize26 {
+    font-size: 26px;
+}
+
+.fontSize20 {
+    font-size: 20px !important;
+}
+
+.iconPosition {
+    position: relative !important;
+    right: -295px !important;
+    bottom: -8px !important;
+}
+
+.paddingLeft15 {
+    padding-left: 15px;
+}
+
+.salesPricePosition {
+    position: relative;
+    top: -25px;
+}
+
+.originalPricePosition {
+    position: relative;
+    top: 13px;
+    right: -160px;
+}
+
+.btnColorBlue {
+    background-color: #0d47a1 !important;
+}
+
+.btnColorBlue:hover {
+    background-color: #2357A9 !important;
+}
+
+.btnColorWhite {
+    background: white !important;
+}
+
+.btnColorWhite:hover {
+    background: #E9EEF6 !important;
+}
+
+.btnPosition {
+    position: relative;
+    right: -300px;
+    bottom: -10px;
+}
+
+btnBottom {
+    position: relative;
+    bottom: -10px;
 }
