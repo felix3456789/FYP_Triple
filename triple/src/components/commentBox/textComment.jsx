@@ -52,11 +52,7 @@ class TextComment extends Component {
           </div>
 
           <div className="col s2">
-            <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
+            <button className="btn btnColorBlue" type="submit" name="action">
               發表
             </button>
           </div>

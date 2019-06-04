@@ -9,6 +9,7 @@ import StarRate from "../components/commentBox/star";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import Footer from "../components/footer/footer";
 import CommentBox from "../components/commentBox/comment";
+import TextComment from "../components/commentBox/textComment";
 
 class TourDetailPage extends Component {
   state = {
@@ -69,7 +70,7 @@ class TourDetailPage extends Component {
           />
         </div>
         <img src="./image/845.jpg" className="bgSize" />
-        <div className="container">
+        <div className="container paddingBottom25">
           <div class="row">
             <div class="col s12">
               <div class="card-panel">
@@ -119,10 +120,10 @@ class TourDetailPage extends Component {
                         </a>
                       </div>
                       <div className="btnPosition">
-                        <div>
+                        <div className="height0">
                           <a className="btn btnColorBlue ">立即報團</a>
                         </div>
-                        <div>
+                        <div className="height0">
                           <a className="btn color btnColorWhite btnBottom">
                             即時查詢
                           </a>
@@ -134,6 +135,8 @@ class TourDetailPage extends Component {
 
                 <div className="comment">
                   <div className="fontSize36 paddingBottom25 color">評論</div>
+                  <TextComment />
+                  <br />
                   <CommentBox />
                   <CommentBox />
                 </div>

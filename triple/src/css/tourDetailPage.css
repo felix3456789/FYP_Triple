@@ -17,6 +17,10 @@ body {
     z-index: -1;
 }
 
+.height0 {
+    height: 0px !important;
+}
+
 .color {
     color: #0d47a1 !important;
 }
@@ -113,7 +117,7 @@ body {
 }
 
 .btnColorBlue:hover {
-    background-color: #2357A9 !important;
+    background-color: #2357a9 !important;
 }
 
 .btnColorWhite {
@@ -121,7 +125,7 @@ body {
 }
 
 .btnColorWhite:hover {
-    background: #E9EEF6 !important;
+    background: #e9eef6 !important;
 }
 
 .btnPosition {
@@ -132,11 +136,11 @@ body {
 
 .btnBottom {
     position: relative !important;
-    bottom: -10px !important;
+    bottom: -45px !important;
 }
 
 .youMayAlsoLike {
-    background-color: #E8E8E8;
+    background-color: #e8e8e8;
     padding-left: 125px;
     padding-right: 125px;
     padding-top: 25px;
