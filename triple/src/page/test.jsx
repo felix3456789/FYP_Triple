@@ -16,6 +16,7 @@ import DateSelector from "./../components/dateSelector/dateSelector";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
 import TourServices from "../services/tourServices";
+
 import "../css/style.css";
 import "../css/login.css";
 
@@ -74,6 +75,7 @@ class Test extends Component {
         <TestSection title="Detail Tabs">
           <DetailTabs />
         </TestSection>
+
         <TestSection title="Footer">
           <Footer />
         </TestSection>

@@ -6,12 +6,15 @@ import "../css/tourDetailPage.css";
 import CommentButton from "../components/commentBtn/commentBtn";
 import LikeButton from "../components/likeButton/likeButton";
 import StarRate from "../components/commentBox/star";
+import ProductBlock from "../components/common/productBlock/productBlock";
+import Footer from "../components/footer/footer";
+import CommentBox from "../components/commentBox/comment";
 
 class TourDetailPage extends Component {
   state = {
     bookmarked: false,
     rating: 4.5,
-    originalPrice: 1234,
+    originalPrice: null,
     salesPrice: 1200,
     commentCount: 3,
     likeCount: 4,
@@ -35,10 +38,10 @@ class TourDetailPage extends Component {
     const originalPrice = this.state.originalPrice;
     const salesPrice = this.state.salesPrice;
 
-    if (salesPrice == null) {
+    if (originalPrice == null) {
       return (
         <span className="right color fontSize36 salesPricePosition">
-          <span className="fontSize30">HKD </span> {originalPrice}+
+          <span className="fontSize30">HKD </span> {salesPrice}+
         </span>
       );
     } else {
@@ -128,10 +131,27 @@ class TourDetailPage extends Component {
                     </div>
                   </div>
                 </div>
+
+                <div className="comment">
+                  <div className="fontSize36 paddingBottom25 color">評論</div>
+                  <CommentBox />
+                  <CommentBox />
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div className="youMayAlsoLike">
+          <div className="fontSize36 paddingBottom25">你可能喜歡</div>
+          <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
+          <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+          <a className="right black-text paddingTop15 fontSize20">更多 ></a>
+        </div>
+        <Footer />
       </React.Fragment>
     );
   }

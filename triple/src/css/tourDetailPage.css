@@ -130,7 +130,27 @@ body {
     bottom: -10px;
 }
 
-btnBottom {
-    position: relative;
-    bottom: -10px;
+.btnBottom {
+    position: relative !important;
+    bottom: -10px !important;
+}
+
+.youMayAlsoLike {
+    background-color: #E8E8E8;
+    padding-left: 125px;
+    padding-right: 125px;
+    padding-top: 25px;
+    padding-bottom: 70px;
+}
+
+.paddingBottom25 {
+    padding-bottom: 25px;
+}
+
+.paddingTop15 {
+    padding-top: 15px;
+}
+
+.comment {
+    padding-left: 13px;
 }

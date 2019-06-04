@@ -6,7 +6,7 @@ class Footer extends Component {
   render() {
     return (
       <React.Fragment>
-        <footer className="page-footer blue darken-4">
+        <footer className="page-footer bgColor1">
           <div className="paddingLeftRight row">
             <div className="col s4">
               <h5>支持我們</h5>

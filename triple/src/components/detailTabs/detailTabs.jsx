@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import M from "materialize-css";
+import "../../css/tabs.css";
 
 class DetailTabs extends Component {
   state = {};
@@ -31,19 +32,19 @@ class DetailTabs extends Component {
         </ul>
 
         <div id="test-swipe-1" className="col s12 light-blue lighten-5">
-          Test 1
+          {this.props.t1}
         </div>
         <div id="test-swipe-2" className="col s12 light-blue lighten-4">
-          Test 2
+          {this.props.t2}
         </div>
         <div id="test-swipe-3" className="col s12 light-blue lighten-3">
-          Test 3
+          {this.props.t3}
         </div>
         <div id="test-swipe-4" className="col s12 light-blue lighten-2">
-          Test 4
+          {this.props.t4}
         </div>
         <div id="test-swipe-5" className="col s12 light-blue lighten-1">
-          Test 5
+          {this.props.t5}
         </div>
       </React.Fragment>
     );
