@@ -69,76 +69,92 @@ class TourDetailPage extends Component {
             textColor="loginNav--ul"
           />
         </div>
-        <img src="./image/845.jpg" className="bgSize" />
-        <div className="container paddingBottom25">
-          <div class="row">
-            <div class="col s12">
-              <div class="card-panel">
-                <a
-                  onClick={this.bookmarkOnClick}
-                  className="color right fontSize bookmarkPosition"
-                >
-                  <Icon>{this.icon()}</Icon>
-                </a>
-                <div className="row">
-                  <div className="col s3">
-                    <img
-                      className="photoSize photoPosition"
-                      src="./image/845.jpg"
-                    />
-                  </div>
-                  <div className="col s5">
-                    <div className="tourName">
-                      春の戀花
-                      <span className="starPosition">
-                        <StarRate rating={this.state.rating} />
-                      </span>
+
+        <div>
+          <div className="positionAbsolute">
+            <img
+              src="https://pic.wingontravel.com/imageproxy/group1/M00/2D/16/rBXKjFx_er6EKBkTAAAAAELHNeM973_tbspc_big.jpg`"
+              className="bgSize"
+            />
+          </div>
+          <div className="container paddingBottom25">
+            <div class="row">
+              <div class="col s12">
+                <div class="card-panel">
+                  <a
+                    onClick={this.bookmarkOnClick}
+                    className="color right fontSize bookmarkPosition"
+                  >
+                    <Icon>{this.icon()}</Icon>
+                  </a>
+                  <div className="row">
+                    <div className="col s3">
+                      <img
+                        className="photoSize photoPosition"
+                        src="https://pic.wingontravel.com/imageproxy/group1/M00/2D/16/rBXKjFx_er6EKBkTAAAAAELHNeM973_tbspc_big.jpg"
+                      />
                     </div>
-                    <div className="basicDes">
-                      中山、澳門 新春加班 2天直航團
-                    </div>
-                    <div className="tagPosition">
-                      <span className="chip tagSize">澳門</span>
-                      <span className="chip tagSize">吃、喝、玩、樂</span>
-                      <span className="chip tagSize">中山</span>
-                      <span className="chip tagSize">打卡勝地</span>
-                      <span className="chip tagSize">賞櫻花</span>
-                    </div>
-                  </div>
-                  <div className="col s4">
-                    <div className="row">
-                      <div className="col s12">{this.printPrice()}</div>
-                      <div className="col s12 fontSize20 right color iconPosition">
-                        <LikeButton
-                          likeCount={this.state.likeCount}
-                          liked={this.state.liked}
-                        />
-                        <a class="color paddingLeft15">
-                          <CommentButton
-                            commentCount={this.state.commentCount}
-                          />
-                        </a>
+                    <div className="col s5">
+                      <div className="tourName">
+                        春の戀花
+                        <span className="starPosition">
+                          <StarRate rating={this.state.rating} />
+                        </span>
                       </div>
-                      <div className="btnPosition">
-                        <div className="height0">
-                          <a className="btn btnColorBlue ">立即報團</a>
-                        </div>
-                        <div className="height0">
-                          <a className="btn color btnColorWhite btnBottom">
-                            即時查詢
+                      <div className="basicDes">
+                        中山、澳門 新春加班 2天直航團
+                      </div>
+                      <div className="tagPosition">
+                        <span className="chip tagSize">澳門</span>
+                        <span className="chip tagSize">吃、喝、玩、樂</span>
+                        <span className="chip tagSize">中山</span>
+                        <span className="chip tagSize">打卡勝地</span>
+                        <span className="chip tagSize">賞櫻花</span>
+                      </div>
+                    </div>
+                    <div className="col s4">
+                      <div className="row">
+                        <div className="col s12">{this.printPrice()}</div>
+                        <div className="col s12 fontSize20 right color iconPosition">
+                          <LikeButton
+                            likeCount={this.state.likeCount}
+                            liked={this.state.liked}
+                          />
+                          <a class="color paddingLeft15">
+                            <CommentButton
+                              commentCount={this.state.commentCount}
+                            />
                           </a>
                         </div>
+                        <div className="btnPosition">
+                          <div className="height0">
+                            <a className="btn btnColorBlue ">立即報團</a>
+                          </div>
+                          <div className="height0">
+                            <a className="btn color btnColorWhite btnBottom">
+                              即時查詢
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="comment">
-                  <div className="fontSize36 paddingBottom25 color">評論</div>
-                  <TextComment />
                   <br />
-                  <CommentBox />
-                  <CommentBox />
+                  <br />
+
+                  <div className="details white-text">
+                    <div className="padding20 fontSize36">行程資料</div>
+                  </div>
+
+                  <br />
+
+                  <div className="comment">
+                    <div className="fontSize36 paddingBottom25 color">評論</div>
+                    <TextComment />
+                    <br />
+                    <CommentBox />
+                    <CommentBox />
+                  </div>
                 </div>
               </div>
             </div>
