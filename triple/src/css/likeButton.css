@@ -1,3 +1,9 @@
-.text {
-    font-size: 30px;
+.iconStyle {
+    color: #0d47a1 !important;
+    font-size: 20px !important;
+}
+
+.fontPosition {
+    position: relative !important;
+    top: -5px !important;
 }

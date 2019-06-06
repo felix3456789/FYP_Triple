@@ -1,0 +1,38 @@
+.productBlock img:hover {
+  filter: brightness(30%) blur(0px);
+  height: 650px;
+}
+.productBlock img {
+  filter: brightness(50%) blur(1px);
+  transition: 0.4s ease;
+  height: 600px;
+  position: relative;
+  top: -100px;
+  right: 10px;
+}
+.productBlock:hover {
+  border: 4px solid #0d47a1;
+}
+.productBlock:hover .productBlock__title {
+  font-size: 25px;
+}
+.productBlock {
+  overflow: hidden;
+  height: 500px;
+  width: 300px;
+  display: inline-block;
+  margin: 0px 15px;
+  border: 4px solid #0d47a1;
+  border-radius: 15px;
+  transition: 1s ease;
+}
+
+.productBlock__title {
+  position: relative;
+  top: 25%;
+  font-size: 23px;
+  text-align: center;
+  color: white;
+  z-index: 3;
+  transition: 1s ease;
+}

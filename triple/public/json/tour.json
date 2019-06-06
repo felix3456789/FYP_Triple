@@ -1,0 +1,174 @@
+[
+    {
+        "availableDate": [
+            "2019-06-01T00:00:00.000Z",
+            "2019-06-15T00:00:00.000Z",
+            "2019-06-16T00:00:00.000Z",
+            "2019-06-20T00:00:00.000Z",
+            "2019-06-22T00:00:00.000Z",
+            "2019-06-30T00:00:00.000Z"
+        ],
+        "image": [
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOiOEEZxuAAAAAO7EEN8973_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOimEEMZiAAAAAB2Qx3c393_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOiyEL75HAAAAABnajwM444_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjFycOi-Ectz4AAAAAOpULOc162_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjFycOjKELFJTAAAAAFq5S0w095_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOjWEY8naAAAAAB11YLA544_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOkqENUM2AAAAAJ8QyZk952_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOk-ENywJAAAAAGHZRnw980_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjFycOlOEO0k6AAAAADn7WNo172_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOluES0wHAAAAAEOgq48693_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjFycOl6EAvTOAAAAAI7DZDA052_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjFycOmOETGVHAAAAAAVB4mg406_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOmeEHNAzAAAAAP8RRqE447_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjFycOmuEZoNnAAAAAD6BnGg407_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/31/87/rBXKjVycOnGEWQlsAAAAAFgqJlI487_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/39/E0/rBXKjVzVP1eEdZEkAAAAAO50PwQ159_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/3A/7B/rBXKjFzaSxWENlbzAAAAAK2H1XM636_tbspc_big.jpg",
+            "https://pic.wingontravel.com/imageproxy/group1/M00/3A/7A/rBXKjVzaSyKEPnv-AAAAABGJUCQ142_tbspc_big.jpg"
+        ],
+        "Disable": false,
+        "Feature": false,
+        "_id": "5cebeb688b22c591ff388156",
+        "tourID": "AJTBS05M",
+        "title": "東京+長野+輕井澤夏日5天之旅",
+        "country": "日本",
+        "day": 5,
+        "tags": [
+            {
+                "id": 0,
+                "title": "牛久大佛",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 1,
+                "title": "足利花卉公園",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 2,
+                "title": "草津湯畑",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 3,
+                "title": "熱乃湯",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 4,
+                "title": "輕井澤",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 5,
+                "title": "白絲瀑布",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 6,
+                "title": "雲場池",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 7,
+                "title": "輕井澤Outlet Prince Shopping Plaza",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 8,
+                "title": "舊輕井澤銀座商店街",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 9,
+                "title": "AEON繽紛購物城",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 10,
+                "title": "新宿購物大道",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            },
+            {
+                "id": 11,
+                "title": "成田山新勝寺",
+                "updatedBy": "2019-05-27T21:51:39.775Z"
+            }
+        ],
+        "originalPrice": 6499,
+        "salesPrice": 5999,
+        "prices": [
+            {
+                "adultPrice": 6499,
+                "adultTax": 857,
+                "childHalfRoomPrice": 6199,
+                "childHalfRoomTax": 667,
+                "childPrice": 5499,
+                "childTax": 667,
+                "babyPrice": 1499,
+                "babyTax": 482,
+                "SingleRoomPrice": 2800
+            }
+        ],
+        "detail": "https://tours.wingontravel.com/product/brochure/12577",
+        "days": [
+            {
+                "eat": [
+                    "午餐：航機上▲",
+                    "晚餐：/"
+                ],
+                "day": "第一天",
+                "title": "香港✈東京─AEON繽紛購物城(註4)",
+                "content": " ",
+                "stay": "住宿：成田Garden/Gateway/Marroad/View/東急/Tobu酒店或同級；"
+            },
+            {
+                "eat": [
+                    "早餐：酒店內",
+                    "午餐：和風美食",
+                    "晚餐：酒店豐富晚餐◎"
+                ],
+                "day": "第二天",
+                "title": "「世界最高的青銅佛像」牛久大佛─足利花卉公園(包入場)(註5)─草津湯畑─熱乃湯(包入場，觀賞湯揉表演)─西之河原通散策#─溫泉酒店(盡情享受日式溫泉樂)(註1)",
+                "content": "#西之河原通：位於溫泉街中心點，多間土產店林立，客人更可自行品嚐溫泉饅頭。",
+                "stay": "住宿：草津Now Resort/櫻井/輕井澤Green Plaza/1130溫泉酒店或同級；"
+            },
+            {
+                "eat": [
+                    "早餐：酒店內",
+                    "午餐：/",
+                    "晚餐：日式火鍋ShabuShabu"
+                ],
+                "day": "第三天",
+                "title": "輕井澤─白絲瀑布─雲場池─舊輕井澤銀座商店街─輕井澤超大型Outlet Prince Shopping Plaza─東京─新宿購物大道(伊勢丹、無印良品、電器城)─歌舞伎町",
+                "content": " ",
+                "stay": "住宿：東京品川太子/The B/池袋太陽城太子/新宿Washington/愛宕山東急REI/豊州Monday酒店或同級；"
+            },
+            {
+                "eat": [
+                    "早餐：酒店內\t",
+                    "午餐：/",
+                    "晚餐：/"
+                ],
+                "day": "第四天",
+                "title": "全日自由活動(團友可於導遊指導下自行購票暢遊東京迪士尼樂園/海洋，或自行前往盡情購物，發掘新潮玩意)(註2)",
+                "content": " ",
+                "stay": "住宿：東京品川太子/The B/池袋太陽城太子/新宿Washington/愛宕山東急REI/豊州Monday酒店或同級；"
+            },
+            {
+                "eat": [
+                    "早餐：酒店內\t",
+                    "午餐：日式鐵板燒",
+                    "晚餐：航機上"
+                ],
+                "day": "第五天",
+                "title": "成田山新勝寺─東京✈香港",
+                "content": "#如乘坐晚上六時後起飛之航班，則增遊LaLaport 購物城。",
+                "stay": " "
+            }
+        ],
+        "updatedBy": "2019-05-27T21:51:41.042Z"
+    }
+]

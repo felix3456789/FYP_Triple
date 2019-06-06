@@ -46,17 +46,13 @@ class TextComment extends Component {
                   id="comment-input"
                   className="materialize-textarea"
                 />
-                <label for="comment-input">我的評論</label>
+                <label htmlFor="comment-input">我的評論</label>
               </div>
             </div>
           </div>
 
           <div className="col s2">
-            <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
+            <button className="btn btnColorBlue" type="submit" name="action">
               發表
             </button>
           </div>

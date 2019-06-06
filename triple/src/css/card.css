@@ -1,0 +1,107 @@
+.marginButtonZero {
+    margin-bottom: 0px !important;
+}
+
+.paddingleftZero {
+    padding-left: 0px !important;
+}
+
+.marginTop10 {
+    margin-top: 10px;
+}
+
+.panelPadding {
+    padding-top: 8px !important;
+    padding-bottom: 4px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+
+.radius5px {
+    border-radius: 5px !important;
+}
+
+.color {
+    color: #0d47a1 !important;
+}
+
+.fontSize {
+    font-size: 20px !important;
+}
+
+.fontPositon---21 {
+    position: relative;
+    top: -21px;
+}
+
+.fontPositon---13 {
+    position: relative;
+    top: -13px;
+}
+
+.fontSize18 {
+    font-size: 18px;
+}
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize12 {
+    font-size: 12px !important;
+}
+
+.bgColor {
+    background-color: #ecf1f8 !important;
+}
+
+.starPosition {
+    position: relative !important;
+    top: -3px !important;
+}
+
+.paddingLeft--5px {
+    padding-left: 5px;
+}
+
+.paddingLeft--10px {
+    padding-left: 10px;
+}
+
+.width60 {
+    width: 95% !important;
+}
+
+.fontSize36 {
+    font-size: 36px;
+}
+
+.fontSize30 {
+    font-size: 30px;
+}
+
+
+
+.pricePosition {
+    height: 0px;
+    position: relative;
+    top: -23px;
+    padding-right: 15px;
+}
+
+.pricePosition2 {
+    height: 0px;
+    position: relative;
+    top: -80px;
+    padding-right: 15px;
+}
+
+.salePricePosition {
+    position: relative;
+    bottom: -20px;
+}
+
+.top---2 {
+    position: relative;
+    top: -2px;
+}

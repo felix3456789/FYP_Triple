@@ -1,6 +1,7 @@
 .home__background {
   z-index: -1;
   height: 100%;
+  width: 100%;
 }
 
 #homeNav {
@@ -28,8 +29,10 @@
   font-size: 36px;
   color: #0d47a1;
 }
+
 .home__photoSlider {
 }
+
 .enquiry__layout {
   overflow: hidden;
 }

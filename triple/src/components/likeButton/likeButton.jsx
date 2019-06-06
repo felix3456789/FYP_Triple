@@ -15,9 +15,9 @@ class LikeButton extends Component {
       //favorite
       <React.Fragment>
         <a onClick={this.likeOnClick}>
-          <Icon>{this.iconName()}</Icon>
+          <Icon className="iconStyle">{this.iconName()}</Icon>
         </a>
-        <span className="text"> {this.state.likeCount}</span>
+        <span className="fontPosition"> {this.state.likeCount}</span>
       </React.Fragment>
     );
   }

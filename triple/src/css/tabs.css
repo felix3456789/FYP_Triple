@@ -1,0 +1,16 @@
+.tabs .tab a {
+    color: #0d47a1 !important;
+}
+
+.tabs .tab a.active {
+    color: #0d47a1 !important;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+    background-color: #EDF3FF !important;
+}
+
+.tabs .indicator {
+    background-color: #0d47a1 !important;
+}

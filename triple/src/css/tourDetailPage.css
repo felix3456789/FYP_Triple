@@ -1,0 +1,234 @@
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.marginBottom110 {
+  margin-bottom: 110px;
+}
+
+.marginBottom20 {
+  margin-bottom: 20px;
+}
+
+.bgSize {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+
+.bgBlur {
+  filter: blur(4px);
+  min-height: 100vh;
+  -webkit-filter: blur(4px);
+}
+
+.positionAbsolute {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.height0 {
+  height: 0px !important;
+}
+
+.color {
+  color: #0d47a1 !important;
+}
+
+.fontSize {
+  font-size: 20px !important;
+}
+
+.bookmarkPosition {
+  position: relative;
+  top: -19px;
+  right: -18px;
+}
+
+.photoSize {
+  width: 250px;
+  border-radius: 5px;
+}
+
+.photoPosition {
+  position: relative;
+  right: -15px;
+  top: 10px;
+}
+
+.tourName {
+  font-size: 30px;
+  color: #0d47a1;
+  position: relative;
+  top: 10px;
+}
+
+.basicDes {
+  position: relative;
+  top: 10px;
+  font-size: 18px;
+  color: #0d47a1;
+}
+
+.starPosition {
+  position: relative !important;
+  top: -8px !important;
+  right: -10px;
+}
+
+.tagPosition {
+  position: relative;
+  top: 23px;
+}
+
+.tagSize {
+  font-size: 15px !important;
+}
+
+.fontSize30 {
+  font-size: 30px;
+}
+
+.fontSize36 {
+  font-size: 36px;
+}
+
+.fontSize26 {
+  font-size: 26px;
+}
+
+.fontSize20 {
+  font-size: 20px !important;
+}
+
+.iconPosition {
+  position: relative !important;
+  right: -295px !important;
+  bottom: -8px !important;
+}
+
+.paddingLeft15 {
+  padding-left: 15px;
+}
+
+.salesPricePosition {
+  position: relative;
+  top: -25px;
+}
+
+.originalPricePosition {
+  position: relative;
+  top: 13px;
+  right: -160px;
+}
+
+.btnColorBlue {
+  background-color: #0d47a1 !important;
+}
+
+.btnColorBlue:hover {
+  background-color: #2357a9 !important;
+}
+
+.btnColorWhite {
+  background: white !important;
+}
+
+.btnColorWhite:hover {
+  background: #e9eef6 !important;
+}
+
+.btnPosition {
+  position: relative;
+  right: -300px;
+  bottom: -10px;
+}
+
+.btnBottom {
+  position: relative !important;
+  bottom: -45px !important;
+}
+
+.youMayAlsoLike {
+  background-color: #e8e8e8;
+  padding-left: 125px;
+  padding-right: 125px;
+  padding-top: 25px;
+  padding-bottom: 70px;
+}
+
+.paddingBottom25 {
+  padding-bottom: 25px;
+}
+
+.paddingTop15 {
+  padding-top: 15px;
+}
+
+.comment {
+  padding-left: 13px;
+}
+
+.details {
+  background-color: #0d47a1 !important;
+  border-radius: 5px !important;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.padding20 {
+  padding: 15px !important;
+}
+
+.tourDetails__background {
+  /* background: url("https://pic.wingontravel.com/imageproxy/group1/M00/2D/16/rBXKjFx_er6EKBkTAAAAAELHNeM973_tbspc_big.jpg"); */
+  background-size: cover;
+}
+
+.paddingTop110 {
+  padding-top: 110px !important;
+}
+
+.tourIntro__img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.tourIntro__title {
+  font-size: 27px;
+}
+
+.tourIntro__row {
+  text-align: right;
+}
+
+.tourIntro__item {
+  display: block !important;
+}
+
+.tourIntro__btn {
+  text-align: center;
+  display: inline-block;
+  width: 134px;
+  height: 36px;
+  line-height: 2.2;
+  margin: 10px 5px;
+  border: 1px solid #0d47a1;
+  border-radius: 5px;
+}
+.background--blue {
+  background: #0d47a1;
+}
+
+.background--white {
+  background: white;
+  border: 1px solid #0d47a1;
+}
+
+.row .tourIntro.col.l2 {
+  float: right;
+}

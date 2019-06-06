@@ -9,17 +9,23 @@ import StarRate from "../components/commentBox/star";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import TextComment from "../components/commentBox/textComment";
 import Footer from "../components/footer/footer";
-import "../css/style.css";
-import "../css/login.css";
-
+import UserCard from "../components/userDashboardCard/userDashboardCard";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
+
 import Payment from "./../components/userInfo/payment";
 import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
 import EmergencyContact from "./../components/userInfo/emergencyContact";
 import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
+
+import ProductBlock from "../components/common/productBlock/productBlock";
+import SearchBox from "../components/search/searchBox";
+import TourServices from "../services/tourServices";
+
+import "../css/style.css";
+import "../css/login.css";
 
 class Test extends Component {
   state = {
@@ -27,9 +33,19 @@ class Test extends Component {
     liked: false,
     commentCount: 9,
     rating: 4.4,
-    starDimension: "20px"
+    tour: {}
   };
+  getTour = async () => {
+    const tour = await TourServices.getTourById("AJSGS05N");
+
+    this.setState({ tour: tour[0] });
+    console.log("tour", tour[0]);
+  };
+  componentDidMount() {
+    this.getTour();
+  }
   render() {
+    const { tour } = this.state;
     return (
       <React.Fragment>
         <TestSection title="LoginBox">
@@ -57,10 +73,7 @@ class Test extends Component {
           <CommentButton commentCount={this.state.commentCount} />
         </TestSection>
         <TestSection title="rating">
-          <StarRate
-            rating={this.state.rating}
-            starDimension={this.state.starDimension}
-          />
+          <StarRate rating={this.state.rating} />
         </TestSection>
         <TestSection title="Comment">
           <CommentBox />
@@ -69,6 +82,7 @@ class Test extends Component {
         <TestSection title="Detail Tabs">
           <DetailTabs />
         </TestSection>
+
         <TestSection title="Footer">
           <Footer />
         </TestSection>
@@ -84,6 +98,7 @@ class Test extends Component {
         <TestSection title="DateSelector">
           <DateSelector />
         </TestSection>
+
 
         <TestSection title="payment">
           <Payment />
@@ -103,6 +118,19 @@ class Test extends Component {
 
         <TestSection title="PhotoSlider">
           <PhotoSlider />
+        <TestSection title="UserCard">
+          <UserCard />
+        </TestSection>
+
+        <TestSection title="searchBox">
+          <SearchBox items={tour} />
+        </TestSection>
+
+        <TestSection title="ProductBlock">
+          <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
+          <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+
         </TestSection>
       </React.Fragment>
     );

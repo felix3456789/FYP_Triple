@@ -5,10 +5,8 @@ class CommentButton extends Component {
   render() {
     return (
       <React.Fragment>
-        <a>
-          <Icon>chat_bubble_outline</Icon>
-        </a>
-        <span className="text"> {this.props.commentCount}</span>
+        <Icon className="iconStyle">chat_bubble_outline</Icon>
+        <span className="fontPosition"> {this.props.commentCount}</span>
       </React.Fragment>
     );
   }
