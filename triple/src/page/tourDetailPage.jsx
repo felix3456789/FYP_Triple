@@ -57,10 +57,10 @@ class TourDetailPage extends Component {
       );
     } else {
       return (
-        <div>
-          <span>HKD</span>
-          {salesPrice}+<strike>HK{originalPrice}+</strike>
-        </div>
+        <React.Fragment>
+          <span className="tourIntro__item">HKD{salesPrice}+</span>
+          <strike className="tourIntro__item">HK{originalPrice}+</strike>
+        </React.Fragment>
       );
     }
   }
@@ -92,22 +92,34 @@ class TourDetailPage extends Component {
                     <Icon>{this.icon()}</Icon>
                   </a>
                   <div className="row">
-                    <div className="col s12 m3">
+                    <div className="col s12 m12 l3">
                       <img
                         className="tourIntro__img"
                         src={this.state.tour.image}
                       />
                     </div>
-                    <div className="col s8 m5">
-                      <span className="">{this.state.tour.title}</span>
-                      <StarRate />
+                    <div className="tourIntro col s12 m12 l6">
+                      <span className="tourIntro__title color">
+                        {this.state.tour.title}
+                      </span>
+                      <div className="clearfix">
+                        <StarRate />
+                      </div>
                     </div>
-                    <div className="col s4 m3">
-                      <div>{this.printPrice()}</div>
-                      <LikeButton />
-                      <CommentButton />
-                      <a className="btn">立即報團</a>
-                      <a className="btn">即時查詢</a>
+                    <div className="col s12 m12 l2 tourIntro">
+                      <div className="tourIntro__row">{this.printPrice()}</div>
+                      <div className="tourIntro__row">
+                        <LikeButton />
+                        <CommentButton />
+                      </div>
+                      <div className="tourIntro__row">
+                        <a className=" tourIntro__btn background--blue white-text">
+                          立即報團
+                        </a>
+                        <a className=" tourIntro__btn background--white">
+                          即時查詢
+                        </a>
+                      </div>
                     </div>
                   </div>
                   {/* <div className=" color">

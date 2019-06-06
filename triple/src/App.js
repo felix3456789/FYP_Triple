@@ -10,6 +10,7 @@ import "materialize-css/dist/css/materialize.min.css";
 import "./css/icon.css";
 import "./css/style.css";
 import UserDashBoard from "./page/userDashboard";
+import Footer from "./components/footer/footer";
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/tourDetailPage" component={TourDetailPage} />
         <Route path="/" component={Home} />
       </Switch>
+      <Footer />
     </div>
   );
 }

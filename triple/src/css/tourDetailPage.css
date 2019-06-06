@@ -197,3 +197,38 @@ body {
   width: 100%;
   border-radius: 10px;
 }
+
+.tourIntro__title {
+  font-size: 27px;
+}
+
+.tourIntro__row {
+  text-align: right;
+}
+
+.tourIntro__item {
+  display: block !important;
+}
+
+.tourIntro__btn {
+  text-align: center;
+  display: inline-block;
+  width: 134px;
+  height: 36px;
+  line-height: 2.2;
+  margin: 10px 5px;
+  border: 1px solid #0d47a1;
+  border-radius: 5px;
+}
+.background--blue {
+  background: #0d47a1;
+}
+
+.background--white {
+  background: white;
+  border: 1px solid #0d47a1;
+}
+
+.row .tourIntro.col.l2 {
+  float: right;
+}
