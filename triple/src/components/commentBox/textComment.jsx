@@ -46,7 +46,7 @@ class TextComment extends Component {
                   id="comment-input"
                   className="materialize-textarea"
                 />
-                <label for="comment-input">我的評論</label>
+                <label htmlFor="comment-input">我的評論</label>
               </div>
             </div>
           </div>

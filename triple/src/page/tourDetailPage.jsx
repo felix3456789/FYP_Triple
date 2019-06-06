@@ -10,16 +10,26 @@ import ProductBlock from "../components/common/productBlock/productBlock";
 import Footer from "../components/footer/footer";
 import CommentBox from "../components/commentBox/comment";
 import TextComment from "../components/commentBox/textComment";
+import TourServices from "../services/tourServices";
+import DetailTabs from "../components/detailTabs/detailTabs";
+import starRatings from "react-star-ratings/build/star-ratings";
 
 class TourDetailPage extends Component {
   state = {
     bookmarked: false,
     rating: 4.5,
-    originalPrice: null,
-    salesPrice: 1200,
     commentCount: 3,
     likeCount: 4,
-    liked: false
+    liked: false,
+    tour: {}
+  };
+  getTour = async () => {
+    const tour = await TourServices.getTourById("AJSGS05N");
+    this.setState({ tour: tour[0] });
+    console.log("tour", this.state.tour);
+  };
+  componentDidMount = async () => {
+    await this.getTour();
   };
 
   icon() {
@@ -36,31 +46,28 @@ class TourDetailPage extends Component {
   };
 
   printPrice() {
-    const originalPrice = this.state.originalPrice;
-    const salesPrice = this.state.salesPrice;
+    const originalPrice = this.state.tour.originalPrice;
+    const salesPrice = this.state.tour.salesPrice;
 
-    if (originalPrice == null) {
+    if (salesPrice == null) {
       return (
         <span className="right color fontSize36 salesPricePosition">
-          <span className="fontSize30">HKD </span> {salesPrice}+
+          <span className="fontSize30">HKD </span> {originalPrice}+
         </span>
       );
     } else {
       return (
         <div>
-          <div className="right red-text salesPricePosition fontSize36">
-            <span class="fontSize30">HKD</span>
-            {salesPrice}+
-          </div>
-          <strike className="right color fontSize30 originalPricePosition">
-            HK{originalPrice}+
-          </strike>
+          <span>HKD</span>
+          {salesPrice}+<strike>HK{originalPrice}+</strike>
         </div>
       );
     }
   }
 
   render() {
+    const { tour } = this.state;
+    console.log("test", tour);
     return (
       <React.Fragment>
         <div className="marginBottom">
@@ -69,18 +76,15 @@ class TourDetailPage extends Component {
             textColor="loginNav--ul"
           />
         </div>
-
         <div>
-          <div className="positionAbsolute">
-            <img
-              src="https://pic.wingontravel.com/imageproxy/group1/M00/2D/16/rBXKjFx_er6EKBkTAAAAAELHNeM973_tbspc_big.jpg`"
-              className="bgSize"
-            />
-          </div>
-          <div className="container paddingBottom25">
-            <div class="row">
-              <div class="col s12">
-                <div class="card-panel">
+          <img
+            className="bgSize bgBlur"
+            src={tour.image ? tour.image[0] : ""}
+          />
+          <div className="container paddingBottom25 paddingTop110">
+            <div className="row">
+              <div className="col s12">
+                <div className="card-panel">
                   <a
                     onClick={this.bookmarkOnClick}
                     className="color right fontSize bookmarkPosition"
@@ -88,68 +92,36 @@ class TourDetailPage extends Component {
                     <Icon>{this.icon()}</Icon>
                   </a>
                   <div className="row">
-                    <div className="col s3">
+                    <div className="col s12 m3">
                       <img
-                        className="photoSize photoPosition"
-                        src="https://pic.wingontravel.com/imageproxy/group1/M00/2D/16/rBXKjFx_er6EKBkTAAAAAELHNeM973_tbspc_big.jpg"
+                        className="tourIntro__img"
+                        src={this.state.tour.image}
                       />
                     </div>
-                    <div className="col s5">
-                      <div className="tourName">
-                        春の戀花
-                        <span className="starPosition">
-                          <StarRate rating={this.state.rating} />
-                        </span>
-                      </div>
-                      <div className="basicDes">
-                        中山、澳門 新春加班 2天直航團
-                      </div>
-                      <div className="tagPosition">
-                        <span className="chip tagSize">澳門</span>
-                        <span className="chip tagSize">吃、喝、玩、樂</span>
-                        <span className="chip tagSize">中山</span>
-                        <span className="chip tagSize">打卡勝地</span>
-                        <span className="chip tagSize">賞櫻花</span>
-                      </div>
+                    <div className="col s8 m5">
+                      <span className="">{this.state.tour.title}</span>
+                      <StarRate />
                     </div>
-                    <div className="col s4">
-                      <div className="row">
-                        <div className="col s12">{this.printPrice()}</div>
-                        <div className="col s12 fontSize20 right color iconPosition">
-                          <LikeButton
-                            likeCount={this.state.likeCount}
-                            liked={this.state.liked}
-                          />
-                          <a class="color paddingLeft15">
-                            <CommentButton
-                              commentCount={this.state.commentCount}
-                            />
-                          </a>
-                        </div>
-                        <div className="btnPosition">
-                          <div className="height0">
-                            <a className="btn btnColorBlue ">立即報團</a>
-                          </div>
-                          <div className="height0">
-                            <a className="btn color btnColorWhite btnBottom">
-                              即時查詢
-                            </a>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="col s4 m3">
+                      <div>{this.printPrice()}</div>
+                      <LikeButton />
+                      <CommentButton />
+                      <a className="btn">立即報團</a>
+                      <a className="btn">即時查詢</a>
                     </div>
                   </div>
-                  <br />
-                  <br />
+                  {/* <div className=" color">
+                    <div className="details padding20 fontSize36 white-text marginBottom20">
+                      行程資料
+                    </div>
+                  </div> */}
 
-                  <div className="details white-text">
-                    <div className="padding20 fontSize36">行程資料</div>
-                  </div>
+                  <DetailTabs />
 
-                  <br />
-
-                  <div className="comment">
-                    <div className="fontSize36 paddingBottom25 color">評論</div>
+                  <div className="">
+                    <div className="fontSize36 white-text  padding20 details marginBottom20 ">
+                      評論
+                    </div>
                     <TextComment />
                     <br />
                     <CommentBox />
