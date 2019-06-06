@@ -154,7 +154,6 @@ class TourDetailPage extends Component {
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
           <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
-        <Footer />
       </React.Fragment>
     );
   }
