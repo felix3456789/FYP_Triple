@@ -14,3 +14,7 @@
 .tabs .indicator {
     background-color: #0d47a1 !important;
 }
+
+#tabs-swipe-demo {
+    box-shadow: 0px 2px 3px -1px grey;
+}

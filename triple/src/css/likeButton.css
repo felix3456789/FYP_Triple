@@ -6,4 +6,10 @@
 .fontPosition {
     position: relative !important;
     top: -5px !important;
+    font-size: 16px;
+    color: #0d47a1 !important;
+}
+
+.marginRight {
+    margin-right: 30px;
 }

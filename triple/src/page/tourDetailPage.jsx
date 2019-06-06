@@ -58,8 +58,13 @@ class TourDetailPage extends Component {
     } else {
       return (
         <React.Fragment>
-          <span className="tourIntro__item">HKD{salesPrice}+</span>
-          <strike className="tourIntro__item">HK{originalPrice}+</strike>
+          <span className="tourIntro__item fontSize--32 red-text">
+            <span className="fontSize--26">HKD </span>
+            {salesPrice}+
+          </span>
+          <strike className="tourIntro__item fontSize--27 color">
+            HKD {originalPrice}+
+          </strike>
         </React.Fragment>
       );
     }
@@ -106,17 +111,18 @@ class TourDetailPage extends Component {
                         <StarRate />
                       </div>
                     </div>
-                    <div className="col s12 m12 l2 tourIntro">
+                    <div className="col s12 m12 l3 tourIntro">
                       <div className="tourIntro__row">{this.printPrice()}</div>
+                      <br />
                       <div className="tourIntro__row">
-                        <LikeButton />
-                        <CommentButton />
+                        <LikeButton likeCount={this.state.likeCount} />
+                        <CommentButton commentCount={this.state.commentCount} />
                       </div>
                       <div className="tourIntro__row">
                         <a className=" tourIntro__btn background--blue white-text">
                           立即報團
                         </a>
-                        <a className=" tourIntro__btn background--white">
+                        <a className=" tourIntro__btn background--white color">
                           即時查詢
                         </a>
                       </div>
@@ -130,15 +136,13 @@ class TourDetailPage extends Component {
 
                   <DetailTabs />
 
-                  <div className="">
-                    <div className="fontSize36 white-text  padding20 details marginBottom20 ">
-                      評論
-                    </div>
-                    <TextComment />
-                    <br />
-                    <CommentBox />
-                    <CommentBox />
+                  <div className="marginBottom20 marginTop20 color fontSize--27 ">
+                    評論
                   </div>
+                  <TextComment />
+                  <br />
+                  <CommentBox />
+                  <CommentBox />
                 </div>
               </div>
             </div>
