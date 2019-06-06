@@ -215,20 +215,46 @@ body {
   display: inline-block;
   width: 134px;
   height: 36px;
-  line-height: 2.2;
+  line-height: 35px;
   margin: 10px 5px;
   border: 1px solid #0d47a1;
   border-radius: 5px;
+  box-shadow: 1px 2px 5px 0px grey;
 }
+
 .background--blue {
   background: #0d47a1;
 }
 
-.background--white {
-  background: white;
-  border: 1px solid #0d47a1;
+.background--blue:hover {
+  background: #2357a9;
 }
 
-.row .tourIntro.col.l2 {
+.background--white {
+  background: white;
+  border: 0.5px solid #0d47a1;
+}
+
+.background--white:hover {
+  background: #f9fafc;
+}
+
+.row .tourIntro.col.l3 {
   float: right;
+}
+
+.fontSize--26 {
+  font-size: 26px;
+}
+
+.fontSize--27 {
+  font-size: 27px;
+}
+
+.fontSize--32 {
+  font-size: 32px;
+}
+
+.marginTop20 {
+  margin-top: 20px;
 }
