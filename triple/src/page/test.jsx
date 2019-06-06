@@ -15,6 +15,11 @@ import "../css/login.css";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
+import Payment from "./../components/userInfo/payment";
+import BasicInfo from "./../components/userInfo/basicInfo";
+import Friends from "./../components/userInfo/friends";
+import EmergencyContact from "./../components/userInfo/emergencyContact";
+import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
 
 class Test extends Component {
   state = {
@@ -68,7 +73,7 @@ class Test extends Component {
           <Footer />
         </TestSection>
 
-        <TestSection title="photoslider">
+        <TestSection title="slider">
           <Slider />
         </TestSection>
 
@@ -80,6 +85,25 @@ class Test extends Component {
           <DateSelector />
         </TestSection>
 
+        <TestSection title="payment">
+          <Payment />
+        </TestSection>
+
+        <TestSection title="BasicInfo">
+          <BasicInfo/>
+        </TestSection>
+
+        <TestSection title="Friends">
+          <Friends/>
+        </TestSection>
+
+        <TestSection title="Emergency">
+          <EmergencyContact/>
+        </TestSection>
+
+        <TestSection title="PhotoSlider">
+          <PhotoSlider />
+        </TestSection>
       </React.Fragment>
     );
   }

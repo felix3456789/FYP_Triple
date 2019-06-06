@@ -1,0 +1,13 @@
+.FriendsCard {
+    width:450px;
+    border-radius: 10px !important;
+    line-height: 3;
+    
+    }
+    .Friends__info {
+        margin: -5px 0px 0px 40px !important;
+     }
+     .Friends__title {
+        margin: -5px 0px 10px 15px !important;
+        font-size: 20px;
+     }

@@ -1,0 +1,12 @@
+.emergencyContactCard {
+width:450px;
+border-radius: 10px !important;
+line-height: 3;
+
+}
+.emergencyContact__info {
+    margin: -5px 0px 0px 40px !important;
+ }
+ .emergencyContact__title {
+    margin: -5px 0px 10px 15px !important;
+ }
