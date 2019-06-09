@@ -3,7 +3,21 @@ import M from "materialize-css";
 import "../../css/tabs.css";
 
 class DetailTabs extends Component {
+  // printDetail() {
+  //   let tour = this.props.tourContent;
+  //   let text = "";
+  //   if (tour.tourID) {
+  //     tour.days.map((day, i) => {
+  //       text = day.day;
+  //       console.log(text);
+  //       return text;
+  //     });
+  //   }
+  // }
+
   render() {
+    const tour = this.props.tourContent;
+
     return (
       <div className="clearfix">
         <ul
@@ -21,13 +35,16 @@ class DetailTabs extends Component {
           </li>
         </ul>
 
-        <div id="test-swipe-1">
-          {this.props.t1}
-          <span>HI~HI</span>
+        <div id="test-swipe-1" className="contentBg">
+          {/* {this.printDetail()} */}
         </div>
         <div id="test-swipe-2">
-          {this.props.t2}
-          <span>HELLO~HELLO</span>
+          <iframe
+            src={this.props.pdf}
+            frameborder="0"
+            width="100%"
+            height="500px"
+          />
         </div>
       </div>
     );

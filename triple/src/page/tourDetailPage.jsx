@@ -7,30 +7,45 @@ import CommentButton from "../components/commentBtn/commentBtn";
 import LikeButton from "../components/likeButton/likeButton";
 import StarRate from "../components/commentBox/star";
 import ProductBlock from "../components/common/productBlock/productBlock";
-import Footer from "../components/footer/footer";
 import CommentBox from "../components/commentBox/comment";
 import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
-import starRatings from "react-star-ratings/build/star-ratings";
+import LoadingScreen from "../components/loading/loadingScreen";
 
 class TourDetailPage extends Component {
   state = {
+    isLogin: false,
     bookmarked: false,
     rating: 4.5,
     commentCount: 3,
     likeCount: 4,
     liked: false,
-    tour: {}
+    tour: {},
+    isLoading: true
   };
   getTour = async () => {
     const tour = await TourServices.getTourById("AJSGS05N");
     this.setState({ tour: tour[0] });
     console.log("tour", this.state.tour);
   };
+
   componentDidMount = async () => {
     await this.getTour();
+
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 1000);
+
+    console.log(this.state.isLoading);
   };
+
+  loading() {
+    const { isLoading } = this.state;
+    if (isLoading == true) {
+      return <LoadingScreen />;
+    }
+  }
 
   icon() {
     return this.state.bookmarked ? "bookmark" : "bookmark_border";
@@ -75,6 +90,9 @@ class TourDetailPage extends Component {
     console.log("test", tour);
     return (
       <React.Fragment>
+        <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
+          {this.loading()}
+        </div>
         <div className="marginBottom">
           <NavBar
             color="grey lighten-5 loginNav__textColor"
@@ -134,7 +152,7 @@ class TourDetailPage extends Component {
                     </div>
                   </div> */}
 
-                  <DetailTabs />
+                  <DetailTabs pdf={tour.detail} tourContent={tour} />
 
                   <div className="marginBottom20 marginTop20 color fontSize--27 ">
                     評論

@@ -11,6 +11,7 @@ import "./css/icon.css";
 import "./css/style.css";
 import UserDashBoard from "./page/userDashboard";
 import Footer from "./components/footer/footer";
+import LoadingScreen from "./components/loading/loadingScreen";
 function App() {
   return (
     <div>
@@ -19,6 +20,8 @@ function App() {
         <Route path="/test" component={Test} />
         <Route path="/dashtest" component={UserDashBoard} />
         <Route path="/tourDetailPage" component={TourDetailPage} />
+        <Route path="/loading" component={LoadingScreen} />
+
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
