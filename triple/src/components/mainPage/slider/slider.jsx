@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
-
+import $ from "jquery";
 
 class Slider extends Component {
   state = {  };
+
   componentDidMount() {
     const options = {
       duration: 200,
@@ -16,6 +17,7 @@ class Slider extends Component {
       }
     };
     M.Carousel.init(this.Carousel, options);
+ 
 }
   render() { 
     return (  

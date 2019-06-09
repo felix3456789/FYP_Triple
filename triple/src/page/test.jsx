@@ -13,6 +13,13 @@ import UserCard from "../components/userDashboardCard/userDashboardCard";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
+
+import Payment from "./../components/userInfo/payment";
+import BasicInfo from "./../components/userInfo/basicInfo";
+import Friends from "./../components/userInfo/friends";
+import EmergencyContact from "./../components/userInfo/emergencyContact";
+import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
+
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
 import TourServices from "../services/tourServices";
@@ -80,7 +87,7 @@ class Test extends Component {
           <Footer />
         </TestSection>
 
-        <TestSection title="photoslider">
+        <TestSection title="slider">
           <Slider />
         </TestSection>
 
@@ -92,6 +99,25 @@ class Test extends Component {
           <DateSelector />
         </TestSection>
 
+
+        <TestSection title="payment">
+          <Payment />
+        </TestSection>
+
+        <TestSection title="BasicInfo">
+          <BasicInfo/>
+        </TestSection>
+
+        <TestSection title="Friends">
+          <Friends/>
+        </TestSection>
+
+        <TestSection title="Emergency">
+          <EmergencyContact/>
+        </TestSection>
+
+        <TestSection title="PhotoSlider">
+          <PhotoSlider />
         <TestSection title="UserCard">
           <UserCard />
         </TestSection>
@@ -104,6 +130,7 @@ class Test extends Component {
           <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
           <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+
         </TestSection>
       </React.Fragment>
     );

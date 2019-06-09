@@ -1,0 +1,15 @@
+.paymentBox {
+  width: 400px;
+  border-radius: 10px !important;
+  line-height: 3;
+  height: 300px;
+}
+.payment__info {
+  margin: -5px 0px 0px 40px !important;
+}
+.payment__title {
+  margin: -5px 0px 10px 15px !important;
+}
+.payment__record {
+  margin: 0px 0px 0px 90px !important;
+}
