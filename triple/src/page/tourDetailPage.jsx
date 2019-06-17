@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import "materialize-css/dist/css/materialize.min.css";
 import { Icon } from "@material-ui/core";
 import NavBar from "../components/common/nav/nav";
 import "../css/style.css";
@@ -22,11 +24,14 @@ class TourDetailPage extends Component {
     likeCount: 4,
     liked: false,
     tour: {},
-    isLoading: true
+    isLoading: true,
+    photoArr: [],
+    photoNum: 0
   };
   getTour = async () => {
     const tour = await TourServices.getTourById("AJSGS05N");
     this.setState({ tour: tour[0] });
+    this.setState({ photoArr: tour.image });
     console.log("tour", this.state.tour);
   };
 
@@ -88,6 +93,7 @@ class TourDetailPage extends Component {
   render() {
     const { tour } = this.state;
     console.log("test", tour);
+
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -118,9 +124,10 @@ class TourDetailPage extends Component {
                     <div className="col s12 m12 l3">
                       <img
                         className="tourIntro__img"
-                        src={this.state.tour.image}
+                        src={tour.image ? tour.image[this.state.photoNum] : ""}
                       />
                     </div>
+
                     <div className="tourIntro col s12 m12 l6">
                       <span className="tourIntro__title color">
                         {this.state.tour.title}
@@ -132,7 +139,7 @@ class TourDetailPage extends Component {
                     <div className="col s12 m12 l3 tourIntro">
                       <div className="tourIntro__row">{this.printPrice()}</div>
                       <br />
-                      <div className="tourIntro__row">
+                      <div className="tourIntro__row clearfix">
                         <LikeButton likeCount={this.state.likeCount} />
                         <CommentButton commentCount={this.state.commentCount} />
                       </div>
@@ -146,11 +153,6 @@ class TourDetailPage extends Component {
                       </div>
                     </div>
                   </div>
-                  {/* <div className=" color">
-                    <div className="details padding20 fontSize36 white-text marginBottom20">
-                      行程資料
-                    </div>
-                  </div> */}
 
                   <DetailTabs pdf={tour.detail} tourContent={tour} />
 

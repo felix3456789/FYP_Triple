@@ -41,9 +41,9 @@ class Test extends Component {
     this.setState({ tour: tour[0] });
     console.log("tour", tour[0]);
   };
-  componentDidMount() {
-    this.getTour();
-  }
+  componentDidMount = async () => {
+    await this.getTour();
+  };
   render() {
     const { tour } = this.state;
     return (
@@ -80,7 +80,7 @@ class Test extends Component {
           <TextComment />
         </TestSection>
         <TestSection title="Detail Tabs">
-          <DetailTabs />
+          <DetailTabs pfd={tour.detail} tourContent={tour} />
         </TestSection>
 
         <TestSection title="Footer">
@@ -99,25 +99,25 @@ class Test extends Component {
           <DateSelector />
         </TestSection>
 
-
         <TestSection title="payment">
           <Payment />
         </TestSection>
 
         <TestSection title="BasicInfo">
-          <BasicInfo/>
+          <BasicInfo />
         </TestSection>
 
         <TestSection title="Friends">
-          <Friends/>
+          <Friends />
         </TestSection>
 
         <TestSection title="Emergency">
-          <EmergencyContact/>
+          <EmergencyContact />
         </TestSection>
 
         <TestSection title="PhotoSlider">
           <PhotoSlider />
+        </TestSection>
         <TestSection title="UserCard">
           <UserCard />
         </TestSection>
@@ -130,7 +130,6 @@ class Test extends Component {
           <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
           <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-
         </TestSection>
       </React.Fragment>
     );

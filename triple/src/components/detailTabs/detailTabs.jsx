@@ -4,20 +4,48 @@ import "../../css/tabs.css";
 
 class DetailTabs extends Component {
   // printDetail() {
-  //   let tour = this.props.tourContent;
+  //   const tour = this.props.tourContent;
   //   let text = "";
   //   if (tour.tourID) {
-  //     tour.days.map((day, i) => {
-  //       text = day.day;
-  //       console.log(text);
-  //       return text;
+  //     console.log(tour.days);
+  //     tour.days.forEach(day => {
+  //       console.log(day.title);
+  //       return (
+  //         <div>
+  //           <h1>{day.title}</h1>
+  //         </div>
+  //       );
   //     });
+  //     return <span>HIASD</span>;
+  //   } else {
+  //     return <span>hihihihi</span>;
   //   }
   // }
 
+  printDetail() {
+    const tour = this.props.tourContent;
+    let title, tourDay, eat, stay;
+    if (tour.tourID) {
+      tour.days.forEach(day => {
+        // console.log(day.title);
+        title = day.title;
+        tourDay = day.day;
+
+        stay = day.stay;
+        console.log(title);
+        console.log(tourDay);
+        day.eat.forEach(food => {
+          eat = food;
+          console.log(eat);
+        });
+        console.log(stay);
+      });
+    }
+  }
+
   render() {
     const tour = this.props.tourContent;
-
+    console.log("tab", tour);
     return (
       <div className="clearfix">
         <ul
@@ -36,7 +64,7 @@ class DetailTabs extends Component {
         </ul>
 
         <div id="test-swipe-1" className="contentBg">
-          {/* {this.printDetail()} */}
+          {this.printDetail()}
         </div>
         <div id="test-swipe-2">
           <iframe
