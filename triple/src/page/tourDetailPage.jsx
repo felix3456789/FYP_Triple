@@ -46,13 +46,6 @@ class TourDetailPage extends Component {
     console.log(this.state.isLoading);
   };
 
-  photo = () => {
-    const { tour } = this.props;
-    if (tour.image) {
-      console.log(tour.image);
-    }
-  };
-
   loading() {
     const { isLoading } = this.state;
     if (isLoading == true) {
