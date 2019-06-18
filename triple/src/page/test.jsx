@@ -13,7 +13,7 @@ import UserCard from "../components/userDashboardCard/userDashboardCard";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
-
+import Calendar from "../components/calendar/calendar";
 import Payment from "./../components/userInfo/payment";
 import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
@@ -85,6 +85,10 @@ class Test extends Component {
 
         <TestSection title="Footer">
           <Footer />
+        </TestSection>
+
+        <TestSection title="Calendar">
+          <Calendar />
         </TestSection>
 
         <TestSection title="slider">
