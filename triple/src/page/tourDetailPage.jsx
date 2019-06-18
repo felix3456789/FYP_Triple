@@ -29,15 +29,17 @@ class TourDetailPage extends Component {
     photoNum: 1,
     photoLink: ""
   };
-  getTour = async () => {
-    const tour = await TourServices.getTourById("AJSGS05N");
+  getTour = async id => {
+    const tour = await TourServices.getTourById(id);
     this.setState({ tour: tour[0] });
     this.setState({ photoArr: tour.image });
     console.log("tour", this.state.tour);
   };
 
   componentDidMount = async () => {
-    await this.getTour();
+    const { match: params } = this.props;
+    console.log(params.params.id);
+    await this.getTour(params.params.id);
 
     setTimeout(() => {
       this.setState({ isLoading: false });
