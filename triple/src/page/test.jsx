@@ -80,7 +80,7 @@ class Test extends Component {
           <TextComment />
         </TestSection>
         <TestSection title="Detail Tabs">
-          <DetailTabs pfd={tour.detail} tourContent={tour} />
+          <DetailTabs pdf={tour.detail} tourContent={tour} />
         </TestSection>
 
         <TestSection title="Footer">

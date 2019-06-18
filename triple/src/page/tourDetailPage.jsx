@@ -26,7 +26,8 @@ class TourDetailPage extends Component {
     tour: {},
     isLoading: true,
     photoArr: [],
-    photoNum: 0
+    photoNum: 1,
+    photoLink: ""
   };
   getTour = async () => {
     const tour = await TourServices.getTourById("AJSGS05N");
@@ -43,6 +44,13 @@ class TourDetailPage extends Component {
     }, 1000);
 
     console.log(this.state.isLoading);
+  };
+
+  photo = () => {
+    const { tour } = this.props;
+    if (tour.image) {
+      console.log(tour.image);
+    }
   };
 
   loading() {
