@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import "materialize-css/dist/css/materialize.min.css";
 import { Icon } from "@material-ui/core";
 import NavBar from "../components/common/nav/nav";
 import "../css/style.css";
@@ -7,30 +9,48 @@ import CommentButton from "../components/commentBtn/commentBtn";
 import LikeButton from "../components/likeButton/likeButton";
 import StarRate from "../components/commentBox/star";
 import ProductBlock from "../components/common/productBlock/productBlock";
-import Footer from "../components/footer/footer";
 import CommentBox from "../components/commentBox/comment";
 import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
-import starRatings from "react-star-ratings/build/star-ratings";
+import LoadingScreen from "../components/loading/loadingScreen";
 
 class TourDetailPage extends Component {
   state = {
+    isLogin: false,
     bookmarked: false,
     rating: 4.5,
     commentCount: 3,
     likeCount: 4,
     liked: false,
-    tour: {}
+    tour: {},
+    isLoading: true,
+    photoArr: [],
+    photoNum: 0
   };
   getTour = async () => {
     const tour = await TourServices.getTourById("AJSGS05N");
     this.setState({ tour: tour[0] });
+    this.setState({ photoArr: tour.image });
     console.log("tour", this.state.tour);
   };
+
   componentDidMount = async () => {
     await this.getTour();
+
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 1000);
+
+    console.log(this.state.isLoading);
   };
+
+  loading() {
+    const { isLoading } = this.state;
+    if (isLoading == true) {
+      return <LoadingScreen />;
+    }
+  }
 
   icon() {
     return this.state.bookmarked ? "bookmark" : "bookmark_border";
@@ -73,8 +93,12 @@ class TourDetailPage extends Component {
   render() {
     const { tour } = this.state;
     console.log("test", tour);
+
     return (
       <React.Fragment>
+        <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
+          {this.loading()}
+        </div>
         <div className="marginBottom">
           <NavBar
             color="grey lighten-5 loginNav__textColor"
@@ -100,9 +124,10 @@ class TourDetailPage extends Component {
                     <div className="col s12 m12 l3">
                       <img
                         className="tourIntro__img"
-                        src={this.state.tour.image}
+                        src={tour.image ? tour.image[this.state.photoNum] : ""}
                       />
                     </div>
+
                     <div className="tourIntro col s12 m12 l6">
                       <span className="tourIntro__title color">
                         {this.state.tour.title}
@@ -114,7 +139,7 @@ class TourDetailPage extends Component {
                     <div className="col s12 m12 l3 tourIntro">
                       <div className="tourIntro__row">{this.printPrice()}</div>
                       <br />
-                      <div className="tourIntro__row">
+                      <div className="tourIntro__row clearfix">
                         <LikeButton likeCount={this.state.likeCount} />
                         <CommentButton commentCount={this.state.commentCount} />
                       </div>
@@ -128,13 +153,8 @@ class TourDetailPage extends Component {
                       </div>
                     </div>
                   </div>
-                  {/* <div className=" color">
-                    <div className="details padding20 fontSize36 white-text marginBottom20">
-                      行程資料
-                    </div>
-                  </div> */}
 
-                  <DetailTabs />
+                  <DetailTabs pdf={tour.detail} tourContent={tour} />
 
                   <div className="marginBottom20 marginTop20 color fontSize--27 ">
                     評論

@@ -13,7 +13,7 @@ import UserCard from "../components/userDashboardCard/userDashboardCard";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
-
+import Calendar from "../components/calendar/calendar";
 import Payment from "./../components/userInfo/payment";
 import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
@@ -41,9 +41,9 @@ class Test extends Component {
     this.setState({ tour: tour[0] });
     console.log("tour", tour[0]);
   };
-  componentDidMount() {
-    this.getTour();
-  }
+  componentDidMount = async () => {
+    await this.getTour();
+  };
   render() {
     const { tour } = this.state;
     return (
@@ -80,11 +80,15 @@ class Test extends Component {
           <TextComment />
         </TestSection>
         <TestSection title="Detail Tabs">
-          <DetailTabs />
+          <DetailTabs pfd={tour.detail} tourContent={tour} />
         </TestSection>
 
         <TestSection title="Footer">
           <Footer />
+        </TestSection>
+
+        <TestSection title="Calendar">
+          <Calendar />
         </TestSection>
 
         <TestSection title="slider">
@@ -118,6 +122,8 @@ class Test extends Component {
         <TestSection title="PhotoSlider">
           <PhotoSlider />
         </TestSection>
+
+
 
         <TestSection title="UserCard">
           <UserCard />
