@@ -29,6 +29,7 @@ class TourDetailPage extends Component {
     photoNum: 1,
     photoLink: ""
   };
+
   getTour = async id => {
     const tour = await TourServices.getTourById(id);
     this.setState({ tour: tour[0] });
@@ -38,7 +39,6 @@ class TourDetailPage extends Component {
 
   componentDidMount = async () => {
     const { match: params } = this.props;
-    console.log(params.params.id);
     await this.getTour(params.params.id);
 
     setTimeout(() => {
