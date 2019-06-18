@@ -99,25 +99,26 @@ class Test extends Component {
           <DateSelector />
         </TestSection>
 
-
         <TestSection title="payment">
           <Payment />
         </TestSection>
 
         <TestSection title="BasicInfo">
-          <BasicInfo/>
+          <BasicInfo />
         </TestSection>
 
         <TestSection title="Friends">
-          <Friends/>
+          <Friends />
         </TestSection>
 
         <TestSection title="Emergency">
-          <EmergencyContact/>
+          <EmergencyContact />
         </TestSection>
 
         <TestSection title="PhotoSlider">
           <PhotoSlider />
+        </TestSection>
+
         <TestSection title="UserCard">
           <UserCard />
         </TestSection>
@@ -130,7 +131,6 @@ class Test extends Component {
           <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
           <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-
         </TestSection>
       </React.Fragment>
     );

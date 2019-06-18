@@ -5,11 +5,71 @@
   height: 300px;
 }
 .payment__info {
-  margin: -5px 0px 0px 40px !important;
+  text-align: center;
 }
 .payment__title {
-  margin: -5px 0px 10px 15px !important;
+  font-size: 20px;
+  padding: 20px;
 }
 .payment__record {
-  margin: 0px 0px 0px 90px !important;
+  padding: 0px 38%;
+}
+.payment__content-margin {
+  margin-bottom: 8px;
+  height: 3rem;
+  margin-right: 5px;
+  border-bottom: 0px solid white;
+}
+.editable_input {
+  border: none !important;
+}
+.editable_input[type="text"][disabled] {
+  color: black !important;
+  border: none;
+}
+.payment_edit {
+  font-size: 24px;
+  color: #001e4b;
+  line-height: 1.7;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.payment-div {
+  border: none;
+  transition: 0.3s ease;
+}
+
+.payment-div.payment-div-active {
+  border-bottom: 1px solid black;
+  height: 53px;
+}
+.payment__header {
+  text-align: right;
+  display: inline-block;
+}
+.payment__content {
+  text-align: left;
+  display: inline-block;
+  margin-left: 5px;
+}
+.hide-false {
+  display: none;
+}
+.hide-true {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.button__save {
+  margin-right: 10px;
+  background-color: #0d47a1 !important;
+  color: white !important;
+}
+.button__cancel {
+  margin-left: 10px;
+  background-color: #0d47a1 !important;
+  color: white !important;
+}
+.button__record {
+  background-color: #0d47a1 !important;
+  color: white !important;
 }
