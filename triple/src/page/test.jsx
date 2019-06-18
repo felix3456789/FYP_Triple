@@ -122,6 +122,9 @@ class Test extends Component {
         <TestSection title="PhotoSlider">
           <PhotoSlider />
         </TestSection>
+
+
+
         <TestSection title="UserCard">
           <UserCard />
         </TestSection>
