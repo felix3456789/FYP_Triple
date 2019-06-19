@@ -4,6 +4,7 @@ import Enquiry from "../components/homePage/enquiry/enquiry";
 import Feature from "../components/homePage/featuresCard/featureCard";
 import Slider from "../components/mainPage/slider/slider";
 import ProductBlock from "../components/common/productBlock/productBlock";
+import PbSection from "../components/mainPage/productBlockSection/pbSection";
 
 class Home extends Component {
   state = {};
@@ -23,11 +24,10 @@ class Home extends Component {
         <div className="enquiry__layout">
           <Enquiry />
         </div>
-        <div className="container">
+        <div className="container homePage">
           <Slider />
-          <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
-          <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+          <PbSection title="你可能喜歡" />
+          <PbSection title="深度遊推介" />
         </div>
       </React.Fragment>
     );
