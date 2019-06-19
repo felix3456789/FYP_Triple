@@ -141,7 +141,6 @@ class TourDetailPage extends Component {
                     <div className="col s12 m12 l3">
                       <PhotoSlider tourContent={tour} />
                     </div>
-
                     <div className="tourIntro col s12 m12 l6">
                       <span className="tourIntro__title color">
                         {this.state.tour.title}
