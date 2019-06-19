@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Icon from "@material-ui/core/Icon";
 import "../../../css/nav.css";
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   state = {};
@@ -44,9 +45,9 @@ class NavBar extends Component {
               </a>
             </li>
             <li>
-              <a href="collapsible.html">
+              <Link to={"/login"}>
                 <Icon className="vertMiddle">person</Icon>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -17,9 +17,11 @@ function App() {
     <div>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/test" component={Test} />
+        <Route exact path="/test" component={Test} />
+        <Route path="/test/:id" component={Test} />
         <Route path="/dashtest" component={UserDashBoard} />
-        <Route path="/tourDetailPage" component={TourDetailPage} />
+        <Route exact path="/tour-detail/" component={TourDetailPage} />
+        <Route path="/tour-detail/:id" component={TourDetailPage} />
         <Route path="/loading" component={LoadingScreen} />
 
         <Route path="/" component={Home} />

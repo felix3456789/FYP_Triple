@@ -19,7 +19,9 @@ import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
 import EmergencyContact from "./../components/userInfo/emergencyContact";
 import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
+
 import SortingBox from "./../components/sortingBox/sortingBox";
+
 
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
@@ -38,12 +40,13 @@ class Test extends Component {
   };
   getTour = async () => {
     const tour = await TourServices.getTourById("AJSGS05N");
-
     this.setState({ tour: tour[0] });
     console.log("tour", tour[0]);
   };
   componentDidMount = async () => {
     await this.getTour();
+    const { match: params } = this.props;
+    console.log(params.params.id);
   };
   render() {
     const { tour } = this.state;
@@ -121,12 +124,9 @@ class Test extends Component {
         </TestSection>
 
         <TestSection title="PhotoSlider">
-          <PhotoSlider />
+          <PhotoSlider tourContent={tour} />
         </TestSection>
 
-        <TestSection title="Sorting Box">
-          <SortingBox />
-        </TestSection>
 
         <TestSection title="UserCard">
           <UserCard />

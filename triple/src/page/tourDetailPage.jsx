@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import { Icon } from "@material-ui/core";
 import NavBar from "../components/common/nav/nav";
+import PhotoSlider from "../components/mainPage/photoSlider/photoSlider";
 import "../css/style.css";
 import "../css/tourDetailPage.css";
 import CommentButton from "../components/commentBtn/commentBtn";
@@ -14,6 +15,7 @@ import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
+import { ninvoke } from "q";
 
 class TourDetailPage extends Component {
   state = {
@@ -27,23 +29,33 @@ class TourDetailPage extends Component {
     isLoading: true,
     photoArr: [],
     photoNum: 1,
-    photoLink: ""
+    features: []
   };
-  getTour = async () => {
-    const tour = await TourServices.getTourById("AJSGS05N");
+
+  getTour = async id => {
+    const tour = await TourServices.getTourById(id);
     this.setState({ tour: tour[0] });
     this.setState({ photoArr: tour.image });
     console.log("tour", this.state.tour);
   };
 
+  getFeaturesTour = async () => {
+    const features = await TourServices.getFeatureTour();
+
+    this.setState({ features: features });
+    console.log(features);
+  };
+
   componentDidMount = async () => {
-    await this.getTour();
+    const { match: params } = this.props;
+    await this.getTour(params.params.id);
 
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
 
     console.log(this.state.isLoading);
+    await this.getFeaturesTour();
   };
 
   loading() {
@@ -93,7 +105,9 @@ class TourDetailPage extends Component {
 
   render() {
     const { tour } = this.state;
+    const { features } = this.state;
     console.log("test", tour);
+    console.log("test2: ", features);
 
     return (
       <React.Fragment>
@@ -123,18 +137,24 @@ class TourDetailPage extends Component {
                   </a>
                   <div className="row">
                     <div className="col s12 m12 l3">
-                      <img
-                        className="tourIntro__img"
-                        src={tour.image ? tour.image[this.state.photoNum] : ""}
-                      />
+                      <PhotoSlider tourContent={tour} />
                     </div>
-
                     <div className="tourIntro col s12 m12 l6">
                       <span className="tourIntro__title color">
                         {this.state.tour.title}
                       </span>
                       <div className="clearfix">
                         <StarRate />
+                      </div>
+                      <br />
+                      <div>
+                        {tour.tags
+                          ? tour.tags.map(tag =>
+                              tag.title == "" ? null : tag.title.length < 30 ? (
+                                <div className="chip">{tag.title}</div>
+                              ) : null
+                            )
+                          : null}
                       </div>
                     </div>
                     <div className="col s12 m12 l3 tourIntro">
@@ -172,11 +192,18 @@ class TourDetailPage extends Component {
 
         <div className="youMayAlsoLike">
           <div className="fontSize36 paddingBottom25">你可能喜歡</div>
-          <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
-          <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
+          {features
+            ? features.map(feature => (
+                <a href={feature.tourID}>
+                  <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
+                </a>
+              ))
+            : null}
+
+          {/* <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />  */}
           <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>
