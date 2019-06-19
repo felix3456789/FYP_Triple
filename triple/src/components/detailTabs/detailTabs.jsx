@@ -22,29 +22,25 @@ class DetailTabs extends Component {
   //   }
   // }
 
-  printDetail() {
-    const tour = this.props.tourContent;
-    let title, tourDay, eat, stay;
-    if (tour.tourID) {
-      tour.days.forEach(day => {
-        // console.log(day.title);
-        title = day.title;
-        tourDay = day.day;
-
-        stay = day.stay;
-        console.log(title);
-        console.log(tourDay);
-        day.eat.forEach(food => {
-          eat = food;
-          console.log(eat);
-        });
-        console.log(stay);
-      });
-    }
-  }
+  // printDetail() {
+  //   const tour = this.props.tourContent;
+  //   let title, tourDay, eat, stay;
+  //   if (tour.tourID) {
+  //     tour.days.map(day => {
+  //       // console.log(day.title);
+  //       title = day.title;
+  //       tourDay = day.day;
+  //       stay = day.stay;
+  //       day.eat.map(food => {
+  //         eat = food;
+  //       });
+  //     });
+  //   }
+  // }
 
   render() {
     const tour = this.props.tourContent;
+
     console.log("tab", tour);
     return (
       <div className="clearfix">
@@ -64,14 +60,32 @@ class DetailTabs extends Component {
         </ul>
 
         <div id="test-swipe-1" className="contentBg">
-          {this.printDetail()}
+          {tour.days
+            ? tour.days.map(day => (
+                <div className="fontColor textStyle">
+                  <b className="fontSize_24 ">{day.day}</b>
+                  <div className=" fontSize_20">
+                    {day.title} <br />
+                    {day.stay}
+                    {day.stay != " " ? <br /> : null}
+                    {day.eat[0]}
+                    {day.eat[0] ? <br /> : null}
+                    {day.eat[1]}
+                    {day.eat[1] ? <br /> : null}
+                    {day.eat[2]}
+                    {day.eat[2] ? <br /> : null}
+                  </div>
+                  <br />
+                </div>
+              ))
+            : null}
         </div>
         <div id="test-swipe-2">
           <iframe
             src={this.props.pdf}
             frameborder="0"
             width="100%"
-            height="500px"
+            height="595px"
           />
         </div>
       </div>

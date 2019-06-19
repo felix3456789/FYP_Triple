@@ -21,9 +21,27 @@
 
 .contentBg {
     background-color: aliceblue;
-    height: 505px;
+    height: 600px;
     padding-top: 7px;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 7px;
+    overflow-x: auto;
+}
+
+.fontColor {
+    color: #0d47a1;
+}
+
+.fontSize_24 {
+    font-size: 24px;
+}
+
+.textStyle {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.fontSize_20 {
+    font-size: 20px;
 }

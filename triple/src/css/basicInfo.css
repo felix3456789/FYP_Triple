@@ -17,6 +17,7 @@
 
 .basicInfo_info-div.basicInfo_info-div-active {
   border-bottom: 1px solid black;
+  height: 53px;
 }
 .profileImg {
   width: 100px;
@@ -29,10 +30,10 @@
 }
 
 .basicInfo__info {
-  margin: -5px 0px 0px 40px !important;
+  text-align: center;
 }
-.BasicInfo__title {
-  margin: -5px 0px 10px 15px !important;
+.basicInfo__title {
+  padding: 20px;
 }
 .BasicInfo__Edit {
   font-size: 24px;
@@ -66,4 +67,21 @@
   height: 3rem;
   margin-right: 5px;
   border-bottom: 0px solid white;
+}
+.hide-false {
+  display: none;
+}
+.hide-true {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.button__save {
+  margin-right: 10px;
+  background-color: #0d47a1 !important;
+  color: white !important;
+}
+.button__cancel {
+  margin-left: 10px;
+  background-color: #0d47a1 !important;
+  color: white !important;
 }

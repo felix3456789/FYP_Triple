@@ -13,13 +13,12 @@ import UserCard from "../components/userDashboardCard/userDashboardCard";
 import Slider from "./../components/mainPage/slider/slider";
 import Tag from "./../components/tag/tag";
 import DateSelector from "./../components/dateSelector/dateSelector";
-
+import Calendar from "../components/calendar/calendar";
 import Payment from "./../components/userInfo/payment";
 import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
 import EmergencyContact from "./../components/userInfo/emergencyContact";
 import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
-
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
 import TourServices from "../services/tourServices";
@@ -37,12 +36,13 @@ class Test extends Component {
   };
   getTour = async () => {
     const tour = await TourServices.getTourById("AJSGS05N");
-
     this.setState({ tour: tour[0] });
     console.log("tour", tour[0]);
   };
   componentDidMount = async () => {
     await this.getTour();
+    const { match: params } = this.props;
+    console.log(params.params.id);
   };
   render() {
     const { tour } = this.state;
@@ -80,11 +80,15 @@ class Test extends Component {
           <TextComment />
         </TestSection>
         <TestSection title="Detail Tabs">
-          <DetailTabs pfd={tour.detail} tourContent={tour} />
+          <DetailTabs pdf={tour.detail} tourContent={tour} />
         </TestSection>
 
         <TestSection title="Footer">
           <Footer />
+        </TestSection>
+
+        <TestSection title="Calendar">
+          <Calendar />
         </TestSection>
 
         <TestSection title="slider">
@@ -116,8 +120,9 @@ class Test extends Component {
         </TestSection>
 
         <TestSection title="PhotoSlider">
-          <PhotoSlider />
+          <PhotoSlider tourContent={tour} />
         </TestSection>
+
         <TestSection title="UserCard">
           <UserCard />
         </TestSection>

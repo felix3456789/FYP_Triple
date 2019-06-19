@@ -1,13 +1,68 @@
 .FriendsCard {
-    width:450px;
-    border-radius: 10px !important;
-    line-height: 3;
-    
-    }
-    .Friends__info {
-        margin: -5px 0px 0px 40px !important;
-     }
-     .Friends__title {
-        margin: -5px 0px 10px 15px !important;
-        font-size: 20px;
-     }
+  width: 450px;
+  border-radius: 10px !important;
+  line-height: 3;
+}
+.friends__info {
+  text-align: center;
+  padding-bottom: 15px;
+}
+.friends__title {
+  font-size: 20px;
+  padding: 20px;
+}
+.friends_edit {
+  font-size: 24px;
+  color: #001e4b;
+  line-height: 1.7;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.friends__header {
+  text-align: right;
+  display: inline-block;
+}
+.friends__content {
+  text-align: left;
+  display: inline-block;
+  margin-left: 5px;
+}
+.friends__content-margin {
+  margin-bottom: 8px;
+  height: 3rem;
+  margin-right: 5px;
+  border-bottom: 0px solid white;
+}
+.friends-div {
+  border: none;
+  transition: 0.3s ease;
+}
+
+.friends-div.friends-div-active {
+  border-bottom: 1px solid black;
+  height: 53px;
+}
+.editable_input {
+  border: none !important;
+}
+.editable_input[type="text"][disabled] {
+  color: black !important;
+  border: none;
+}
+.hide-false {
+  display: none;
+}
+.hide-true {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.button__save {
+  margin-right: 10px;
+  background-color: #0d47a1 !important;
+  color: white !important;
+}
+.button__cancel {
+  margin-left: 10px;
+  background-color: #0d47a1 !important;
+  color: white !important;
+}

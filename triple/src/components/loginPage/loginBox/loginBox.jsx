@@ -16,13 +16,18 @@ class LoginBox extends Form {
     });
     console.log(this.state.showOTP);
   }
+
+  handleForm = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.data);
+  };
   render() {
     return (
       <div className="card loginBox">
         <div className="card-content loginBox__cardContent--layout loginBox__text--color">
           <span className="loginBox__caption">登入</span>
           <div className="row">
-            <form className="col s12" onSubmit={this.handleSubmit}>
+            <form className="col s12" onSubmit={e => this.handleForm(e)}>
               <div className="row">
                 <div className="input-field col s12">
                   <input
