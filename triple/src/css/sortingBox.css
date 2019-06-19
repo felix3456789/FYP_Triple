@@ -64,7 +64,7 @@
   cursor: pointer;
 }
 .sortingPrice {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .noUi-base.noUi-connects {
   width: 80%;
@@ -102,11 +102,11 @@
   width: 95%;
   left: 5px;
 }
-
 .slider__sorting {
-  height: 20px;
+  height: 15px;
 }
 .button__sort--reset {
   background-color: #0d47a1 !important;
   color: white !important;
+  z-index: 0 !important;
 }
