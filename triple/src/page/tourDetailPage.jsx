@@ -28,7 +28,8 @@ class TourDetailPage extends Component {
     tour: {},
     isLoading: true,
     photoArr: [],
-    photoNum: 1
+    photoNum: 1,
+    features: []
   };
 
   getTour = async id => {
@@ -36,6 +37,13 @@ class TourDetailPage extends Component {
     this.setState({ tour: tour[0] });
     this.setState({ photoArr: tour.image });
     console.log("tour", this.state.tour);
+  };
+
+  getFeaturesTour = async () => {
+    const features = await TourServices.getFeatureTour();
+
+    this.setState({ features: features });
+    console.log(features);
   };
 
   componentDidMount = async () => {
@@ -47,6 +55,7 @@ class TourDetailPage extends Component {
     }, 1000);
 
     console.log(this.state.isLoading);
+    await this.getFeaturesTour();
   };
 
   loading() {
@@ -94,22 +103,11 @@ class TourDetailPage extends Component {
     }
   }
 
-  // photo() {
-  //   let image = this.state.tour.image;
-  //   for (let i = 0; i < image.length; i++) {
-  //     if (image[i + 1] != null) {
-  //       this.setState({ photoNum: i });
-  //     } else {
-  //       this.setState({ photoNum: 0 });
-  //       i = 0;
-  //     }
-  //     setTimeout(1000);
-  //   }
-  // }
-
   render() {
     const { tour } = this.state;
+    const { features } = this.state;
     console.log("test", tour);
+    console.log("test2: ", features);
 
     return (
       <React.Fragment>
@@ -152,9 +150,11 @@ class TourDetailPage extends Component {
                       <br />
                       <div>
                         {tour.tags
-                          ? tour.tags.map(tag => (
-                              <div className="chip">{tag.title}</div>
-                            ))
+                          ? tour.tags.map(tag =>
+                              tag.title == "" ? null : tag.title.length < 30 ? (
+                                <div className="chip">{tag.title}</div>
+                              ) : null
+                            )
                           : null}
                       </div>
                     </div>
@@ -193,11 +193,18 @@ class TourDetailPage extends Component {
 
         <div className="youMayAlsoLike">
           <div className="fontSize36 paddingBottom25">你可能喜歡</div>
-          <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
-          <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
+          {features
+            ? features.map(feature => (
+                <a href={feature.tourID}>
+                  <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
+                </a>
+              ))
+            : null}
+
+          {/* <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
           <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
+          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />  */}
           <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>

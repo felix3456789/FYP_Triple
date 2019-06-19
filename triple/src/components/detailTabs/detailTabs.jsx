@@ -3,41 +3,6 @@ import M from "materialize-css";
 import "../../css/tabs.css";
 
 class DetailTabs extends Component {
-  // printDetail() {
-  //   const tour = this.props.tourContent;
-  //   let text = "";
-  //   if (tour.tourID) {
-  //     console.log(tour.days);
-  //     tour.days.forEach(day => {
-  //       console.log(day.title);
-  //       return (
-  //         <div>
-  //           <h1>{day.title}</h1>
-  //         </div>
-  //       );
-  //     });
-  //     return <span>HIASD</span>;
-  //   } else {
-  //     return <span>hihihihi</span>;
-  //   }
-  // }
-
-  // printDetail() {
-  //   const tour = this.props.tourContent;
-  //   let title, tourDay, eat, stay;
-  //   if (tour.tourID) {
-  //     tour.days.map(day => {
-  //       // console.log(day.title);
-  //       title = day.title;
-  //       tourDay = day.day;
-  //       stay = day.stay;
-  //       day.eat.map(food => {
-  //         eat = food;
-  //       });
-  //     });
-  //   }
-  // }
-
   render() {
     const tour = this.props.tourContent;
 
@@ -79,6 +44,9 @@ class DetailTabs extends Component {
                 </div>
               ))
             : null}
+          <span className="fontColor">{tour.notes}</span>
+
+          <br />
         </div>
         <div id="test-swipe-2">
           <iframe
