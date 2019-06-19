@@ -22,21 +22,21 @@ class DetailTabs extends Component {
   //   }
   // }
 
-  printDetail() {
-    const tour = this.props.tourContent;
-    let title, tourDay, eat, stay;
-    if (tour.tourID) {
-      tour.days.map(day => {
-        // console.log(day.title);
-        title = day.title;
-        tourDay = day.day;
-        stay = day.stay;
-        day.eat.map(food => {
-          eat = food;
-        });
-      });
-    }
-  }
+  // printDetail() {
+  //   const tour = this.props.tourContent;
+  //   let title, tourDay, eat, stay;
+  //   if (tour.tourID) {
+  //     tour.days.map(day => {
+  //       // console.log(day.title);
+  //       title = day.title;
+  //       tourDay = day.day;
+  //       stay = day.stay;
+  //       day.eat.map(food => {
+  //         eat = food;
+  //       });
+  //     });
+  //   }
+  // }
 
   render() {
     const tour = this.props.tourContent;

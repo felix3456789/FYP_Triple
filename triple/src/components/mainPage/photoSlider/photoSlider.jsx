@@ -7,13 +7,27 @@ class PhotoSlider extends Component {
   componentDidMount() {
     const options = {
       indicators: false,
-      height: 500,
       interval: 4000,
-      duration: 500
+      duration: 500,
+      height: 300
     };
     M.Slider.init(this.Slider, options);
   }
+
   render() {
+    const tour = this.props.tourContent;
+    let photo1 = "";
+    let photo2 = "";
+    let photo3 = "";
+    let photo4 = "";
+    let photo5 = "";
+    if (tour.tourID) {
+      photo1 = tour.image[1];
+      photo2 = tour.image[2];
+      photo3 = tour.image[3];
+      photo3 = tour.image[4];
+      photo3 = tour.image[5];
+    }
     return (
       <React.Fragment>
         <div
@@ -25,17 +39,27 @@ class PhotoSlider extends Component {
           {/* If you want fullscreen slider then add fullscreen to
       this div */}
           <ul className="slides">
+            {/* {tour.image
+              ? tour.image.map(image => (
+                  <li>
+                    <img src={image} />
+                  </li>
+                ))
+              : ""} */}
             <li>
-              <img src="./../image/Travel.jpg" />
+              <img src={photo1} />
             </li>
             <li>
-              <img src="./../image/Travel2.jpg" />
+              <img src={photo2} />
             </li>
             <li>
-              <img src="./../image/Travel3.jpg" />
+              <img src={photo3} />
             </li>
             <li>
-              <img src="./../image/Travel4.jpg" />
+              <img src={photo4} />
+            </li>
+            <li>
+              <img src={photo5} />
             </li>
           </ul>
         </div>

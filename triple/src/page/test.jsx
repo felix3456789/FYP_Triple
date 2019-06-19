@@ -120,10 +120,8 @@ class Test extends Component {
         </TestSection>
 
         <TestSection title="PhotoSlider">
-          <PhotoSlider />
+          <PhotoSlider tourContent={tour} />
         </TestSection>
-
-
 
         <TestSection title="UserCard">
           <UserCard />

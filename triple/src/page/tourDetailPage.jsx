@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import { Icon } from "@material-ui/core";
 import NavBar from "../components/common/nav/nav";
+import PhotoSlider from "../components/mainPage/photoSlider/photoSlider";
 import "../css/style.css";
 import "../css/tourDetailPage.css";
 import CommentButton from "../components/commentBtn/commentBtn";
@@ -26,11 +27,10 @@ class TourDetailPage extends Component {
     tour: {},
     isLoading: true,
     photoArr: [],
-    photoNum: 1,
-    photoLink: ""
+    photoNum: 1
   };
   getTour = async () => {
-    const tour = await TourServices.getTourById("AJSGS05N");
+    const tour = await TourServices.getTourById("AJHMP05N");
     this.setState({ tour: tour[0] });
     this.setState({ photoArr: tour.image });
     console.log("tour", this.state.tour);
@@ -91,6 +91,19 @@ class TourDetailPage extends Component {
     }
   }
 
+  // photo() {
+  //   let image = this.state.tour.image;
+  //   for (let i = 0; i < image.length; i++) {
+  //     if (image[i + 1] != null) {
+  //       this.setState({ photoNum: i });
+  //     } else {
+  //       this.setState({ photoNum: 0 });
+  //       i = 0;
+  //     }
+  //     setTimeout(1000);
+  //   }
+  // }
+
   render() {
     const { tour } = this.state;
     console.log("test", tour);
@@ -123,10 +136,11 @@ class TourDetailPage extends Component {
                   </a>
                   <div className="row">
                     <div className="col s12 m12 l3">
-                      <img
+                      {/* <img
                         className="tourIntro__img"
-                        src={tour.image ? tour.image[this.state.photoNum] : ""}
-                      />
+                        src={tour.image ? tour.image[1] : ""}
+                      /> */}
+                      <PhotoSlider tourContent={tour} />
                     </div>
 
                     <div className="tourIntro col s12 m12 l6">
