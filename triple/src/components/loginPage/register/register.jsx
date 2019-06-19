@@ -1,23 +1,26 @@
 import React, { Component } from "react";
 import Form from "../../common/form";
 class Register extends Form {
-  /* state = {
-    newAccount: "",
-    newPassword: "",
-    ConfirmPassword: "",
-    chineseName: "",
-    engName: "",
-    birthday: "",
-    email: ""
+  state = {
+    data: {
+      newAccount: "",
+      newPassword: "",
+      ConfirmPassword: "",
+      chineseName: "",
+      engName: "",
+      birthday: "",
+      email: ""
+    }
   };
   handleSubmit = e => {
     e.preventDefault();
-    console.log("handleSubmit Register");
-  };*/
+    console.log("handleSubmit Register", this.state.data);
+    this.props.onSubmit(this.state.data, 2);
+  };
   render() {
     return (
       <React.Fragment>
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form Style="display: inline" onSubmit={e => this.handleSubmit(e)}>
           <div className="register__layout">
             <div>
               <span className="register__title">註冊</span>

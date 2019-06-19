@@ -70,7 +70,12 @@ class LoginBox extends Form {
         </div>
         {this.state.showOTP ? (
           <Popup
-            message={<Register closePopup={this.toggleOTP.bind(this)} />}
+            message={
+              <Register
+                onSubmit={this.props.onSubmit}
+                closePopup={this.toggleOTP.bind(this)}
+              />
+            }
           />
         ) : null}
       </div>

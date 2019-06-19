@@ -5,9 +5,14 @@ import AuthServices from "../services/authServices";
 import "../css/login.css";
 class Login extends Component {
   state = {};
-  handleSubmit = async data => {
+  handleSubmit = async (data, option) => {
     console.log("handleSubmit");
-    let auth = await AuthServices.login(data);
+    if (option == 1) {
+      let auth = await AuthServices.login(data);
+    }
+    if (option == 2) {
+      let auth = await AuthServices.register(data);
+    }
   };
   render() {
     return (
