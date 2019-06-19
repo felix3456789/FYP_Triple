@@ -20,7 +20,7 @@ class Slider extends Component {
   render() {
     return (
       <div
-        class="carousel carousel-slider center"
+        class="carousel carousel-slider "
         ref={Carousel => {
           this.Carousel = Carousel;
         }}
