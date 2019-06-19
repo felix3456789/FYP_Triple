@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../../../css/slider.css";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
@@ -9,24 +10,23 @@ class PhotoSlider extends Component {
       indicators: false,
       interval: 4000,
       duration: 500,
-      height: 300
+      height: 270
     };
     M.Slider.init(this.Slider, options);
   }
 
   render() {
     const tour = this.props.tourContent;
+    let photo0 = "";
     let photo1 = "";
     let photo2 = "";
     let photo3 = "";
-    let photo4 = "";
-    let photo5 = "";
+
     if (tour.tourID) {
+      photo0 = tour.image[0];
       photo1 = tour.image[1];
       photo2 = tour.image[2];
       photo3 = tour.image[3];
-      photo3 = tour.image[4];
-      photo3 = tour.image[5];
     }
     return (
       <React.Fragment>
@@ -34,11 +34,11 @@ class PhotoSlider extends Component {
           ref={Slider => {
             this.Slider = Slider;
           }}
-          className="slider photoSlider"
+          className="slider photoSlider boxShadow"
         >
           {/* If you want fullscreen slider then add fullscreen to
       this div */}
-          <ul className="slides">
+          <ul className="slides borderRadius">
             {/* {tour.image
               ? tour.image.map(image => (
                   <li>
@@ -47,19 +47,16 @@ class PhotoSlider extends Component {
                 ))
               : ""} */}
             <li>
-              <img src={photo1} />
+              <img src={photo1} className="borderRadius" />
             </li>
             <li>
-              <img src={photo2} />
+              <img src={photo2} className="borderRadius" />
             </li>
             <li>
-              <img src={photo3} />
+              <img src={photo3} className="borderRadius" />
             </li>
             <li>
-              <img src={photo4} />
-            </li>
-            <li>
-              <img src={photo5} />
+              <img src={photo0} className="borderRadius" />
             </li>
           </ul>
         </div>

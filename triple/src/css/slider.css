@@ -1,0 +1,8 @@
+.boxShadow {
+    box-shadow: 1px 2px 5px grey;
+    border-radius: 5px;
+}
+
+.borderRadius {
+    border-radius: 5px;
+}

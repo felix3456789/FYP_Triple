@@ -3,7 +3,7 @@ import API from "../config/config.json";
 const Backend_Api = API.Backend_Api;
 
 export async function getTourById(id) {
-  const response = await http.get(Backend_Api + id);
+  const response = await http.get(Backend_Api + "tour/" + id);
   return response.data;
 }
 

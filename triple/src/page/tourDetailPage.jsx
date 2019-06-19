@@ -15,6 +15,7 @@ import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
+import { ninvoke } from "q";
 
 class TourDetailPage extends Component {
   state = {
@@ -138,10 +139,6 @@ class TourDetailPage extends Component {
                   </a>
                   <div className="row">
                     <div className="col s12 m12 l3">
-                      {/* <img
-                        className="tourIntro__img"
-                        src={tour.image ? tour.image[1] : ""}
-                      /> */}
                       <PhotoSlider tourContent={tour} />
                     </div>
 
@@ -151,6 +148,14 @@ class TourDetailPage extends Component {
                       </span>
                       <div className="clearfix">
                         <StarRate />
+                      </div>
+                      <br />
+                      <div>
+                        {tour.tags
+                          ? tour.tags.map(tag => (
+                              <div className="chip">{tag.title}</div>
+                            ))
+                          : null}
                       </div>
                     </div>
                     <div className="col s12 m12 l3 tourIntro">
