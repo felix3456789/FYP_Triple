@@ -5,11 +5,10 @@ import AuthServices from "../services/authServices";
 import "../css/login.css";
 class Login extends Component {
   state = {};
-  async componentDidMount() {
-    let auth = await AuthServices.login();
-    console.log(auth);
-  }
-
+  handleSubmit = async data => {
+    console.log("handleSubmit");
+    let auth = await AuthServices.login(data);
+  };
   render() {
     return (
       <div className="login__background--img">
@@ -19,7 +18,7 @@ class Login extends Component {
           textColor="loginNav--ul"
         />
         <div className="loginBox__layout">
-          <LoginBox />
+          <LoginBox onSubmit={this.handleSubmit} />
         </div>
       </div>
     );

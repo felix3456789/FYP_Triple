@@ -1,16 +1,15 @@
 import http from "./httpService";
-import BackendAPI from "../config/config.json";
+import { Backend_Api } from "../config/config.json";
 
-const apiEndPoint = BackendAPI + "/auth";
-export async function login() {
-  let data = {
-    params: {
-      username: "allenleung",
-      password: "allenleung"
-    }
+const apiEndPoint = Backend_Api + "/auth";
+export async function login(data) {
+  let data1 = {
+    username: data.userAccount,
+    password: data.password
   };
-  let response = await http.post(apiEndPoint, data);
+  let response = await http.post(apiEndPoint, data1);
   console.log(response.data);
+  return response.data;
 }
 
 export default {
