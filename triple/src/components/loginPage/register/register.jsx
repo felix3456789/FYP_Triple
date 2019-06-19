@@ -1,5 +1,19 @@
 import React, { Component } from "react";
-class Register extends Component {
+import Form from "../../common/form";
+class Register extends Form {
+  /* state = {
+    newAccount: "",
+    newPassword: "",
+    ConfirmPassword: "",
+    chineseName: "",
+    engName: "",
+    birthday: "",
+    email: ""
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("handleSubmit Register");
+  };*/
   render() {
     return (
       <React.Fragment>
