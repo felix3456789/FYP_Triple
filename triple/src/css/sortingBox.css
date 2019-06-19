@@ -1,0 +1,112 @@
+.sortingBox__size {
+  height: 354px;
+  width: 201px;
+  border-radius: 10px !important;
+  background: #d6e0ef !important;
+  color: #0d47a1;
+}
+::placeholder {
+  color: #0d47a1 !important;
+  text-align: center;
+}
+.sorting__info {
+  text-align: center;
+}
+.selectbox {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #0d47a1;
+  color: #0d47a1;
+  font-size: 20px;
+}
+.spanfont {
+  color: #0d47a1;
+  font-size: 16px;
+  padding-left: 10px;
+  margin: 5px 5px;
+}
+.sortingDate {
+  text-align: center !important;
+  color: #0d47a1 !important;
+}
+.row.sorting__info {
+  padding: 5px;
+  margin-bottom: 0px;
+}
+.noUi-connect {
+  background: #0d47a1 !important;
+  display: inline;
+}
+.noUi-handle.noUi-handle-lower {
+  background: #0d47a1;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50%;
+  border: none !important;
+  right: -14px !important;
+  cursor: pointer;
+}
+.noUi-horizontal {
+  height: 3px !important;
+}
+.noUi-target.noUi-ltr.noUi-horizontal {
+  z-index: 0;
+  width: 90%;
+  left: 5px;
+}
+.noUi-handle.noUi-handle-upper {
+  background: #0d47a1;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50%;
+  border: none !important;
+  right: -14px !important;
+  cursor: pointer;
+}
+.sortingPrice {
+  margin-bottom: 15px;
+}
+.noUi-base.noUi-connects {
+  width: 80%;
+  height: 3px !important;
+}
+.rangeslider-horizontal {
+  height: 5px !important;
+  border-radius: 5px !important;
+}
+.rangeslider-horizontal .rangeslider__fill {
+  height: 100%;
+  background-color: #0d47a1 !important;
+  border-radius: 5px !important;
+}
+.rangeslider-horizontal .rangeslider__handle {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 30px;
+}
+.rangeslider-horizontal .rangeslider__handle:after {
+  display: none;
+}
+.noUi-handle:before {
+  display: none !important;
+}
+.noUi-handle:after {
+  display: none !important;
+}
+.rangeslider .rangeslider__handle {
+  border: none !important;
+  background: #0d47a1 !important;
+}
+.rangeslider.rangeslider-horizontal {
+  height: 2px !important;
+  width: 95%;
+  left: 5px;
+}
+
+.slider__sorting {
+  height: 20px;
+}
+.button__sort--reset {
+  background-color: #0d47a1 !important;
+  color: white !important;
+}

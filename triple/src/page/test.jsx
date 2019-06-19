@@ -19,6 +19,7 @@ import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
 import EmergencyContact from "./../components/userInfo/emergencyContact";
 import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
+import SortingBox from "./../components/sortingBox/sortingBox";
 
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
@@ -123,7 +124,9 @@ class Test extends Component {
           <PhotoSlider />
         </TestSection>
 
-
+        <TestSection title="Sorting Box">
+          <SortingBox />
+        </TestSection>
 
         <TestSection title="UserCard">
           <UserCard />
