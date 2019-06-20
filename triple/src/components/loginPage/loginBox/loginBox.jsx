@@ -53,6 +53,7 @@ class LoginBox extends Form {
                   <button
                     type="button"
                     onClick={this.toggleOTP.bind(this)}
+                    hi={this.props.onClick}
                     className="waves-effect waves-light btn-small loginBox__btn loginBox__btn--register"
                   >
                     註冊

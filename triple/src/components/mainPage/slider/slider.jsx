@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import M from "materialize-css";
 import TourServices from "../../../services/tourServices";
 import "materialize-css/dist/css/materialize.min.css";
-import { Link } from "react-router-dom";
-
+import "../slider/slider.css";
 class Slider extends Component {
   state = {
     tour1: [],
@@ -20,7 +19,7 @@ class Slider extends Component {
   }
 
   getFeaturesTour = async () => {
-    const features = await TourServices.getFeatureTour();
+    const features = await TourServices.getFeatureTour(5);
     this.setState({ features: features });
     console.log("features", features);
   };
@@ -59,36 +58,47 @@ class Slider extends Component {
           this.Carousel = Carousel;
         }}
       >
-        <a className="carousel-item">
+        <a className="carousel-item " href={"/tour-detail/" + tour1.tourID}>
+          <span className="textPosition center">{tour1.title}</span>
           <img
             alt="1"
-            src={tour1.tourID ? tour1.image[0] : "./../image/Travel1.jpg"}
+            className="whenHover"
+            src={tour1.tourID ? tour1.image[0] : null}
           />
         </a>
-        <a className="carousel-item">
+
+        <a className="carousel-item " href={"/tour-detail/" + tour2.tourID}>
+          <span className="textPosition center">{tour2.title}</span>
           <img
             alt="2"
-            src={tour2.tourID ? tour2.image[0] : "./../image/Travel1.jpg"}
+            className="whenHover "
+            src={tour2.tourID ? tour2.image[0] : null}
           />
         </a>
-        <a className="carousel-item">
+        <a className="carousel-item " href={"/tour-detail/" + tour3.tourID}>
+          <span className="textPosition center">{tour3.title}</span>
           <img
             alt="3"
-            src={tour3.tourID ? tour3.image[0] : "./../image/Travel1.jpg"}
+            className="whenHover"
+            src={tour3.tourID ? tour3.image[0] : null}
           />
         </a>
-        <Link to={"/login"} className="carousel-item">
+        <a className="carousel-item " href={"/tour-detail/" + tour4.tourID}>
+          <span className="textPosition center">{tour4.title}</span>
           <img
             alt="4"
-            src={tour4.tourID ? tour4.image[0] : "./../image/Travel1.jpg"}
+            className="whenHover"
+            src={tour4.tourID ? tour4.image[0] : null}
           />
-        </Link>
-        <Link to={"/login"} className="carousel-item">
+        </a>
+        <a className="carousel-item" href={"/tour-detail/" + tour5.tourID}>
+          <span className="textPosition center">{tour5.title}</span>
           <img
             alt="5"
-            src={tour5.tourID ? tour5.image[0] : "./../image/Travel1.jpg"}
+            className="whenHover"
+            src={tour5.tourID ? tour5.image[0] : null}
           />
-        </Link>
+        </a>
       </div>
     );
   }

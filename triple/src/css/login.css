@@ -13,7 +13,7 @@
   font-size: 56px;
 }
 
-.loginBox .input-field > label {
+.loginBox .input-field>label {
   color: #0d47a1 !important;
 }
 
@@ -29,6 +29,14 @@
 
 .login__btnGroup {
   text-align: center;
+}
+
+.centre {
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  margin: auto;
 }
 
 .loginBox__btn {
@@ -75,7 +83,7 @@ input.valid[type="search"]:not(.browser-default),
 input.valid[type="search"]:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus,
-.select-wrapper.valid > input.select-dropdown {
+.select-wrapper.valid>input.select-dropdown {
   border-bottom: 1px solid #0d47a1 !important;
   box-shadow: 0 1px 0 0 #0d47a1 !important;
 }
@@ -99,14 +107,16 @@ textarea.materialize-textarea.valid:focus,
   padding-top: 15%;
   padding-left: 5%;
 }
+
 .register__layout {
   float: left;
   height: inherit;
-  overflow: scroll;
+  /* overflow: scroll; */
   width: 50%;
   height: 100%;
   padding: 48px;
 }
+
 .register__tnc--layout {
   display: inline-block;
   width: 40%;

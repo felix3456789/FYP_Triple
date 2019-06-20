@@ -63,7 +63,7 @@ class Register extends Form {
                     className="validate loginBox__input"
                     onChange={this.handleChange}
                   />
-                  <label htmlFor="chineseName">中文姓名</label>
+                  <label htmlFor="chineseName">英文姓氏</label>
                 </div>
                 <div className="input-field col s12">
                   <input
@@ -73,18 +73,9 @@ class Register extends Form {
                     className="validate loginBox__input"
                     onChange={this.handleChange}
                   />
-                  <label htmlFor="engName">英文姓名</label>
+                  <label htmlFor="engName">英文名字</label>
                 </div>
-                <div className="input-field col s12">
-                  <input
-                    id="birthday"
-                    name="birthday"
-                    type="date"
-                    className="validate loginBox__input"
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="birthday">出生日期</label>
-                </div>
+
                 <div className="input-field col s12">
                   <input
                     id="email"
@@ -99,7 +90,7 @@ class Register extends Form {
             </div>
           </div>
           <div className="register__tnc--layout">Tnc</div>
-          <div className="login__btnGroup">
+          <div className="login__btnGroup centre">
             <button
               type="button"
               onClick={this.props.closePopup}

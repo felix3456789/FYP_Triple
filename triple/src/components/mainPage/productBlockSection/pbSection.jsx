@@ -1,16 +1,39 @@
 import React, { Component } from "react";
 import ProductBlock from "../../common/productBlock/productBlock";
+import tourService from "../../../services/tourServices";
 class PbSection extends Component {
-  state = {};
+  state = { tag: {}, searchTour: [] };
+  componentDidMount() {
+    this.getSearchTour();
+  }
+  async getSearchTour() {
+    await this.setState({ tag: this.props.tag });
+    let searchTour = await tourService.getSearchByTag(this.state.tag.title);
+    await this.setState({ searchTour });
+  }
+
   render() {
-    return (
+    const { tag, searchTour } = this.state;
+    return searchTour[0] ? (
       <React.Fragment>
-        <h2>{this.props.title}</h2>
-        <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
-        <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
-        <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" /> ;
+        <h2>{tag.title} 推介</h2>
+        <ProductBlock
+          id={searchTour[0].tourID}
+          img={searchTour[0].image[0]}
+          title={searchTour[0].title}
+        />
+        <ProductBlock
+          id={searchTour[1].tourID}
+          img={searchTour[1].image[0]}
+          title={searchTour[1].title}
+        />
+        <ProductBlock
+          id={searchTour[2].tourID}
+          img={searchTour[2].image[0]}
+          title={searchTour[2].title}
+        />
       </React.Fragment>
-    );
+    ) : null;
   }
 }
 

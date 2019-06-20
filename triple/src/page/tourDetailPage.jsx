@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "materialize-css/dist/css/materialize.min.css";
 import { Icon } from "@material-ui/core";
 import NavBar from "../components/common/nav/nav";
@@ -15,7 +14,6 @@ import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
-import { ninvoke } from "q";
 
 class TourDetailPage extends Component {
   state = {
@@ -35,12 +33,14 @@ class TourDetailPage extends Component {
   getTour = async id => {
     const tour = await TourServices.getTourById(id);
     this.setState({ tour: tour[0] });
-    this.setState({ photoArr: tour.image });
+    this.setState({ photoArr: tour[0].image });
+
     console.log("tour", this.state.tour);
+    console.log("photo", this.state.photoArr);
   };
 
   getFeaturesTour = async () => {
-    const features = await TourServices.getFeatureTour();
+    const features = await TourServices.getFeatureTour(5);
 
     this.setState({ features: features });
     console.log(features);
@@ -162,7 +162,11 @@ class TourDetailPage extends Component {
                       <br />
                       <div className="tourIntro__row clearfix">
                         <LikeButton likeCount={this.state.likeCount} />
-                        <CommentButton commentCount={this.state.commentCount} />
+                        <a href="#comment">
+                          <CommentButton
+                            commentCount={this.state.commentCount}
+                          />
+                        </a>
                       </div>
                       <div className="tourIntro__row">
                         <a className=" tourIntro__btn background--blue white-text">
@@ -177,7 +181,10 @@ class TourDetailPage extends Component {
 
                   <DetailTabs pdf={tour.detail} tourContent={tour} />
 
-                  <div className="marginBottom20 marginTop20 color fontSize--27 ">
+                  <div
+                    id="comment"
+                    className="marginBottom20 marginTop20 color fontSize--27 "
+                  >
                     評論
                   </div>
                   <TextComment />
@@ -200,10 +207,6 @@ class TourDetailPage extends Component {
               ))
             : null}
 
-          {/* <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />  */}
           <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>
