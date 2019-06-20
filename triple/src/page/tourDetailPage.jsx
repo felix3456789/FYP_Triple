@@ -15,7 +15,6 @@ import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
-import { ninvoke } from "q";
 
 class TourDetailPage extends Component {
   state = {
@@ -35,8 +34,10 @@ class TourDetailPage extends Component {
   getTour = async id => {
     const tour = await TourServices.getTourById(id);
     this.setState({ tour: tour[0] });
-    this.setState({ photoArr: tour.image });
+    this.setState({ photoArr: tour[0].image });
+
     console.log("tour", this.state.tour);
+    console.log("photo", this.state.photoArr);
   };
 
   getFeaturesTour = async () => {
@@ -200,10 +201,6 @@ class TourDetailPage extends Component {
               ))
             : null}
 
-          {/* <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />
-          <ProductBlock img="/image/Travel3.jpg" title="韓國短線團" />  */}
           <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>

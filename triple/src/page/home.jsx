@@ -6,19 +6,30 @@ import Slider from "../components/mainPage/slider/slider";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import PbSection from "../components/mainPage/productBlockSection/pbSection";
 import tourService from "../services/tourServices";
+import LoadingScreen from "../components/loading/loadingScreen";
+import "../css/loadingBg.css";
 
 class Home extends Component {
   state = {
-    tags: []
+    tags: [],
+    isLoading: true
   };
   async componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 1000);
     window.addEventListener("scroll", this.handleScroll);
     let recommendTag = await tourService.getRecommendTag();
     console.log(recommendTag);
     await this.setState({ tags: recommendTag.recommendTags });
     console.log("tags", this.state.tags);
   }
-
+  loading() {
+    const { isLoading } = this.state;
+    if (isLoading == true) {
+      return <LoadingScreen />;
+    }
+  }
   handleScroll(e) {
     document.getElementsByClassName("enquiry__layout")[0].style.opacity =
       1 - window.pageYOffset / 1000;
@@ -29,6 +40,9 @@ class Home extends Component {
     console.log("tags1231231", tags[0]);
     return (
       <React.Fragment>
+        <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
+          {this.loading()}
+        </div>
         <Nav id="homeNav" color=" loginNav__textColor" />
         <div className="enquiry__layout">
           <Enquiry />

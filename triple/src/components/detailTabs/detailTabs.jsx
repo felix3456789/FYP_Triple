@@ -3,10 +3,25 @@ import M from "materialize-css";
 import "../../css/tabs.css";
 
 class DetailTabs extends Component {
+  date() {
+    const updatedBy = this.props.tourContent.updatedBy;
+    const newDate = new Date(updatedBy);
+    const year = newDate.getFullYear();
+    let month = newDate.getMonth() + 1;
+    let date = newDate.getDate();
+    if (date < 10) {
+      date = "0" + date;
+    }
+    if (month < 10) {
+      month = "0" + month;
+    }
+    return year + " - " + month + " - " + date;
+  }
   render() {
     const tour = this.props.tourContent;
 
     console.log("tab", tour);
+
     return (
       <div className="clearfix">
         <ul
@@ -45,8 +60,9 @@ class DetailTabs extends Component {
               ))
             : null}
           <span className="fontColor">{tour.notes}</span>
-
           <br />
+          <br />
+          <div className="fontColor right-align">更新日子: {this.date()}</div>
         </div>
         <div id="test-swipe-2">
           <iframe
