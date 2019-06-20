@@ -6,6 +6,7 @@ import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
+import wNumb from "wnumb";
 
 class SortingBox extends Component {
   state = { textValue1: null, textValue2: null, tooltip: false };
@@ -32,7 +33,7 @@ class SortingBox extends Component {
   };
   render() {
     const { value = "1" } = this.state;
-    const { textValue1 = "699", textValue2 = "18000" } = this.state;
+    const { textValue1 = "$ 699", textValue2 = "$ 18,000" } = this.state;
     return (
       <React.Fragment>
         <div className="card sortingBox__size">
@@ -57,18 +58,17 @@ class SortingBox extends Component {
                 />
               </div>
               <div className="row sorting__info">
-                <span>
-                  <span className="left spanfont">價錢</span>
-                </span>
+                <span className="left spanfont">價錢</span>
               </div>
               <div className="sortingPrice">
-                ${textValue1} ~ ${textValue2}
+                {textValue1} ~ {textValue2}
                 <div>
                   <Nouislider
                     range={{ min: 399, max: 20000 }}
                     step={1}
                     start={[699, 18000]}
                     connect
+                    format={wNumb({ thousand: ",", prefix: "$ ", decimals: 0 })}
                     onSlide={this.onSlide}
                   />
                 </div>
@@ -79,12 +79,12 @@ class SortingBox extends Component {
                 </span>
               </div>
               <div className="sortingDate">
-                <span className="value">{value}天</span>
+                <span className="value">{value} 天</span>
               </div>
               <div className="slider__sorting">
                 <Slider
                   min={1}
-                  max={365}
+                  max={30}
                   value={value}
                   tooltip={false}
                   onChange={this.handleChange}
