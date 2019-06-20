@@ -3,7 +3,6 @@ import axios from "axios";
 if (localStorage.getItem("token")) {
   axios.defaults.headers.common["x-auth-token"] = localStorage.getItem("token");
 }
-
 axios.interceptors.response.use(null, error => {
   const expectedError =
     error.response &&

@@ -10,20 +10,19 @@ import LoadingScreen from "../components/loading/loadingScreen";
 import "../css/loadingBg.css";
 
 class Home extends Component {
-  state = { isLoading: true };
+  state = {
+    tags: [],
+    isLoading: true
+  };
   async componentDidMount() {
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
     window.addEventListener("scroll", this.handleScroll);
     let recommendTag = await tourService.getRecommendTag();
-
-    // for (var i = 0; i < 10; i++) {
-    //   console.log(
-    //     i,
-    //     await tourService.getSearchByTag(recommendTag.recommendTags[i].title)
-    //   );
-    // }
+    console.log(recommendTag);
+    await this.setState({ tags: recommendTag.recommendTags });
+    console.log("tags", this.state.tags);
   }
   loading() {
     const { isLoading } = this.state;
@@ -37,6 +36,8 @@ class Home extends Component {
   }
 
   render() {
+    const { tags } = this.state;
+    console.log("tags1231231", tags[0]);
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -48,8 +49,13 @@ class Home extends Component {
         </div>
         <div className="container homePage">
           <Slider />
-          <PbSection title="你可能喜歡" />
-          <PbSection title="深度遊推介" />
+          {tags[0] ? (
+            <React.Fragment>
+              <PbSection tag={tags[0]} />
+              <PbSection tag={tags[1]} />
+              <PbSection tag={tags[2]} />
+            </React.Fragment>
+          ) : null}
         </div>
       </React.Fragment>
     );
