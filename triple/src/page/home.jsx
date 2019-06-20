@@ -18,12 +18,12 @@ class Home extends Component {
     window.addEventListener("scroll", this.handleScroll);
     let recommendTag = await tourService.getRecommendTag();
 
-    for (var i = 0; i < 10; i++) {
-      console.log(
-        i,
-        await tourService.getSearchByTag(recommendTag.recommendTags[i].title)
-      );
-    }
+    // for (var i = 0; i < 10; i++) {
+    //   console.log(
+    //     i,
+    //     await tourService.getSearchByTag(recommendTag.recommendTags[i].title)
+    //   );
+    // }
   }
   loading() {
     const { isLoading } = this.state;

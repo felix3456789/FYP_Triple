@@ -1,0 +1,17 @@
+.whenHover:hover {
+    filter: brightness(50%) blur(1px);
+    width: 105% !important;
+    transition: 0.4s ease;
+
+}
+
+
+
+.textPosition {
+    position: relative !important;
+    height: 0;
+    color: white;
+    z-index: 1;
+    font-size: 20px;
+
+}
