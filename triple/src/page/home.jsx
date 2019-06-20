@@ -11,7 +11,14 @@ class Home extends Component {
   state = {};
   async componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
-    console.log("Recommend Tag", await tourService.getRecommendTag());
+    let recommendTag = await tourService.getRecommendTag();
+
+    for (var i = 0; i < 10; i++) {
+      console.log(
+        i,
+        await tourService.getSearchByTag(recommendTag.recommendTags[i].title)
+      );
+    }
   }
 
   handleScroll(e) {

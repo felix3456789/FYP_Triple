@@ -17,9 +17,15 @@ export async function getRecommendTag() {
   console.log(response.data);
   return response.data;
 }
+export async function getSearchByTag(tag) {
+  const response = await http.get(Backend_Api + "tour/search/" + tag);
+  console.log(response.data);
+  return response.data;
+}
 
 export default {
   getTourById,
   getFeatureTour,
-  getRecommendTag
+  getRecommendTag,
+  getSearchByTag
 };
