@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "materialize-css/dist/css/materialize.min.css";
 import { Icon } from "@material-ui/core";
 import NavBar from "../components/common/nav/nav";
@@ -41,7 +40,7 @@ class TourDetailPage extends Component {
   };
 
   getFeaturesTour = async () => {
-    const features = await TourServices.getFeatureTour();
+    const features = await TourServices.getFeatureTour(5);
 
     this.setState({ features: features });
     console.log(features);

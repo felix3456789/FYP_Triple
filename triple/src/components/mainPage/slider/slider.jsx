@@ -19,7 +19,7 @@ class Slider extends Component {
   }
 
   getFeaturesTour = async () => {
-    const features = await TourServices.getFeatureTour();
+    const features = await TourServices.getFeatureTour(5);
     this.setState({ features: features });
     console.log("features", features);
   };

@@ -18,6 +18,7 @@ class Home extends Component {
     isLogin: false,
     features: []
   };
+
   async componentDidMount() {
     if (authService.getJwt()) {
       this.setState({ isLogin: true });
@@ -28,8 +29,9 @@ class Home extends Component {
       let recommendTag = await tourService.getRecommendTag();
       await this.setState({ tags: recommendTag.recommendTags });
     } else {
-      let features = await tourService.getFeatureTour();
+      let features = await tourService.getFeatureTour(20);
       await this.setState({ features });
+      console.log(features);
     }
 
     setTimeout(() => {
@@ -45,12 +47,14 @@ class Home extends Component {
     } else {
     }
   }
+
   loading() {
     const { isLoading } = this.state;
     if (isLoading == true) {
       return <LoadingScreen />;
     }
   }
+
   handleScroll(e) {
     document.getElementsByClassName("enquiry__layout")[0].style.opacity =
       1 - window.pageYOffset / 1000;
@@ -88,8 +92,6 @@ class Home extends Component {
                 </a>
               ))
             : null}
-
-          <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>
     );

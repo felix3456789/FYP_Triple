@@ -7,8 +7,8 @@ export async function getTourById(id) {
   return response.data;
 }
 
-export async function getFeatureTour(data) {
-  const response = await http.get(Backend_Api + "tour/feature/tour");
+export async function getFeatureTour(num) {
+  const response = await http.get(Backend_Api + "tour/feature/tour/" + num);
   return response.data;
 }
 
