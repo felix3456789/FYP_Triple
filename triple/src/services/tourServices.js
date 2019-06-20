@@ -18,13 +18,20 @@ export async function getRecommendTag() {
   return response.data;
 }
 export async function getSearchByTag(tag) {
-  const response = await http.get(Backend_Api + "tour/search/" + tag);
+  const response = await http.get(Backend_Api + "tour/recommanded/" + tag);
   return response.data;
 }
-
+export async function inserHistory(id) {
+  let data = {
+    tourId: id
+  };
+  console.log(id);
+  const response = await http.post(Backend_Api + "recommander/insert", data);
+}
 export default {
   getTourById,
   getFeatureTour,
   getRecommendTag,
-  getSearchByTag
+  getSearchByTag,
+  inserHistory
 };

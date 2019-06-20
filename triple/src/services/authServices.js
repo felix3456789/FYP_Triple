@@ -15,6 +15,9 @@ export async function login(data) {
   return response.data;
 }
 
+export function logout() {
+  localStorage.removeItem(tokenKey);
+}
 export async function register(data) {
   let data1 = {
     username: data.newAccount,
@@ -39,5 +42,6 @@ export function getJwt() {
 export default {
   login,
   register,
-  getJwt
+  getJwt,
+  logout
 };

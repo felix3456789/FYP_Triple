@@ -6,6 +6,7 @@ import Slider from "../components/mainPage/slider/slider";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import PbSection from "../components/mainPage/productBlockSection/pbSection";
 import tourService from "../services/tourServices";
+import AuthServices from "../services/authServices";
 import LoadingScreen from "../components/loading/loadingScreen";
 import "../css/loadingBg.css";
 
@@ -19,10 +20,14 @@ class Home extends Component {
       this.setState({ isLoading: false });
     }, 1000);
     window.addEventListener("scroll", this.handleScroll);
-    let recommendTag = await tourService.getRecommendTag();
-    console.log(recommendTag);
-    await this.setState({ tags: recommendTag.recommendTags });
-    console.log("tags", this.state.tags);
+    console.log("get", AuthServices.getJwt());
+    if (AuthServices.getJwt()) {
+      let recommendTag = await tourService.getRecommendTag();
+      console.log(recommendTag);
+      await this.setState({ tags: recommendTag.recommendTags });
+      console.log("tags", this.state.tags);
+    } else {
+    }
   }
   loading() {
     const { isLoading } = this.state;
