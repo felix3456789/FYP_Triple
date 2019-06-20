@@ -8,17 +8,15 @@ import PbSection from "../components/mainPage/productBlockSection/pbSection";
 import tourService from "../services/tourServices";
 
 class Home extends Component {
-  state = {};
+  state = {
+    tags: []
+  };
   async componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
     let recommendTag = await tourService.getRecommendTag();
-
-    for (var i = 0; i < 10; i++) {
-      console.log(
-        i,
-        await tourService.getSearchByTag(recommendTag.recommendTags[i].title)
-      );
-    }
+    console.log(recommendTag);
+    await this.setState({ tags: recommendTag.recommendTags });
+    console.log("tags", this.state.tags);
   }
 
   handleScroll(e) {
@@ -27,6 +25,8 @@ class Home extends Component {
   }
 
   render() {
+    const { tags } = this.state;
+    console.log("tags1231231", tags[0]);
     return (
       <React.Fragment>
         <Nav id="homeNav" color=" loginNav__textColor" />
@@ -35,8 +35,13 @@ class Home extends Component {
         </div>
         <div className="container homePage">
           <Slider />
-          <PbSection title="你可能喜歡" />
-          <PbSection title="深度遊推介" />
+          {tags[0] ? (
+            <React.Fragment>
+              <PbSection tag={tags[0]} />
+              <PbSection tag={tags[1]} />
+              <PbSection tag={tags[2]} />
+            </React.Fragment>
+          ) : null}
         </div>
       </React.Fragment>
     );

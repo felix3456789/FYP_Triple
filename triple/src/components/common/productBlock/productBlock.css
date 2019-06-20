@@ -7,7 +7,7 @@
   transition: 0.4s ease;
   height: 600px;
   position: relative;
-  top: -100px;
+  top: -174px;
   right: 10px;
 }
 .productBlock:hover {
@@ -35,4 +35,8 @@
   color: white;
   z-index: 3;
   transition: 1s ease;
+}
+
+.productBlock__img {
+  cursor: pointer;
 }
