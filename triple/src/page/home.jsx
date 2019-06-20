@@ -5,11 +5,20 @@ import Feature from "../components/homePage/featuresCard/featureCard";
 import Slider from "../components/mainPage/slider/slider";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import PbSection from "../components/mainPage/productBlockSection/pbSection";
+import tourService from "../services/tourServices";
 
 class Home extends Component {
   state = {};
-  componentDidMount() {
+  async componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    let recommendTag = await tourService.getRecommendTag();
+
+    for (var i = 0; i < 10; i++) {
+      console.log(
+        i,
+        await tourService.getSearchByTag(recommendTag.recommendTags[i].title)
+      );
+    }
   }
 
   handleScroll(e) {

@@ -12,7 +12,20 @@ export async function getFeatureTour(data) {
   return response.data;
 }
 
+export async function getRecommendTag() {
+  const response = await http.get(Backend_Api + "user/recommendTag");
+  console.log(response.data);
+  return response.data;
+}
+export async function getSearchByTag(tag) {
+  const response = await http.get(Backend_Api + "tour/search/" + tag);
+  console.log(response.data);
+  return response.data;
+}
+
 export default {
   getTourById,
-  getFeatureTour
+  getFeatureTour,
+  getRecommendTag,
+  getSearchByTag
 };

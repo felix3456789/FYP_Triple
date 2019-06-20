@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DayPicker from "react-day-picker";
-
+import "../../css/dateSelector.css";
 import "react-day-picker/lib/style.css";
 
 class DateSelector extends Component {
@@ -28,26 +28,24 @@ class DateSelector extends Component {
                 <div class="col s4">
                   <h5 class="center-align">請選擇出發日期</h5>
                   <div class="center-align">
-                  <DayPicker
-                  
-                  showOutsideDays
-                  selectedDays={this.state.selectedDay}
-                  onDayClick={this.handleDayClick}
-                  initialMonth={new Date(2019, 1)}
-                  disabledDays={[
-                    new Date(2019, 1, 9),
-                    {
-                      after: new Date(2019, 0, 31),
-                      before: new Date(2019, 1, 8)
-                    },
-                    {
-                      after: new Date(2019, 1, 20),
-                      before: new Date(2019, 2, 1)
-                    }
-                  ]}
-                />
+                    <DayPicker
+                      showOutsideDays
+                      selectedDays={this.state.selectedDay}
+                      onDayClick={this.handleDayClick}
+                      initialMonth={new Date(2019, 1)}
+                      disabledDays={[
+                        new Date(2019, 1, 9),
+                        {
+                          after: new Date(2019, 0, 31),
+                          before: new Date(2019, 1, 8)
+                        },
+                        {
+                          after: new Date(2019, 1, 20),
+                          before: new Date(2019, 2, 1)
+                        }
+                      ]}
+                    />
                   </div>
-                  
                 </div>
               </div>
               <div class="col s8 push-s2">
@@ -115,7 +113,7 @@ class DateSelector extends Component {
                 </div>
 
                 <button
-                  class="waves-effect waves-light btn-small"
+                  class="waves-effect waves-light btn-small button__next"
                   type="submit"
                 >
                   下一步

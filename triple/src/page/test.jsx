@@ -19,6 +19,9 @@ import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
 import EmergencyContact from "./../components/userInfo/emergencyContact";
 import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
+
+import SortingBox from "./../components/sortingBox/sortingBox";
+
 import ProductBlock from "../components/common/productBlock/productBlock";
 import SearchBox from "../components/search/searchBox";
 import TourServices from "../services/tourServices";
@@ -121,6 +124,10 @@ class Test extends Component {
 
         <TestSection title="PhotoSlider">
           <PhotoSlider tourContent={tour} />
+        </TestSection>
+
+        <TestSection title="sortingCard">
+          <SortingBox />
         </TestSection>
 
         <TestSection title="UserCard">

@@ -9,6 +9,7 @@ class Login extends Component {
     console.log("handleSubmit");
     if (option == 1) {
       let auth = await AuthServices.login(data);
+      if (auth) this.props.history.push("/");
     }
     if (option == 2) {
       let auth = await AuthServices.register(data);

@@ -2,13 +2,16 @@ import http from "./httpService";
 import { Backend_Api } from "../config/config.json";
 
 const apiEndPoint = Backend_Api + "auth";
+const tokenKey = "token";
+
 export async function login(data) {
   let data1 = {
     username: data.userAccount,
     password: data.password
   };
   let response = await http.post(apiEndPoint, data1);
-  console.log(response.data);
+  console.log("login", response.data);
+  localStorage.setItem(tokenKey, response.data);
   return response.data;
 }
 
@@ -25,7 +28,16 @@ export async function register(data) {
   return response.data;
 }
 
+export function getJwt() {
+  console.log(localStorage.getItem(tokenKey));
+  if (localStorage.getItem(tokenKey)) {
+    return localStorage.getItem(tokenKey);
+  }
+  return null;
+}
+
 export default {
   login,
-  register
+  register,
+  getJwt
 };

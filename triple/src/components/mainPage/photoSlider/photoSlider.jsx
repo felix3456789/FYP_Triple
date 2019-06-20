@@ -8,6 +8,9 @@ class PhotoSlider extends Component {
   componentDidMount() {
     const options = {
       indicators: false,
+
+      height: 150,
+
       interval: 4000,
       duration: 500,
       height: 270
