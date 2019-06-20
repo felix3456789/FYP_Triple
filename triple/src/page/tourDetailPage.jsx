@@ -163,7 +163,11 @@ class TourDetailPage extends Component {
                       <br />
                       <div className="tourIntro__row clearfix">
                         <LikeButton likeCount={this.state.likeCount} />
-                        <CommentButton commentCount={this.state.commentCount} />
+                        <a href="#comment">
+                          <CommentButton
+                            commentCount={this.state.commentCount}
+                          />
+                        </a>
                       </div>
                       <div className="tourIntro__row">
                         <a className=" tourIntro__btn background--blue white-text">
@@ -178,7 +182,10 @@ class TourDetailPage extends Component {
 
                   <DetailTabs pdf={tour.detail} tourContent={tour} />
 
-                  <div className="marginBottom20 marginTop20 color fontSize--27 ">
+                  <div
+                    id="comment"
+                    className="marginBottom20 marginTop20 color fontSize--27 "
+                  >
                     評論
                   </div>
                   <TextComment />

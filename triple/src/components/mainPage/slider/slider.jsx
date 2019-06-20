@@ -58,7 +58,7 @@ class Slider extends Component {
           this.Carousel = Carousel;
         }}
       >
-        <a className="carousel-item ">
+        <a className="carousel-item " href={"/tour-detail/" + tour1.tourID}>
           <span className="textPosition center">{tour1.title}</span>
           <img
             alt="1"
@@ -67,7 +67,7 @@ class Slider extends Component {
           />
         </a>
 
-        <a className="carousel-item ">
+        <a className="carousel-item " href={"/tour-detail/" + tour2.tourID}>
           <span className="textPosition center">{tour2.title}</span>
           <img
             alt="2"
@@ -75,7 +75,7 @@ class Slider extends Component {
             src={tour2.tourID ? tour2.image[0] : null}
           />
         </a>
-        <a className="carousel-item ">
+        <a className="carousel-item " href={"/tour-detail/" + tour3.tourID}>
           <span className="textPosition center">{tour3.title}</span>
           <img
             alt="3"
@@ -83,7 +83,7 @@ class Slider extends Component {
             src={tour3.tourID ? tour3.image[0] : null}
           />
         </a>
-        <a className="carousel-item ">
+        <a className="carousel-item " href={"/tour-detail/" + tour4.tourID}>
           <span className="textPosition center">{tour4.title}</span>
           <img
             alt="4"
@@ -91,7 +91,7 @@ class Slider extends Component {
             src={tour4.tourID ? tour4.image[0] : null}
           />
         </a>
-        <a className="carousel-item">
+        <a className="carousel-item" href={"/tour-detail/" + tour5.tourID}>
           <span className="textPosition center">{tour5.title}</span>
           <img
             alt="5"

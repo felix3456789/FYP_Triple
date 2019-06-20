@@ -8,14 +8,30 @@ import PbSection from "../components/mainPage/productBlockSection/pbSection";
 import tourService from "../services/tourServices";
 import AuthServices from "../services/authServices";
 import LoadingScreen from "../components/loading/loadingScreen";
+import authService from "../services/authServices";
 import "../css/loadingBg.css";
 
 class Home extends Component {
   state = {
     tags: [],
-    isLoading: true
+    isLoading: true,
+    isLogin: false,
+    features: []
   };
   async componentDidMount() {
+    if (authService.getJwt()) {
+      this.setState({ isLogin: true });
+    }
+
+    window.addEventListener("scroll", this.handleScroll);
+    if (this.state.isLogin) {
+      let recommendTag = await tourService.getRecommendTag();
+      await this.setState({ tags: recommendTag.recommendTags });
+    } else {
+      let features = await tourService.getFeatureTour();
+      await this.setState({ features });
+    }
+
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
@@ -42,6 +58,7 @@ class Home extends Component {
 
   render() {
     const { tags } = this.state;
+    const { features } = this.state;
     console.log("tags1231231", tags[0]);
     return (
       <React.Fragment>
@@ -61,6 +78,18 @@ class Home extends Component {
               <PbSection tag={tags[2]} />
             </React.Fragment>
           ) : null}
+        </div>
+        <div className="youMayAlsoLike">
+          <div className="fontSize36 paddingBottom25">你可能喜歡</div>
+          {features
+            ? features.map(feature => (
+                <a href={feature.tourID}>
+                  <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
+                </a>
+              ))
+            : null}
+
+          <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>
     );
