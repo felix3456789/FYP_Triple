@@ -5,11 +5,13 @@ import Feature from "../components/homePage/featuresCard/featureCard";
 import Slider from "../components/mainPage/slider/slider";
 import ProductBlock from "../components/common/productBlock/productBlock";
 import PbSection from "../components/mainPage/productBlockSection/pbSection";
+import tourService from "../services/tourServices";
 
 class Home extends Component {
   state = {};
-  componentDidMount() {
+  async componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    console.log("Recommend Tag", await tourService.getRecommendTag());
   }
 
   handleScroll(e) {

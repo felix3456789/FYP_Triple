@@ -19,7 +19,7 @@ class LoginBox extends Form {
 
   handleForm = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.data);
+    this.props.onSubmit(this.state.data, 1);
   };
   render() {
     return (
