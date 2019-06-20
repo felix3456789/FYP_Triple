@@ -10,7 +10,7 @@ class NavBar extends Component {
     return (
       <nav id={id}>
         <div className={"nav-wrapper  " + color}>
-          <a href="/test" className="brand-logo">
+          <a href="/" className="brand-logo">
             Triple
           </a>
           <ul id="nav-mobile" className="hide-on-med-and-down loginNav--ul">

@@ -7,22 +7,28 @@ import ProductBlock from "../components/common/productBlock/productBlock";
 import PbSection from "../components/mainPage/productBlockSection/pbSection";
 import tourService from "../services/tourServices";
 import LoadingScreen from "../components/loading/loadingScreen";
+import authService from "../services/authServices";
 import "../css/loadingBg.css";
 
 class Home extends Component {
   state = {
     tags: [],
-    isLoading: true
+    isLoading: true,
+    isLogin: false
   };
   async componentDidMount() {
+    if (authService.getJwt()) {
+      this.setState({ isLogin: true });
+    }
+
+    window.addEventListener("scroll", this.handleScroll);
+    let recommendTag = await tourService.getRecommendTag();
+    if (this.state.isLoading)
+      await this.setState({ tags: recommendTag.recommendTags });
+
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
-    window.addEventListener("scroll", this.handleScroll);
-    let recommendTag = await tourService.getRecommendTag();
-    console.log(recommendTag);
-    await this.setState({ tags: recommendTag.recommendTags });
-    console.log("tags", this.state.tags);
   }
   loading() {
     const { isLoading } = this.state;
