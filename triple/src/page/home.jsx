@@ -87,10 +87,10 @@ class Home extends Component {
           <div className="fontSize36 paddingBottom25">你可能喜歡</div>
           {features
             ? features.map(feature => (
-                <a href={feature.tourID}>
-                  <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
-                </a>
-              ))
+              <a href={"/tour-detail/" + feature.tourID}>
+                <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
+              </a>
+            ))
             : null}
         </div>
       </React.Fragment>
