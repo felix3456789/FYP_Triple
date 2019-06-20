@@ -15,7 +15,6 @@ import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
-import { ninvoke } from "q";
 
 class TourDetailPage extends Component {
   state = {
