@@ -13,6 +13,8 @@ import UserDashBoard from "./page/userDashboard";
 import Footer from "./components/footer/footer";
 import LoadingScreen from "./components/loading/loadingScreen";
 import Logout from "./page/logout";
+import Search from "./page/search";
+
 function App() {
   return (
     <div>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/loading" component={LoadingScreen} />
         <Route path="/logout" component={Logout} />
         <Route path="/login" component={Login} />
+        <Route path="/search" component={Search} />
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
