@@ -20,11 +20,12 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    if (authService.getJwt()) {
+    if (await authService.getJwt()) {
       this.setState({ isLogin: true });
     }
 
     window.addEventListener("scroll", this.handleScroll);
+    console.log(this.state.isLogin)
     if (this.state.isLogin) {
       let recommendTag = await tourService.getRecommendTag();
       await this.setState({ tags: recommendTag.recommendTags });
@@ -37,15 +38,7 @@ class Home extends Component {
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
-    window.addEventListener("scroll", this.handleScroll);
-    console.log("get", AuthServices.getJwt());
-    if (AuthServices.getJwt()) {
-      let recommendTag = await tourService.getRecommendTag();
-      console.log(recommendTag);
-      await this.setState({ tags: recommendTag.recommendTags });
-      console.log("tags", this.state.tags);
-    } else {
-    }
+
   }
 
   loading() {
@@ -80,19 +73,20 @@ class Home extends Component {
               <PbSection tag={tags[0]} />
               <PbSection tag={tags[1]} />
               <PbSection tag={tags[2]} />
+              <PbSection tag={tags[4]} />
             </React.Fragment>
           ) : null}
         </div>
-        <div className="youMayAlsoLike">
-          <div className="fontSize36 paddingBottom25">你可能喜歡</div>
-          {features
-            ? features.map(feature => (
-                <a href={feature.tourID}>
-                  <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
-                </a>
+        {this.state.isLogin ? null : (
+          <div className="youMayAlsoLike">
+            <div className="fontSize36 paddingBottom25">你可能喜歡</div>
+            {features
+              ? features.map(feature => (
+                <ProductBlock id={feature.tourID} img={feature.image[1]} title={feature.title} />
               ))
-            : null}
-        </div>
+              : null}
+          </div>)}
+
       </React.Fragment>
     );
   }

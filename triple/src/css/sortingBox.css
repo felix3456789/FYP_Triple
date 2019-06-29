@@ -11,6 +11,7 @@
 }
 .sorting__info {
   text-align: center;
+  padding: 0px 20px;
 }
 .selectbox {
   background: none;
@@ -18,11 +19,12 @@
   border-bottom: 1px solid #0d47a1;
   color: #0d47a1;
   font-size: 20px;
+  border-radius: 0px;
 }
 .spanfont {
   color: #0d47a1;
   font-size: 16px;
-  padding-left: 10px;
+
   margin: 5px 5px;
 }
 .sortingDate {
@@ -65,6 +67,7 @@
 }
 .sortingPrice {
   margin-bottom: 10px;
+  padding-right: 5px;
 }
 .noUi-base.noUi-connects {
   width: 80%;
@@ -101,6 +104,8 @@
   height: 2px !important;
   width: 95%;
   left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .slider__sorting {
   height: 15px;
@@ -109,4 +114,9 @@
   background-color: #0d47a1 !important;
   color: white !important;
   z-index: 0 !important;
+  margin-top: 5px;
+}
+.selectbox__div {
+  color: #0d47a1;
+  text-align: center;
 }

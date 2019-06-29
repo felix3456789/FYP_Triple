@@ -32,6 +32,16 @@ class PbSection extends Component {
           img={searchTour[2].image[0]}
           title={searchTour[2].title}
         />
+        <ProductBlock
+          id={searchTour[3].tourID}
+          img={searchTour[3].image[0]}
+          title={searchTour[3].title}
+        />
+        <ProductBlock
+          id={searchTour[4].tourID}
+          img={searchTour[4].image[0]}
+          title={searchTour[4].title}
+        />
       </React.Fragment>
     ) : null;
   }

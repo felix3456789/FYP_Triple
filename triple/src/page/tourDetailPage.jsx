@@ -150,10 +150,10 @@ class TourDetailPage extends Component {
                       <div>
                         {tour.tags
                           ? tour.tags.map(tag =>
-                              tag.title == "" ? null : tag.title.length < 30 ? (
-                                <div className="chip">{tag.title}</div>
-                              ) : null
-                            )
+                            tag.title == "" ? null : tag.title.length < 30 ? (
+                              <div className="chip">{tag.title}</div>
+                            ) : null
+                          )
                           : null}
                       </div>
                     </div>
@@ -201,10 +201,9 @@ class TourDetailPage extends Component {
           <div className="fontSize36 paddingBottom25">你可能喜歡</div>
           {features
             ? features.map(feature => (
-                <a href={feature.tourID}>
-                  <ProductBlock img={feature.image[1]} title={feature.title} />{" "}
-                </a>
-              ))
+              <ProductBlock id={feature.tourID} img={feature.image[1]} title={feature.title} />
+
+            ))
             : null}
 
           <a className="right black-text paddingTop15 fontSize20">更多 ></a>

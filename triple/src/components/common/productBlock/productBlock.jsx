@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import tourService from "../../../services/tourServices";
+import authService from "../../../services/authServices";
 import "./productBlock.css";
+
 
 class ProductBlock extends Component {
   handleClick = async () => {
-    await tourService.inserHistory(this.props.id);
-    await tourService.inserHistory(this.props.id);
-    await tourService.inserHistory(this.props.id);
-    await tourService.inserHistory(this.props.id);
-    await tourService.inserHistory(this.props.id);
-    await tourService.inserHistory(this.props.id);
+    if (authService.getJwt()) await tourService.inserHistory(this.props.id);
     window.location = "/tour-detail/" + this.props.id;
   };
   render() {
