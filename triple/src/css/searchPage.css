@@ -7,18 +7,18 @@
 }
 
 .div--background {
-    height: 50vh;
+    height: 100%;
     overflow: hidden;
     box-shadow: 0px 5px 3px grey;
-    background-image: url("/image/searchBg.jpg");
+    background-image: url("/image/hk.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0px -100px;
-    filter: brightness(0.5);
+    background-position: 0px -332px;
 }
 
 .bg--text {
+    margin: 50%;
     z-index: 1;
     color: white;
-    padding: 25%
+    text-align: center;
 }

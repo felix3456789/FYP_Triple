@@ -8,6 +8,7 @@ class Search extends Component {
     return (
       <React.Fragment>
         <Nav color="white-text" />
+
         <div className="div--background">
           <span className="bg--text">
             <h1>Triple</h1>
@@ -15,6 +16,7 @@ class Search extends Component {
             <h3>為你尋找最適合嘅旅行團</h3>
           </span>
         </div>
+
         <h1>HI</h1>
       </React.Fragment>
     );
