@@ -57,7 +57,7 @@
 
 .starPosition {
     position: relative !important;
-    top: -3px !important;
+    top: 7px !important;
 }
 
 .paddingLeft--5px {
@@ -102,6 +102,12 @@
 }
 
 .top---2 {
+    position: relative;
+    top: -2px;
+}
+
+.star {
+    padding: 10px;
     position: relative;
     top: -2px;
 }

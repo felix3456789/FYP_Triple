@@ -1,0 +1,59 @@
+.img--background {
+    filter: brightness(0.5);
+    height: initial;
+    width: -webkit-fill-available;
+    position: relative;
+    top: -22vh;
+}
+
+.div--background {
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0px 5px 3px grey;
+    background-image: url("/image/hk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px -332px;
+}
+
+.bg--text {
+    margin: 50%;
+    z-index: 1;
+    color: white;
+    text-align: center;
+}
+
+.title--triple {
+    font-family: 'Inkfree', sans-serif;
+    font-size: 100px;
+    display: block;
+    line-height: 55px;
+    margin-top: 70px;
+}
+
+.title--slogan {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    font-size: 35px;
+    line-height: 55px;
+    margin-top: 25px;
+}
+
+.title--chiSlogan {
+    font-family: 'Noto Sans TC', sans-serif;
+    display: block;
+    font-size: 21px;
+    line-height: 40px;
+}
+
+.btn--blue{
+    background-color: #2B558C;
+}
+
+.btn--blue:hover{
+    background-color: #3E6496;
+}
+
+.div--container{
+    margin: 12px;
+}
