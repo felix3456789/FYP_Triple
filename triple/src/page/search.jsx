@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TourServices from "../services/tourServices";
 import Nav from "../components/common/nav/nav";
 import "../css/searchPage.css";
 
@@ -18,10 +19,11 @@ class Search extends Component {
         </div>
 
         <div className="row">
-          <div className="col s2"/>
-          
+          <div className="col s2" />
+          <div className="col s8 div--container">
+            <a className="btn right btn--blue">比較旅行團</a>
+          </div>
         </div>
-
       </React.Fragment>
     );
   }

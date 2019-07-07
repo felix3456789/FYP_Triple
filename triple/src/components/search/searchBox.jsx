@@ -34,17 +34,6 @@ class SearchBox extends Component {
     this.state.bookmarked ? this.cancelBookmark() : this.bookmark();
   };
 
-  printTourValid() {
-    const valid = this.state.tourValid;
-    let text = "";
-    if (!valid) {
-      text += " (未成團) ";
-    } else {
-      text += " (已成團) ";
-    }
-    return text;
-  }
-
   printPrice() {
     const originalPrice = this.state.originalPrice;
     const salePrice = this.state.salePrice;
@@ -96,8 +85,7 @@ class SearchBox extends Component {
                     <span className="col s11 fontPositon---21 fontSize18 color width60">
                       {/*{this.state.tourName}*/}
                       {items.title}
-                      {this.printTourValid()}
-                      <span className="starPosition paddingLeft--3px">
+                      <span className="star">
                         <StarRate rating={this.state.rating} />
                       </span>
                     </span>
@@ -105,8 +93,13 @@ class SearchBox extends Component {
                       {this.state.basicDes}
                     </span>
                     <div className="col s9 fontPositon---13">
-                      <span className="chip fontSize12">澳門</span>
-                      <span className="chip fontSize12">吃、喝、玩、樂</span>
+                      {items.tags
+                        ? items.tags.map(tag =>
+                            tag.title == "" ? null : tag.title.length < 30 ? (
+                              <div className="chip fontSize12">{tag.title}</div>
+                            ) : null
+                          )
+                        : null}
                     </div>
                     <span className="col s4 color fontSize14">
                       <LikeButton
