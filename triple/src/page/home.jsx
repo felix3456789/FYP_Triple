@@ -26,14 +26,16 @@ class Home extends Component {
 
     window.addEventListener("scroll", this.handleScroll);
     console.log(this.state.isLogin)
+    let features = []
     if (this.state.isLogin) {
       let recommendTag = await tourService.getRecommendTag();
       await this.setState({ tags: recommendTag.recommendTags });
+      features = await tourService.getFeatureTour(5);
     } else {
-      let features = await tourService.getFeatureTour(20);
-      await this.setState({ features });
-      console.log(features);
+      features = await tourService.getFeatureTour(20);
     }
+    await this.setState({ features });
+    console.log(features);
 
     setTimeout(() => {
       this.setState({ isLoading: false });
@@ -77,15 +79,16 @@ class Home extends Component {
             </React.Fragment>
           ) : null}
         </div>
-        {this.state.isLogin ? null : (
-          <div className="youMayAlsoLike">
-            <div className="fontSize36 paddingBottom25">你可能喜歡</div>
-            {features
-              ? features.map(feature => (
-                <ProductBlock id={feature.tourID} img={feature.image[1]} title={feature.title} />
-              ))
-              : null}
-          </div>)}
+
+        <div className="youMayAlsoLike">
+          <div className="fontSize36 paddingBottom25">你可能喜歡</div>
+          {features
+            ? features.map(feature => (
+              <ProductBlock id={feature.tourID} img={feature.image[1]} title={feature.title} />
+            ))
+            : null}
+        </div>
+
 
       </React.Fragment>
     );
