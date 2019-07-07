@@ -3,13 +3,28 @@ import TourServices from "../services/tourServices";
 import Nav from "../components/common/nav/nav";
 import SearchBox from "../components/search/searchBox";
 import "../css/searchPage.css";
+import LoadingScreen from "../components/loading/loadingScreen";
 
 class Search extends Component {
-  state = { tour: {} };
+  state = {
+    tours: [],
+    isLoading: true
+  };
+
+  loading() {
+    const { isLoading } = this.state;
+    if (isLoading == true) {
+      return <LoadingScreen />;
+    }
+  }
   getTour = async () => {
-    const tour = await TourServices.getTourById("AJSGS05N");
-    this.setState({ tour: tour[0] });
-    console.log("tour", tour[0]);
+    const tours = await TourServices.getFeatureTour(5);
+    this.setState({ tours: tours });
+    console.log(this.state.tours);
+
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 1000);
   };
   componentDidMount = async () => {
     await this.getTour();
@@ -17,9 +32,12 @@ class Search extends Component {
     console.log(params.params.id);
   };
   render() {
-    const { tour } = this.state;
+    const { tours } = this.state;
     return (
       <React.Fragment>
+        <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
+          {this.loading()}
+        </div>
         <Nav color="white-text" />
 
         <div className="div--background">
@@ -34,9 +52,10 @@ class Search extends Component {
           <div className="col s2" />
           <div className="col s8 div--container">
             <a className="btn btn--blue right">比較旅行團</a>
-            <SearchBox items={tour} />
-            <SearchBox items={tour} />
-            <SearchBox items={tour} />
+
+            {tours.map(tour => (
+              <SearchBox items={tour} />
+            ))}
           </div>
         </div>
       </React.Fragment>
