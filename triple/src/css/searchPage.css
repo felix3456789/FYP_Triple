@@ -22,3 +22,26 @@
     color: white;
     text-align: center;
 }
+
+.title--triple {
+    font-family: 'Inkfree', sans-serif;
+    font-size: 100px;
+    display: block;
+    line-height: 55px;
+    margin-top: 70px;
+}
+
+.title--slogan {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    font-size: 35px;
+    line-height: 55px;
+    margin-top: 25px;
+}
+
+.title--chiSlogan {
+    font-family: 'Noto Sans TC', sans-serif;
+    display: block;
+    font-size: 21px;
+    line-height: 40px;
+}

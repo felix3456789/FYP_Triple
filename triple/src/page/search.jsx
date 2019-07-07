@@ -11,13 +11,17 @@ class Search extends Component {
 
         <div className="div--background">
           <span className="bg--text">
-            <h1>Triple</h1>
-            <h1>Trip is Simple</h1>
-            <h3>為你尋找最適合嘅旅行團</h3>
+            <span className="title--triple">Triple</span>
+            <span className="title--slogan">Trip is simple!</span>
+            <span className="title--chiSlogan">為你尋找最適合嘅旅行團</span>
           </span>
         </div>
 
-        <h1>HI</h1>
+        <div className="row">
+          <div className="col s2"/>
+          
+        </div>
+
       </React.Fragment>
     );
   }
