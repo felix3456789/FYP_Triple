@@ -65,7 +65,7 @@ class SearchBox extends Component {
     return (
       <React.Fragment>
         <div className="marginButtonZero row">
-          <div className="col s12 m10 l8">
+          <div className="col s12">
             <div className="card-panel panelPadding bgColor">
               <a
                 onClick={this.bookmarkOnClick}
