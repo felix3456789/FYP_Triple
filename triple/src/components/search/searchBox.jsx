@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "../../css/card.css";
+import tourService from "../../services/tourServices";
+import authService from "../../services/authServices";
 import StarRate from "../commentBox/star";
 import CommentButton from "../commentBtn/commentBtn";
 import LikeButton from "../likeButton/likeButton";
@@ -12,13 +14,18 @@ class SearchBox extends Component {
     tourValid: false,
     bookmarked: false,
     rating: 4.5,
-    basicDes: "中山、澳門 新春加班 2天直航團",
     commentCount: 3,
     likeCount: 4,
     liked: false,
     originalPrice: 0,
 
     salePrice: 699
+  };
+
+  handleClick = async () => {
+    if (authService.getJwt())
+      await tourService.inserHistory(this.props.items.tourID);
+    window.location = "/tour-detail/" + this.props.items.tourID;
   };
 
   icon() {
@@ -34,39 +41,23 @@ class SearchBox extends Component {
     this.state.bookmarked ? this.cancelBookmark() : this.bookmark();
   };
 
-  printTourValid() {
-    const valid = this.state.tourValid;
-    let text = "";
-    if (!valid) {
-      text += " (未成團) ";
-    } else {
-      text += " (已成團) ";
-    }
-    return text;
-  }
-
   printPrice() {
-    const originalPrice = this.state.originalPrice;
-    const salePrice = this.state.salePrice;
     const { items } = this.props;
-    if (salePrice != null) {
+    if (items.salesPrice != null) {
       return (
-        <span className="col s4 fontSize36 color right-align right pricePosition2">
-          <span className="red-text salePricePosition">
-            <span className="fontSize30">HK</span>
+        <div className="textRight">
+          <div className="red-text fontSize--30">
+            <span className="fontSize--26">HK </span>
             {items.salesPrice}+
-          </span>
-          <div>
-            <strike className="fontSize30">HK{items.originalPrice}+</strike>
           </div>
-        </span>
+          <div>
+            <strike className="fontSize--26">HK {items.originalPrice}+</strike>
+          </div>
+        </div>
       );
     } else {
       return (
-        <span className="col s4 fontSize36 color right-align right pricePosition">
-          <span className="fontSize30">HK</span>
-          {items.originalPrice}+
-        </span>
+        <div className="fontSize--30 textRight">HK {items.originalPrice}+</div>
       );
     }
   }
@@ -74,41 +65,98 @@ class SearchBox extends Component {
   render() {
     const { items } = this.props;
     return (
-      <React.Fragment>
+      <div>
         <div className="marginButtonZero row">
-          <div className="col s12 m10 l8">
+          <div className="col s12">
             <div className="card-panel panelPadding bgColor">
-              <a
-                onClick={this.bookmarkOnClick}
-                className="color right fontSize zIndex"
-              >
-                <Icon>{this.icon()}</Icon>
-              </a>
               <div className="marginButtonZero row">
-                <div className="col s12 m5 l3">
+                <div className="col s4">
                   <img
-                    className="responsive-img marginTop10 radius5px top---2"
-                    src="./image/845.jpg"
+                    className=" pointerCursor imgStyle"
+                    src={items.title ? items.image[0] : ""}
+                    onClick={() => this.handleClick()}
                   />
                 </div>
-                <div className="col s12 m7 l9">
+                <div className="col s8">
+                  <div className="row">
+                    <div className="col s8 fontSize18 color">
+                      <div
+                        onClick={() => this.handleClick()}
+                        className="pointerCursor truncate"
+                      >
+                        {items.title}
+                      </div>
+                      <div className="star">
+                        <StarRate rating={this.state.rating} />
+                      </div>
+                    </div>
+                    <div className="col s3 right">
+                      <a
+                        onClick={this.bookmarkOnClick}
+                        className="color right fontSize zIndex"
+                      >
+                        <Icon>{this.icon()}</Icon>
+                      </a>
+                      <form>
+                        <label className="right color compareBtn ">
+                          <input
+                            type="checkbox"
+                            class="filled-in checkbox-compare"
+                          />
+                          <span>加入比較</span>
+                        </label>
+                      </form>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col s12">
+                      {items.tags
+                        ? items.tags.map(tag =>
+                            tag.title == "" ? null : tag.title.length < 30 ? (
+                              <div className="chip fontSize12">{tag.title}</div>
+                            ) : null
+                          )
+                        : null}
+                    </div>
+                  </div>
+                  <div className="row position--relative">
+                    <div className="col s3 position--absolute bottom--0">
+                      <LikeButton
+                        likeCount={this.state.likeCount}
+                        liked={this.state.liked}
+                      />
+                      <a class="color fontSize14 paddingLeft--10px">
+                        <CommentButton commentCount={this.state.commentCount} />
+                      </a>
+                    </div>
+
+                    <div className="col s4 offset-s8">{this.printPrice()}</div>
+                  </div>
+                </div>
+
+                {/* <div className="col s10 m7 l9">
                   <div className="row marginButtonZero">
-                    <span className="col s11 fontPositon---21 fontSize18 color width60">
-                      {/*{this.state.tourName}*/}
-                      {items.title}
-                      {this.printTourValid()}
-                      <span className="starPosition paddingLeft--3px">
+                    <span className="col s9 fontPositon---21 fontSize18 color">
+                      <span
+                        onClick={() => this.handleClick()}
+                        className="pointerCursor"
+                      >
+                        {items.title}
+                      </span>
+                      <span className="star">
                         <StarRate rating={this.state.rating} />
                       </span>
                     </span>
-                    <span className="col s12 fontPositon---21 color fontSize14 ">
-                      {this.state.basicDes}
-                    </span>
                     <div className="col s9 fontPositon---13">
-                      <span className="chip fontSize12">澳門</span>
-                      <span className="chip fontSize12">吃、喝、玩、樂</span>
+                      {items.tags
+                        ? items.tags.map(tag =>
+                            tag.title == "" ? null : tag.title.length < 30 ? (
+                              <div className="chip fontSize12">{tag.title}</div>
+                            ) : null
+                          )
+                        : null}
                     </div>
-                    <span className="col s4 color fontSize14">
+                    <span className="col s4 color fontSize14 post">
                       <LikeButton
                         likeCount={this.state.likeCount}
                         liked={this.state.liked}
@@ -119,12 +167,12 @@ class SearchBox extends Component {
                     </span>
                     {this.printPrice()}
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

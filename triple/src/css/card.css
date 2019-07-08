@@ -6,8 +6,8 @@
     padding-left: 0px !important;
 }
 
-.marginTop10 {
-    margin-top: 10px;
+.marginTop5 {
+    margin-top: 5px;
 }
 
 .panelPadding {
@@ -57,7 +57,7 @@
 
 .starPosition {
     position: relative !important;
-    top: -3px !important;
+    top: 7px !important;
 }
 
 .paddingLeft--5px {
@@ -104,4 +104,82 @@
 .top---2 {
     position: relative;
     top: -2px;
+}
+
+.star {
+    position: relative;
+    top: -2px;
+}
+
+.post {
+    bottom: -20px;
+    position: relative;
+}
+
+
+.price--1 {
+    position: relative;
+    bottom: -40px;
+}
+
+.price--2 {
+    position: relative;
+    bottom: -25px;
+}
+
+.price--3 {
+    position: inherit;
+}
+
+.compareBtn {
+    padding-right: 10px;
+    z-index: 10;
+
+}
+
+
+.checkbox-compare[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid #0d47a1;
+    background-color: #0d47a1;
+    z-index: 10;
+}
+
+.checkbox-compare[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
+    border: 2px solid #0d47a1;
+    background-color: transparent;
+    z-index: 10;
+}
+
+.checkbox-compare[type="checkbox"].filled-in:checked+span:not(.lever):before {
+    z-index: 11;
+}
+
+
+.fontSize--30 {
+    font-size: 30px;
+}
+
+.fontSize--26 {
+    font-size: 26px;
+}
+
+.textRight {
+    text-align: right;
+}
+
+.imgStyle {
+    max-width: -webkit-fill-available;
+    border-radius: 5px;
+}
+
+.position--relative {
+    position: relative;
+}
+
+.position--absolute {
+    position: absolute;
+}
+
+.bottom--0 {
+    bottom: 0px;
 }

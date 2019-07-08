@@ -12,6 +12,7 @@ html * {
 }
 
 @media only screen and (min-width: 601px) {
+
   nav,
   nav .nav-wrapper i,
   nav a.sidenav-trigger,
@@ -20,6 +21,7 @@ html * {
     line-height: 50px;
   }
 }
+
 .brand-logo {
   font-family: inkfree;
   margin-left: 22px;
@@ -34,6 +36,7 @@ nav {
   position: absolute;
   z-index: 1;
 }
+
 #testNav {
   position: relative;
 }
@@ -51,4 +54,8 @@ nav {
 
 .carousel {
   height: 530px !important;
+}
+
+.pointerCursor {
+  cursor: pointer;
 }
