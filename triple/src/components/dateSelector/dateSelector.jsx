@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import DayPicker from "react-day-picker";
-import "../../css/dateSelector.css";
-import "react-day-picker/lib/style.css";
 
+import "../../css/dateSelector.css";
+
+import BigCalendar from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+moment.locale("en");
+BigCalendar.momentLocalizer(moment);
 class DateSelector extends Component {
-  state = {};
+  state = { view: "month ", date: new Date() };
   constructor(props) {
     super(props);
-    this.handleDayClick = this.handleDayClick.bind(this);
+
     this.state = {
       selectedDay: null
     };
-  }
-  handleDayClick(day, { selected }) {
-    this.setState({
-      selectedDay: selected ? undefined : day
-    });
   }
 
   render() {
@@ -26,31 +26,38 @@ class DateSelector extends Component {
             <form>
               <div>
                 <div class="col s4">
-                  <h5 class="center-align">請選擇出發日期</h5>
-                  <div class="center-align">
-                    <DayPicker
-                      showOutsideDays
-                      selectedDays={this.state.selectedDay}
-                      onDayClick={this.handleDayClick}
-                      initialMonth={new Date(2019, 1)}
-                      disabledDays={[
-                        new Date(2019, 1, 9),
+                  <h5 class="center-align selector__text title__text">
+                    請選擇出發日期
+                  </h5>
+                  <div class="center-align date__select">
+                    <BigCalendar
+                      events={[
                         {
-                          after: new Date(2019, 0, 31),
-                          before: new Date(2019, 1, 8)
+                          title: "My event",
+
+                          start: new Date(2019, 6, 1), // 10.00 AM
+                          end: new Date(2019, 6, 11) // 2.00 PM
                         },
                         {
-                          after: new Date(2019, 1, 20),
-                          before: new Date(2019, 2, 1)
+                          title: "My event",
+
+                          start: new Date(2019, 6, 1), // 10.00 AM
+                          end: new Date(2019, 6, 10) // 2.00 PM
                         }
                       ]}
+                      step={60}
+                      views={""}
+                      view={this.state.view}
+                      date={this.state.date}
+                      onNavigate={date => this.setState({ date })}
+                      onView={() => {}}
                     />
                   </div>
                 </div>
               </div>
               <div class="col s8 push-s2">
                 <div class="row">
-                  <div class="card-title">報團人數:</div>
+                  <div class="card-title selector__text">報團人數:</div>
                 </div>
                 <div class="row">
                   <div class="col s4 left-align dateSelector__title">成人</div>
@@ -103,10 +110,14 @@ class DateSelector extends Component {
                   <div class="col s2 dateSelector__title">x HKD350</div>
                 </div>
 
-                <div class="row">
+                <span className="total__cost">
+                  合共: HKD <span className="total__cost--value">3000</span>
+                </span>
+
+                <div class="row comfrim__radio">
                   <label>
                     <input class="with-gap" name="group3" type="radio" />
-                    <span>
+                    <span className="selector__text">
                       本人已細讀及同意<a href="#">網上條款</a>
                     </span>
                   </label>
