@@ -14,6 +14,7 @@ import Footer from "./components/footer/footer";
 import LoadingScreen from "./components/loading/loadingScreen";
 import Logout from "./page/logout";
 import Search from "./page/search";
+import Compare from "./page/compare";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/logout" component={Logout} />
         <Route path="/login" component={Login} />
         <Route path="/search" component={Search} />
+        <Route path="/compare" component={Compare} />
         <Route path="/" component={Home} />
       </Switch>
       <Footer />

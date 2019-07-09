@@ -1,0 +1,68 @@
+.div--background {
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0px 5px 3px grey;
+  background-image: url(/image/hk.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px -332px;
+}
+
+.bg--text {
+  margin: 50%;
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
+.title--triple {
+  font-family: "Inkfree", sans-serif;
+  font-size: 100px;
+  display: block;
+  line-height: 55px;
+  margin-top: 70px;
+}
+
+.title--slogan {
+  font-family: "Montserrat", sans-serif;
+  display: block;
+  font-size: 35px;
+  line-height: 55px;
+  margin-top: 25px;
+}
+
+.title--chiSlogan {
+  font-family: "Noto Sans TC", sans-serif;
+  display: block;
+  font-size: 21px;
+  line-height: 40px;
+}
+
+.text--blue {
+  color: #0d47a1;
+}
+
+.fontSize--35 {
+  font-size: 35px;
+}
+
+.fontSize--20 {
+  font-size: 20px;
+}
+
+.font--bolder {
+  font-weight: bolder;
+}
+
+.cardColor {
+  background-color: #e5f2fe;
+}
+
+.bgColor--white {
+  background-color: white;
+}
+
+.imgSize {
+  width: 80%;
+  border-radius: 7px;
+}
