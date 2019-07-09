@@ -9,9 +9,7 @@ class Compare extends Component {
   state = {
     toursList: [],
     tours: [],
-    tour1: {},
-    tour2: {},
-
+    dayCount: 0,
     isLoading: true
   };
   loading() {
@@ -21,15 +19,22 @@ class Compare extends Component {
     }
   }
   getTour = async () => {
-    // const tour1 = await TourServices.getTourById("LATAS08W");
-    // const tour2 = await TourServices.getTourById("AJODS05M");
     const tours = [];
-    // this.setState({ toursList: ["LATAS08W", "AJODS05M", "AJSGS05N"] });
-    const toursList = ["LATAS08W", "AJODS05M", "AJSGS05N", "ARHRO10"];
+
+    const toursList = [
+      "LMTIT11U",
+      "AJODS05M",
+      "AJSGS05N",
+      "AKBSS05M",
+      "LCSBL08N"
+    ];
     for (var i = 0; i < toursList.length; i++) {
       tours.push((await TourServices.getTourById(toursList[i]))[0]);
-      console.log(i);
+      if (tours[i].day > this.state.dayCount)
+        this.setState({ dayCount: tours[i].day });
     }
+    console.log("day", this.state.dayCount);
+
     console.log(this.state.toursList);
     this.setState({ tours });
 
@@ -42,10 +47,40 @@ class Compare extends Component {
     const { match: params } = this.props;
     console.log(params.params.id);
   };
+
+  printDay() {
+    let day = [];
+    const { tours, dayCount } = this.state;
+    for (var i = 0; i < dayCount; i++) {
+      let content = [];
+      content.push(<td className="title">第{i + 1}日</td>);
+      tours.map(tour => {
+        tour.days[i]
+          ? content.push(
+              <td>
+                {tour.days[i].title} <br />
+                {tour.days[i].stay}
+                {tour.days[i].stay != " " ? <br /> : null}
+                {tour.days[i].eat[0]}
+                {tour.days[i].eat[0] ? <br /> : null}
+                {tour.days[i].eat[1]}
+                {tour.days[i].eat[1] ? <br /> : null}
+                {tour.days[i].eat[2]}
+                {tour.days[i].eat[2] ? <br /> : null}
+              </td>
+            )
+          : content.push(<td />);
+      });
+      day.push(<tr>{content}</tr>);
+    }
+    return day;
+  }
+
   render() {
     const { tours } = this.state;
+    console.log("tourList", tours);
     return (
-      <div className="bgColor--white">
+      <div>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
           {this.loading()}
         </div>
@@ -59,27 +94,27 @@ class Compare extends Component {
           </span>
         </div>
 
-        <div className="container">
+        <div className="div--container">
           <h3 className="text--blue fontSize--35">比較旅行團</h3>
           <div className="card-panel cardColor">
-            <table className="highlight centered">
+            <table className="highlight centered text--blue responsive-table trBgColor--white">
               <tbody>
                 <tr>
-                  <td />
+                  <td className="title" />
                   {tours.map(tour => (
                     <td>
                       <img
                         src={tour.image ? tour.image[0] : ""}
                         className="imgSize"
                       />
-                      <div className="text--blue fontSize--20 font--bolder">
+                      <div className="fontSize--20 font--bolder">
                         {tour.title}
                       </div>
                     </td>
                   ))}
                 </tr>
                 <tr>
-                  <td>價錢</td>
+                  <td className="title">價錢</td>
                   {tours.map(tour => (
                     <td>
                       HKD{" "}
@@ -91,13 +126,13 @@ class Compare extends Component {
                   ))}
                 </tr>
                 <tr>
-                  <td>旅行日數</td>
+                  <td className="title">旅行日數</td>
                   {tours.map(tour => (
                     <td>{tour.day}日</td>
                   ))}
                 </tr>
                 <tr>
-                  <td>評價</td>
+                  <td className="title">評價</td>
                   {tours.map(tour => (
                     <td>
                       <StarRate
@@ -112,6 +147,7 @@ class Compare extends Component {
                     </td>
                   ))}
                 </tr>
+                {this.printDay()}
               </tbody>
             </table>
           </div>

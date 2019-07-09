@@ -18,7 +18,7 @@ class Search extends Component {
     }
   }
   getTour = async () => {
-    const tours = await TourServices.getSearchByTag("日本");
+    const tours = await TourServices.getSearchByTag("加拿大");
     this.setState({ tours: tours });
     console.log(this.state.tours);
 

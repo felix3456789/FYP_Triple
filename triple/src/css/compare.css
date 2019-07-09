@@ -63,6 +63,25 @@
 }
 
 .imgSize {
-  width: 80%;
+  height: 50%;
   border-radius: 7px;
+}
+
+.trBgColor--white td {
+  background-color: white;
+}
+
+.div--container {
+  margin: 5%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+td {
+  width: 28%;
+}
+.title {
+  width: 16%;
 }
