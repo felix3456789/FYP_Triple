@@ -97,7 +97,7 @@ class Compare extends Component {
         <div className="div--container">
           <h3 className="text--blue fontSize--35">比較旅行團</h3>
           <div className="card-panel cardColor">
-            <table className="highlight centered text--blue responsive-table trBgColor--white">
+            <table className="highlight centered text--blue trBgColor--white">
               <tbody>
                 <tr>
                   <td className="title" />
