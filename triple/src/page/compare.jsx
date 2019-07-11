@@ -21,17 +21,15 @@ class Compare extends Component {
   getTour = async () => {
     const tours = [];
 
-    const toursList = [
-      "LMTIT11U",
-      "AJODS05M",
-      "AJSGS05N",
-      "AKBSS05M",
-      "LCSBL08N"
-    ];
-    for (var i = 0; i < toursList.length; i++) {
-      tours.push((await TourServices.getTourById(toursList[i]))[0]);
-      if (tours[i].day > this.state.dayCount)
-        this.setState({ dayCount: tours[i].day });
+    const toursList = await TourServices.getCompareList();
+    this.setState({ toursList: toursList });
+
+    if (toursList != null) {
+      for (var i = 0; i < toursList.length; i++) {
+        tours.push((await TourServices.getTourById(toursList[i].id))[0]);
+        if (tours[i].day > this.state.dayCount)
+          this.setState({ dayCount: tours[i].day });
+      }
     }
     console.log("day", this.state.dayCount);
 
@@ -58,7 +56,7 @@ class Compare extends Component {
         tour.days[i]
           ? content.push(
               <td>
-                {tour.days[i].title} <br />
+                <b className="fontSize--16">{tour.days[i].title}</b> <br />
                 {tour.days[i].stay}
                 {tour.days[i].stay != " " ? <br /> : null}
                 {tour.days[i].eat[0]}
