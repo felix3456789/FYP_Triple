@@ -9,7 +9,17 @@ class UserInfo extends Component {
       <UserDash>
         <div className="container">
           <h1>this is userInfo</h1>
-          <BasicInfo />
+          <div className="row">
+            <div className="col s4">
+              <BasicInfo />
+            </div>
+            <div className="col s4">
+              <BasicInfo />
+            </div>
+            <div className="col s4">
+              <BasicInfo />
+            </div>
+          </div>
         </div>
       </UserDash>
     );

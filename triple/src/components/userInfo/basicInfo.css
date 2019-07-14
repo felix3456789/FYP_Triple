@@ -1,0 +1,45 @@
+.basicInfo {
+  border-radius: 5px;
+}
+.basicInfo__img {
+  max-height: 100px;
+}
+
+.basinInfo__card {
+  padding: 20px;
+}
+
+.basic__column {
+  display: inline-block;
+  width: 50%;
+}
+.basicInfo__column--title {
+  display: block;
+  text-align: RIGHT;
+}
+
+.basicInfo__column--content {
+  display: block;
+  text-align: left;
+}
+
+.basicInfo__columnInfo--title {
+  display: inline-block;
+  width: 35%;
+}
+.basicInfo__columnInfo--content {
+  display: inline-block;
+  width: 65%;
+}
+
+.basicInfo__columnInput--title {
+  display: block;
+  line-height: 3.1;
+  text-align: RIGHT;
+  margin-bottom: 8px;
+}
+
+.basicInfo__columnInput--content {
+  display: block;
+  text-align: left;
+}
