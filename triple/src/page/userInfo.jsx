@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import UserDash from "./../components/common/nav/userDash";
-import UserCard from "../components/userDashboardCard/userDashboardCard";
-class UserDashBoard extends Component {
+import BasicInfo from "./../components/userInfo/basicInfo";
+
+class UserInfo extends Component {
   state = {};
   render() {
     return (
       <UserDash>
         <div className="container">
-          <h2>我的旅行團</h2>
-          <UserCard />
+          <h1>this is userInfo</h1>
+          <BasicInfo />
         </div>
       </UserDash>
     );
   }
 }
 
-export default UserDashBoard;
+export default UserInfo;

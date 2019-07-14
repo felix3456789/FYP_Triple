@@ -8,7 +8,7 @@ class NavBar extends Component {
   render() {
     const { color, id } = this.props;
     return (
-      <nav id={id}>
+      <nav Style="position:fixed" id={id}>
         <div className={"nav-wrapper  " + color}>
           <a href="/" className="brand-logo">
             Triple

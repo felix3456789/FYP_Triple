@@ -14,6 +14,7 @@ import Footer from "./components/footer/footer";
 import LoadingScreen from "./components/loading/loadingScreen";
 import Logout from "./page/logout";
 import Search from "./page/search";
+import UserInfo from "./page/userInfo";
 
 function App() {
   return (
@@ -21,16 +22,17 @@ function App() {
       <Switch>
         <Route exact path="/test" component={Test} />
         <Route path="/test/:id" component={Test} />
-        <Route path="/dashtest" component={UserDashBoard} />
         <Route exact path="/tour-detail/" component={TourDetailPage} />
         <Route path="/tour-detail/:id" component={TourDetailPage} />
         <Route path="/loading" component={LoadingScreen} />
         <Route path="/logout" component={Logout} />
         <Route path="/login" component={Login} />
         <Route path="/search" component={Search} />
+        <Route path="/user/dashboard" component={UserDashBoard} />
+        <Route path="/user/info" component={UserInfo} />
+        <Route path="/user/help" component={UserDashBoard} />
         <Route path="/" component={Home} />
       </Switch>
-      <Footer />
     </div>
   );
 }
