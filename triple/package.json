@@ -5,10 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "axios": "^0.18.0",
+    "lodash": "^4.17.13",
     "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.24.0",
     "nodejs": "0.0.0",
     "nouislider-react": "^3.3.1",
     "react": "^16.8.6",
+    "react-big-calendar": "^0.18.0",
     "react-bootstrap-daterangepicker": "^4.1.0",
     "react-day-picker": "^7.3.0",
     "react-dom": "^16.8.6",

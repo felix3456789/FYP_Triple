@@ -8,7 +8,9 @@ import LoadingScreen from "../components/loading/loadingScreen";
 class Search extends Component {
   state = {
     tours: [],
-    isLoading: true
+    isLoading: true,
+    compareList: [],
+    compareChips: []
   };
 
   loading() {
@@ -18,21 +20,41 @@ class Search extends Component {
     }
   }
   getTour = async () => {
-    const tours = await TourServices.getFeatureTour(5);
+    const tours = await TourServices.getSearchByTag("加拿大");
     this.setState({ tours: tours });
     console.log(this.state.tours);
+  };
 
+  getCompareChips = async () => {
+    var compareList = await TourServices.getCompareList();
+    let compareChips = [];
+    if (compareList != null) {
+      for (var i = 0; i < compareList.length; i++) {
+        compareChips.push(compareList[i]);
+      }
+    }
+    await this.setState({ compareList: compareList });
+
+    await this.setState({ compareChips: compareChips });
+  };
+
+  componentDidMount = async () => {
+    await this.getTour();
+    const { match: params } = this.props;
+    await this.getCompareChips();
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
   };
-  componentDidMount = async () => {
-    await this.getTour();
-    const { match: params } = this.props;
-    console.log(params.params.id);
+
+  handleCompare = async (id, title) => {
+    console.log(id);
+    TourServices.editCompareList(id, title);
+    await this.getCompareChips();
   };
   render() {
-    const { tours } = this.state;
+    const { tours, compareChips } = this.state;
+    console.log(compareChips);
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -51,10 +73,26 @@ class Search extends Component {
         <div className="row">
           <div className="col s2" />
           <div className="col s8 div--container">
-            <a className="btn btn--blue right">比較旅行團</a>
-
+            <a className="btn btn--blue right" href="/compare">
+              比較旅行團
+            </a>
+            {compareChips.map(item => (
+              <div className="chip">
+                {item.title}
+                <i
+                  className="chip--close material-icons"
+                  onClick={() => this.handleCompare(item.id, item.title)}
+                >
+                  close
+                </i>
+              </div>
+            ))}
             {tours.map(tour => (
-              <SearchBox items={tour} />
+              <SearchBox
+                items={tour}
+                compare={this.handleCompare}
+                compareChips={compareChips}
+              />
             ))}
           </div>
         </div>

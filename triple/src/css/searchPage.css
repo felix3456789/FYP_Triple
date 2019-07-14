@@ -46,14 +46,22 @@
     line-height: 40px;
 }
 
-.btn--blue{
-    background-color: #2B558C;
+.btn--blue {
+    background-color: #0d47a1;
 }
 
-.btn--blue:hover{
-    background-color: #3E6496;
+.btn--blue:hover {
+    background-color: #2357A9;
 }
 
-.div--container{
+.div--container {
     margin: 12px;
+}
+
+.chip--close {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    line-height: 32px;
+    padding-left: 8px;
 }

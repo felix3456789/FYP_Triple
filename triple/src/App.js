@@ -15,6 +15,7 @@ import LoadingScreen from "./components/loading/loadingScreen";
 import Logout from "./page/logout";
 import Search from "./page/search";
 import UserInfo from "./page/userInfo";
+import Compare from "./page/compare";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/user/dashboard" component={UserDashBoard} />
         <Route path="/user/info" component={UserInfo} />
         <Route path="/user/help" component={UserDashBoard} />
+        <Route path="/compare" component={Compare} />
         <Route path="/" component={Home} />
       </Switch>
     </div>

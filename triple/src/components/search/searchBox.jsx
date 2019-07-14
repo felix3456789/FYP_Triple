@@ -10,16 +10,10 @@ import { Icon } from "@material-ui/core";
 
 class SearchBox extends Component {
   state = {
-    tourName: "春の戀花",
-    tourValid: false,
     bookmarked: false,
     rating: 4.5,
-    commentCount: 3,
     likeCount: 4,
-    liked: false,
-    originalPrice: 0,
-
-    salePrice: 699
+    liked: false
   };
 
   handleClick = async () => {
@@ -27,6 +21,10 @@ class SearchBox extends Component {
       await tourService.inserHistory(this.props.items.tourID);
     window.location = "/tour-detail/" + this.props.items.tourID;
   };
+
+  // handleCompare = async id => {
+  //   tourService.editCompareList(id);
+  // };
 
   icon() {
     return this.state.bookmarked ? "bookmark" : "bookmark_border";
@@ -61,6 +59,20 @@ class SearchBox extends Component {
       );
     }
   }
+
+  checked = () => {
+    const checkList = this.props.compareChips;
+    const { items } = this.props;
+    let flag = false;
+    if (checkList.length != 0) {
+      for (var i = 0; i < checkList.length; i++) {
+        if (checkList[i].id == items.tourID) {
+          flag = true;
+        }
+      }
+    }
+    return flag;
+  };
 
   render() {
     const { items } = this.props;
@@ -101,7 +113,11 @@ class SearchBox extends Component {
                         <label className="right color compareBtn ">
                           <input
                             type="checkbox"
+                            checked={this.checked() ? "checked" : ""}
                             class="filled-in checkbox-compare"
+                            onChange={() =>
+                              this.props.compare(items.tourID, items.title)
+                            }
                           />
                           <span>加入比較</span>
                         </label>
