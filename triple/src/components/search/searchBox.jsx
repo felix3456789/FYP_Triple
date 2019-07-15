@@ -2,23 +2,22 @@ import React, { Component } from "react";
 import "../../css/card.css";
 import tourService from "../../services/tourServices";
 import authService from "../../services/authServices";
+import userService from "../../services/userServices";
 import StarRate from "../commentBox/star";
 import CommentButton from "../commentBtn/commentBtn";
 import LikeButton from "../likeButton/likeButton";
 
 import { Icon } from "@material-ui/core";
+import { isTaggedTemplateExpression } from "@babel/types";
 
 class SearchBox extends Component {
   state = {
-    bookmarked: false,
-    rating: 4.5,
-    likeCount: 4,
-    liked: false
+    bookmarked: false
   };
 
   handleClick = async () => {
     if (authService.getJwt())
-      await tourService.inserHistory(this.props.items.tourID);
+      await tourService.insertHistory(this.props.items.tourID);
     window.location = "/tour-detail/" + this.props.items.tourID;
   };
 
@@ -75,7 +74,8 @@ class SearchBox extends Component {
   };
 
   render() {
-    const { items } = this.props;
+    const { items, likeInfo, liked, onLike } = this.props;
+    console.log(liked);
     return (
       <div>
         <div className="marginButtonZero row">
@@ -138,11 +138,16 @@ class SearchBox extends Component {
                   <div className="row position--relative">
                     <div className="col s3 position--absolute bottom--0">
                       <LikeButton
-                        likeCount={items.likeCount}
-                        liked={this.state.liked}
+                        liked={liked[0] ? liked[0].liked : null}
+                        count={liked[0] ? liked[0].totalLike : null}
+                        onLike={() => onLike(items.tourID)}
                       />
                       <a class="color fontSize14 paddingLeft--10px">
-                        <CommentButton commentCount={items.commentCount} />
+                        <CommentButton
+                          commentCount={
+                            items.commentCount ? items.commentCount : 0
+                          }
+                        />
                       </a>
                     </div>
 
