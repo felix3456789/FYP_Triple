@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../css/card.css";
 import tourService from "../../services/tourServices";
 import authService from "../../services/authServices";
-import userService from "../../services/userServices";
+import userServices from "../../services/userServices";
 import StarRate from "../commentBox/star";
 import CommentButton from "../commentBtn/commentBtn";
 import LikeButton from "../likeButton/likeButton";
@@ -15,10 +15,22 @@ class SearchBox extends Component {
     bookmarked: false
   };
 
+  componentDidMount = async () => {
+    if (authService.getJwt()) {
+      this.checkBookmark();
+    }
+  };
+
   handleClick = async () => {
     if (authService.getJwt())
       await tourService.insertHistory(this.props.items.tourID);
     window.location = "/tour-detail/" + this.props.items.tourID;
+  };
+
+  clickComment = async () => {
+    if (authService.getJwt())
+      await tourService.insertHistory(this.props.items.tourID);
+    window.location = "/tour-detail/" + this.props.items.tourID + "#comment";
   };
 
   // handleCompare = async id => {
@@ -28,15 +40,6 @@ class SearchBox extends Component {
   icon() {
     return this.state.bookmarked ? "bookmark" : "bookmark_border";
   }
-  bookmark() {
-    this.setState({ bookmarked: true });
-  }
-  cancelBookmark() {
-    this.setState({ bookmarked: false });
-  }
-  bookmarkOnClick = () => {
-    this.state.bookmarked ? this.cancelBookmark() : this.bookmark();
-  };
 
   printPrice() {
     const { items } = this.props;
@@ -72,6 +75,24 @@ class SearchBox extends Component {
     }
     return flag;
   };
+  checkBookmark = async () => {
+    const bookmarkedList = await userServices.getBookmark();
+    if (bookmarkedList.find(item => this.props.items.tourID == item)) {
+      await this.setState({ bookmarked: true });
+    }
+  };
+  handleBookmark = async id => {
+    if (authService.getJwt()) {
+      if (this.state.bookmarked == true) {
+        await this.setState({ bookmarked: false });
+      } else {
+        await this.setState({ bookmarked: true });
+      }
+      userServices.bookmark(id);
+    } else {
+      alert("請先登入!");
+    }
+  };
 
   render() {
     const { items, likeInfo, liked, onLike } = this.props;
@@ -104,7 +125,7 @@ class SearchBox extends Component {
                     </div>
                     <div className="col s3 right">
                       <a
-                        onClick={this.bookmarkOnClick}
+                        onClick={() => this.handleBookmark(items.tourID)}
                         className="color right fontSize zIndex"
                       >
                         <Icon>{this.icon()}</Icon>
@@ -136,13 +157,16 @@ class SearchBox extends Component {
                     </div>
                   </div>
                   <div className="row position--relative">
-                    <div className="col s3 position--absolute bottom--0">
+                    <div className="col s3 position--absolute bottom--0 pointerCursor">
                       <LikeButton
                         liked={liked[0] ? liked[0].liked : null}
                         count={liked[0] ? liked[0].totalLike : null}
                         onLike={() => onLike(items.tourID)}
                       />
-                      <a class="color fontSize14 paddingLeft--10px">
+                      <a
+                        onClick={() => this.clickComment()}
+                        class="color fontSize14 paddingLeft--10px"
+                      >
                         <CommentButton
                           commentCount={
                             items.commentCount ? items.commentCount : 0
