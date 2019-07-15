@@ -29,9 +29,9 @@ class UserInfo extends Component {
       firstNameEng: response.firstNameEng,
       lastNameEng: response.lastNameEng,
       title: response.title,
-      BOD: moment(response.BOD).format("DD/MM/YYYY"),
+      BOD: moment(response.BOD).format("YYYY-MM-DD"),
       passportNum: response.passportNum,
-      passportDate: moment(response.passportDate).format("DD/MM/YYYY"),
+      passportDate: moment(response.passportDate).format("YYYY-MM-DD"),
       email: response.email,
       phoneNum: response.phoneNum
     };
