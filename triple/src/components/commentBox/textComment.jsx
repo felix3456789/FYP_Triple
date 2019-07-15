@@ -2,15 +2,32 @@ import React, { Component } from "react";
 import Icon from "@material-ui/core/Icon";
 import "../../css/comment.css";
 import StarRatingComponent from "react-star-rating-component";
+import Form from "../common/form";
 
 class TextComment extends Component {
   constructor() {
     super();
 
     this.state = {
-      rating: 1
+      rating: 1,
+
+      comment: ""
     };
   }
+
+  handleForm = e => {
+    e.preventDefault();
+    const data = {
+      tourId: this.props.tourID,
+      star: this.state.rating,
+      comment: this.state.comment
+    };
+    this.props.handleSubmit(data);
+  };
+
+  handleChange = event => {
+    this.setState({ comment: event.target.value });
+  };
 
   onStarClick(nextValue, prevValue, name) {
     this.setState({ rating: nextValue });
@@ -19,7 +36,7 @@ class TextComment extends Component {
     const { rating } = this.state;
     return (
       <React.Fragment>
-        <form className="pict">
+        <form className="pict" onSubmit={e => this.handleForm(e)}>
           <img
             src="../image/Felix.png"
             alt="Felix"
@@ -42,9 +59,11 @@ class TextComment extends Component {
               <div className="input-field col s12">
                 <Icon className="material-icons prefix">textsms</Icon>
                 <textarea
+                  name="comment"
                   type="text"
                   id="comment-input"
                   className="materialize-textarea"
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="comment-input">我的評論</label>
               </div>

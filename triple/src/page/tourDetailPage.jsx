@@ -17,6 +17,7 @@ import LoadingScreen from "../components/loading/loadingScreen";
 import authServices from "../services/authServices";
 import userServices from "../services/userServices";
 import { async } from "q";
+import tourServices from "../services/tourServices";
 
 class TourDetailPage extends Component {
   state = {
@@ -70,6 +71,14 @@ class TourDetailPage extends Component {
 
     console.log(this.state.isLoading);
   };
+
+  handleSubmit(data) {
+    if (authServices.getJwt()) {
+      TourServices.postComment(data);
+    } else {
+      alert("請先登入!");
+    }
+  }
 
   loading() {
     const { isLoading } = this.state;
@@ -189,10 +198,10 @@ class TourDetailPage extends Component {
                     </div>
                     <div className="tourIntro col s12 m12 l6">
                       <span className="tourIntro__title color">
-                        {this.state.tour.title}
+                        {tour.title}
                       </span>
                       <div className="clearfix">
-                        <StarRate />
+                        <StarRate rating={tour.rating} />
                       </div>
                       <br />
                       <div>
@@ -237,7 +246,10 @@ class TourDetailPage extends Component {
                   >
                     評論
                   </div>
-                  <TextComment />
+                  <TextComment
+                    tourID={tour.tourID}
+                    handleSubmit={this.handleSubmit}
+                  />
                   <br />
                   {this.state.comments.map(comment => (
                     <CommentBox

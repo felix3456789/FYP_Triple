@@ -87,16 +87,17 @@ export async function getComment(tourID, page) {
   console.log(response.data);
   return response.data;
 }
-// export async function postComment(data) {
-//   let data1 = {
-//     tourId: "LATAS08W",
-//     star: 4,
-//     comment: "HI! This is a Comment!"
-//   };
-//   const response = await http.post(Backend_Api + "comment/insert", data1);
-//   console.log(response.data);
-//   return response.data;
-// }
+export async function postComment(data) {
+  let data1 = {
+    tourId: "LATAS08W",
+    star: 4,
+    comment: "HI! This is a Comment!"
+  };
+  console.log("DATA:", data);
+  const response = await http.post(Backend_Api + "comment/insert", data);
+  console.log(response.data);
+  return response.data;
+}
 
 export default {
   getTourById,
@@ -107,5 +108,6 @@ export default {
   editCompareList,
   getCompareList,
   getSearchByKeyword,
-  getComment
+  getComment,
+  postComment
 };
