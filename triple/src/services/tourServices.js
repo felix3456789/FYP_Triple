@@ -62,7 +62,7 @@ export async function editCompareList(id, title) {
     }
   }
   if (array.length > 4) {
-    alert("抱歉! 可比較旅行團最多4個！");
+    alert("抱歉! 最多可比較4個旅行團！");
     array.pop();
     return;
   }

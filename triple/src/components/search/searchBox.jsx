@@ -99,7 +99,7 @@ class SearchBox extends Component {
                         {items.title}
                       </div>
                       <div className="star">
-                        <StarRate rating={this.state.rating} />
+                        <StarRate rating={items.rating} />
                       </div>
                     </div>
                     <div className="col s3 right">
@@ -138,11 +138,11 @@ class SearchBox extends Component {
                   <div className="row position--relative">
                     <div className="col s3 position--absolute bottom--0">
                       <LikeButton
-                        likeCount={this.state.likeCount}
+                        likeCount={items.likeCount}
                         liked={this.state.liked}
                       />
                       <a class="color fontSize14 paddingLeft--10px">
-                        <CommentButton commentCount={this.state.commentCount} />
+                        <CommentButton commentCount={items.commentCount} />
                       </a>
                     </div>
 

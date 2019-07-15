@@ -3,7 +3,9 @@ import LoadingScreen from "../components/loading/loadingScreen";
 import TourServices from "../services/tourServices";
 import Nav from "../components/common/nav/nav";
 import StarRate from "../components/commentBox/star";
+import AuthServices from "../services/authServices";
 import "../css/compare.css";
+import { async } from "q";
 
 class Compare extends Component {
   state = {
@@ -44,6 +46,11 @@ class Compare extends Component {
     await this.getTour();
     const { match: params } = this.props;
     console.log(params.params.id);
+  };
+
+  handleOnClick = async id => {
+    if (AuthServices.getJwt()) await TourServices.inserHistory(id);
+    window.location = "/tour-detail/" + id;
   };
 
   printDay() {
@@ -103,10 +110,14 @@ class Compare extends Component {
                     <td>
                       <img
                         src={tour.image ? tour.image[0] : ""}
-                        className="imgSize"
+                        className="imgSize cursor--pointer"
+                        onClick={() => this.handleOnClick(tour.tourID)}
                       />
-                      <div className="fontSize--20 font--bolder">
-                        {tour.title}
+                      <div
+                        className="fontSize--20 font--bolder cursor--pointer"
+                        onClick={() => this.handleOnClick(tour.tourID)}
+                      >
+                        {tour.title})
                       </div>
                     </td>
                   ))}
