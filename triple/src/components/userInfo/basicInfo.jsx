@@ -4,7 +4,7 @@ class BasicInfo extends Component {
   state = {};
   render() {
     return (
-      <div className="card basicInfo">
+      <div className="basicInfo z-depth-2 ">
         <span className="right">hi</span>
         <div className="basinInfo__card">
           <div className="row">

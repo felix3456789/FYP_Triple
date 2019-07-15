@@ -63,3 +63,8 @@ nav {
   position: fixed;
   z-index: 3;
 }
+
+.dashboard__pageTitle {
+  color: 001e4b;
+  font-size: 30px;
+}

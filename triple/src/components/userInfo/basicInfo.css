@@ -1,12 +1,16 @@
 .basicInfo {
-  border-radius: 5px;
+  position: relative;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
+  transition: box-shadow 0.25s;
+  border-radius: 10px;
 }
 .basicInfo__img {
   max-height: 100px;
 }
 
 .basinInfo__card {
-  padding: 20px;
+  padding: 20px 33px;
 }
 
 .basic__column {
@@ -37,6 +41,7 @@
   line-height: 3.1;
   text-align: RIGHT;
   margin-bottom: 8px;
+  padding: 0px 10px;
 }
 
 .basicInfo__columnInput--content {

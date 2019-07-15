@@ -17,7 +17,6 @@ import Calendar from "../components/calendar/calendar";
 import Payment from "./../components/userInfo/payment";
 import BasicInfo from "./../components/userInfo/basicInfo";
 import Friends from "./../components/userInfo/friends";
-import EmergencyContact from "./../components/userInfo/emergencyContact";
 import PhotoSlider from "./../components/mainPage/photoSlider/photoSlider";
 
 import SortingBox from "./../components/sortingBox/sortingBox";
@@ -118,9 +117,7 @@ class Test extends Component {
           <Friends />
         </TestSection>
 
-        <TestSection title="Emergency">
-          <EmergencyContact />
-        </TestSection>
+        <TestSection title="Emergency">null</TestSection>
 
         <TestSection title="PhotoSlider">
           <PhotoSlider tourContent={tour} />

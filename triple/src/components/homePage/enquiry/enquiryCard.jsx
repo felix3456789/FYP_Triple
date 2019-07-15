@@ -1,7 +1,22 @@
 import React, { Component } from "react";
 import Form from "../../common/form";
 class EnquiryCard extends Form {
-  state = {};
+  state = {
+    search: ""
+  };
+  handleChange = e => {
+    this.setState({ search: e.target.value });
+  };
+
+  submitMessage = () => {
+    console.log("submit", this.state.search);
+  };
+
+  keyPressed(e) {
+    if (e.key === "Enter") {
+      this.submitMessage();
+    }
+  }
   render() {
     return (
       <div className="card enquiryCard__layout">
@@ -14,7 +29,8 @@ class EnquiryCard extends Form {
                 name="search"
                 type="text"
                 className="validate"
-                onChange={this.handleChange}
+                onKeyPress={this.keyPressed}
+                onChange={e => this.handleChange(e)}
               />
               <label htmlFor="search">搜尋地點，類別...</label>
             </div>

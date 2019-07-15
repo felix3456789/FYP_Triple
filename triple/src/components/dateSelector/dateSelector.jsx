@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-
-import "../../css/dateSelector.css";
-
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import "../../css/dateSelector.css";
 
 moment.locale("en");
 BigCalendar.momentLocalizer(moment);
