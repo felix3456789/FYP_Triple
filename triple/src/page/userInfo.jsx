@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import moment from "moment";
 import UserDash from "./../components/common/nav/userDash";
 import BasicInfo from "./../components/userInfo/basicInfo";
 import InfoCard from "./../components/userInfo/infoCard";
 import UserServices from "../services/userServices";
 class UserInfo extends Component {
   state = {
+    basicInfo: {},
     payment1: [
       { title: "信用卡號碼", value: "123456789" },
       { title: "持卡人姓名", value: "Tsang Ho Ching" }
@@ -22,19 +24,32 @@ class UserInfo extends Component {
 
   getUserInfo = async () => {
     const response = await UserServices.getUserInfo();
+    let { basicInfo } = this.state;
+    basicInfo = {
+      firstNameEng: response.firstNameEng,
+      lastNameEng: response.lastNameEng,
+      title: response.title,
+      BOD: moment(response.BOD).format("DD/MM/YYYY"),
+      passportNum: response.passportNum,
+      passportDate: moment(response.passportDate).format("DD/MM/YYYY"),
+      email: response.email,
+      phoneNum: response.phoneNum
+    };
+    this.setState({ basicInfo });
     console.log("UserInfo", response);
   };
   componentDidMount() {
     this.getUserInfo();
   }
   render() {
+    const { basicInfo } = this.state;
     return (
       <UserDash>
         <div className="container">
           <p className="dashboard__pageTitle">個人資料</p>
           <div className="row">
             <div className="col s4">
-              <BasicInfo />
+              <BasicInfo info={basicInfo} />
             </div>
             <div className="col s4">
               <InfoCard title="付款方式一" data={this.state.payment1} />

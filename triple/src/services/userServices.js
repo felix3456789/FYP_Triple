@@ -33,10 +33,16 @@ export async function getBookmark() {
   return response.data;
 }
 
+export async function updateUserInfo(data) {
+  const response = await http.post(Backend_Api + "/updateInfo", data);
+  return response.data;
+}
+
 export default {
   getUserInfo,
   likeCount,
   bookmark,
   getLikeCount,
-  getBookmark
+  getBookmark,
+  updateUserInfo
 };

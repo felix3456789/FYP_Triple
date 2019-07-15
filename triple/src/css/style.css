@@ -78,3 +78,16 @@ nav {
   border-radius: 15px;
   padding: 30px;
 }
+
+.editIcon {
+  background: unset;
+  border: unset;
+  margin: 4px;
+  cursor: pointer;
+}
+.editIcon:focus {
+  background: unset;
+}
+.basicInfo__columnInfo--content input:disabled {
+  border: unset !important;
+}
