@@ -10,13 +10,14 @@ class EnquiryCard extends Form {
 
   submitMessage = () => {
     console.log("submit", this.state.search);
+    window.location = "/search/" + this.state.search;
   };
 
-  keyPressed(e) {
+  keyPressed = e => {
     if (e.key === "Enter") {
       this.submitMessage();
     }
-  }
+  };
   render() {
     return (
       <div className="card enquiryCard__layout">

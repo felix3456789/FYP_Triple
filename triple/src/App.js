@@ -28,12 +28,14 @@ function App() {
         <Route path="/loading" component={LoadingScreen} />
         <Route path="/logout" component={Logout} />
         <Route path="/login" component={Login} />
-        <Route path="/search" component={Search} />
+        <Route path="/search" exact component={Search} />
+        <Route path="/search/:keyword" component={Search} />
+        <Route path="/search/:keyword/:page" component={Search} />
         <Route path="/user/dashboard" component={UserDashBoard} />
         <Route path="/user/info" component={UserInfo} />
         <Route path="/user/help" component={UserDashBoard} />
         <Route path="/compare" component={Compare} />
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
       </Switch>
     </div>
   );
