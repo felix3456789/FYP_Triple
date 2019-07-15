@@ -1,4 +1,4 @@
-import http from "./authServices";
+import http from "./httpService";
 import API from "../config/config.json";
 const Backend_Api = API.Backend_Api + "user";
 const _ = require("lodash");

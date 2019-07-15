@@ -23,6 +23,7 @@ export async function getSearchByTag(tag) {
   const response = await http.get(Backend_Api + "tour/recommanded/" + tag);
   return response.data;
 }
+
 export async function insertHistory(id) {
   let data = {
     tourId: id
@@ -71,6 +72,14 @@ export async function editCompareList(id, title) {
   sessionStorage.setItem("compareList", JSON.stringify(array));
 }
 
+export async function getSearchByKeyword(keyword, page) {
+  const response = await http.get(
+    Backend_Api + "tour/search/" + keyword + "/" + page
+  );
+  console.log(response.data);
+  return response.data;
+}
+
 export default {
   getTourById,
   getFeatureTour,
@@ -78,5 +87,6 @@ export default {
   getSearchByTag,
   insertHistory,
   editCompareList,
-  getCompareList
+  getCompareList,
+  getSearchByKeyword
 };

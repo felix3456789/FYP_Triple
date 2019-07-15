@@ -34,19 +34,11 @@ class BasicInfo extends Component {
               <span className="basicInfo__columnInput--title">中文姓名</span>
               <span className="basicInfo__columnInput--title">英文姓名</span>
               <span className="basicInfo__columnInput--title">稱謂</span>
-              <span className="basicInfo__columnInput--title">證件類型</span>
               <span className="basicInfo__columnInput--title">證件有效期</span>
               <span className="basicInfo__columnInput--title">證件號碼</span>
-              <span className="basicInfo__columnInput--title">證件簽發地</span>
-              <span className="basicInfo__columnInput--title">
-                手提電話號碼
-              </span>
               <span className="basicInfo__columnInput--title">電郵</span>
             </div>
             <div className=" basicInfo__columnInfo--content">
-              <input className="basicInfo__columnInput--content" />
-              <input className="basicInfo__columnInput--content" />
-              <input className="basicInfo__columnInput--content" />
               <input className="basicInfo__columnInput--content" />
               <input className="basicInfo__columnInput--content" />
               <input className="basicInfo__columnInput--content" />

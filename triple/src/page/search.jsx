@@ -10,7 +10,43 @@ class Search extends Component {
     tours: [],
     isLoading: true,
     compareList: [],
-    compareChips: []
+    compareChips: [],
+    searchTag: [],
+    search: ""
+  };
+
+  handleChange = e => {
+    this.setState({ search: e.target.value });
+  };
+
+  addSeachTag = tag => {
+    let { searchTag } = this.state;
+    searchTag.push(tag);
+    this.setState({ searchTag, search: "" });
+  };
+  submitMessage = () => {
+    let search = this.state.searchTag[0];
+    for (var i = 1; i < this.state.searchTag.length; i++) {
+      search += "+" + this.state.searchTag[i].substr(1);
+    }
+    window.location = "/search/" + search;
+  };
+
+  keyPressed = async e => {
+    console.log(e.key);
+    if (e.key === "Enter") {
+      if (e.target.value != " ") {
+        await this.addSeachTag(e.target.value);
+      }
+      this.submitMessage();
+    }
+    // else if (e.key === ";") {
+    //   this.addSeachTag(e.target.value);
+    //   console.log("add chips");
+    else if (e.key === " ") {
+      await this.addSeachTag(e.target.value);
+      console.log("add space chips");
+    }
   };
 
   loading() {
@@ -20,7 +56,20 @@ class Search extends Component {
     }
   }
   getTour = async () => {
-    const tours = await TourServices.getSearchByTag("加拿大");
+    const { match: params } = this.props;
+    let page = params.params.page;
+    const keyword = params.params.keyword;
+
+    console.log("params", params);
+    console.log("keyword + page ");
+    if (page == null) page = 1;
+    let tours = null;
+    if (keyword) {
+      tours = await TourServices.getSearchByKeyword(keyword, page);
+      console.log(tours);
+    } else {
+      tours = await TourServices.getSearchByTag("加拿大");
+    }
     this.setState({ tours: tours });
     console.log(this.state.tours);
   };
@@ -53,7 +102,7 @@ class Search extends Component {
     await this.getCompareChips();
   };
   render() {
-    const { tours, compareChips } = this.state;
+    const { tours, compareChips, searchTag } = this.state;
     console.log(compareChips);
     return (
       <React.Fragment>
@@ -69,7 +118,20 @@ class Search extends Component {
             <span className="title--chiSlogan">為你尋找最適合嘅旅行團</span>
           </span>
         </div>
-
+        <div className="row searchRow">
+          <div className="container searchRow__container">
+            <input
+              onChange={e => this.handleChange(e)}
+              onKeyPress={this.keyPressed}
+              value={this.state.search}
+              placeholder="按空白鍵新增標籤/按ENTER搜尋"
+              type="text"
+            />
+            {searchTag.map(item => (
+              <div className="chip">{item}</div>
+            ))}
+          </div>
+        </div>
         <div className="row">
           <div className="col s2" />
           <div className="col s8 div--container">
@@ -87,13 +149,17 @@ class Search extends Component {
                 </i>
               </div>
             ))}
-            {tours.map(tour => (
-              <SearchBox
-                items={tour}
-                compare={this.handleCompare}
-                compareChips={compareChips}
-              />
-            ))}
+            {tours.length < 0 ? (
+              tours.map(tour => (
+                <SearchBox
+                  items={tour}
+                  compare={this.handleCompare}
+                  compareChips={compareChips}
+                />
+              ))
+            ) : (
+              <h1>沒有結果</h1>
+            )}
           </div>
         </div>
       </React.Fragment>
