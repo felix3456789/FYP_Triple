@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import StarRatings from "react-star-ratings";
 
 class StarRate extends Component {
-  state = {
-    true: true
-  };
   render() {
     return (
       <React.Fragment>

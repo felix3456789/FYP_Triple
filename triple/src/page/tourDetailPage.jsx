@@ -16,6 +16,7 @@ import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
 import authServices from "../services/authServices";
 import userServices from "../services/userServices";
+import { async } from "q";
 
 class TourDetailPage extends Component {
   state = {
@@ -27,7 +28,8 @@ class TourDetailPage extends Component {
     photoNum: 1,
     features: [],
     liked: false,
-    likeCount: 0
+    likeCount: 0,
+    comments: []
   };
 
   getTour = async id => {
@@ -35,9 +37,6 @@ class TourDetailPage extends Component {
     this.setState({ tour: tour[0] });
     this.setState({ photoArr: tour[0].image });
     this.setState({ likeCount: tour[0].likeCount });
-
-    console.log("tour", this.state.tour);
-    console.log("photo", this.state.photoArr);
   };
 
   getFeaturesTour = async () => {
@@ -47,11 +46,18 @@ class TourDetailPage extends Component {
     console.log(features);
   };
 
+  getComment = async () => {
+    const comments = await TourServices.getComment(this.state.tour.tourID, 1);
+    this.setState({ comments: comments });
+  };
+
   componentDidMount = async () => {
     const { match: params } = this.props;
     await this.getTour(params.params.id);
 
     await this.getFeaturesTour();
+
+    await this.getComment();
 
     if (authServices.getJwt()) {
       this.checkLiked();
@@ -94,10 +100,6 @@ class TourDetailPage extends Component {
   icon() {
     return this.state.bookmarked ? "bookmark" : "bookmark_border";
   }
-
-  bookmarkOnClick = () => {
-    this.state.bookmarked ? this.cancelBookmark() : this.bookmark();
-  };
 
   printPrice() {
     const originalPrice = this.state.tour.originalPrice;
@@ -237,8 +239,14 @@ class TourDetailPage extends Component {
                   </div>
                   <TextComment />
                   <br />
-                  <CommentBox />
-                  <CommentBox />
+                  {this.state.comments.map(comment => (
+                    <CommentBox
+                      userName={comment.username}
+                      commentDate={comment.updateBy}
+                      comment={comment.comment}
+                      star={comment.star}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
