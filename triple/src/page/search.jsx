@@ -22,7 +22,12 @@ class Search extends Component {
   handleChange = e => {
     this.setState({ search: e.target.value });
   };
-
+  delSearchTag = tag => {
+    let { searchTag } = this.state;
+    searchTag = searchTag.filter(item => item != tag);
+    console.log(searchTag);
+    this.setState({ searchTag });
+  };
   addSeachTag = tag => {
     let { searchTag } = this.state;
     searchTag.push(tag);
@@ -177,8 +182,16 @@ class Search extends Component {
               placeholder="按空白鍵新增標籤/按ENTER搜尋"
               type="text"
             />
-            {searchTag.map(item => (
-              <div className="chip">{item}</div>
+            {searchTag.map((item, index) => (
+              <div className="chip">
+                {item}
+                <i
+                  className="chip--close material-icons"
+                  onClick={() => this.delSearchTag(item)}
+                >
+                  close
+                </i>
+              </div>
             ))}
           </div>
         </div>
@@ -190,7 +203,7 @@ class Search extends Component {
             </a>
             {compareChips.map(item => (
               <div className="chip">
-                {item.title}
+                {item.title.substr(0, 20) + "..."}
                 <i
                   className="chip--close material-icons"
                   onClick={() => this.handleCompare(item.id, item.title)}
@@ -199,7 +212,7 @@ class Search extends Component {
                 </i>
               </div>
             ))}
-            {tours.length < 0 ? (
+            {tours.length >= 0 ? (
               tours.map(tour => (
                 <SearchBox
                   items={tour}
