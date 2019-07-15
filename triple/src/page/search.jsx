@@ -4,6 +4,8 @@ import Nav from "../components/common/nav/nav";
 import SearchBox from "../components/search/searchBox";
 import "../css/searchPage.css";
 import LoadingScreen from "../components/loading/loadingScreen";
+import authServices from "../services/authServices";
+import userServices from "../services/userServices";
 
 class Search extends Component {
   state = {
@@ -12,7 +14,9 @@ class Search extends Component {
     compareList: [],
     compareChips: [],
     searchTag: [],
-    search: ""
+    search: "",
+    likeList: [],
+    likeInfo: [{ tourID: "", totalLike: "", liked: false }]
   };
 
   handleChange = e => {
@@ -91,19 +95,65 @@ class Search extends Component {
     await this.getTour();
     const { match: params } = this.props;
     await this.getCompareChips();
+
+    if (authServices.getJwt()) {
+      let likeInfo = [];
+      let likeList = await userServices.getLikeCount();
+      for (var i = 0; i < this.state.tours.length; i++) {
+        let temp = {
+          tourID: "",
+          totalLike: "",
+          liked: false
+        };
+        temp["tourID"] = this.state.tours[i].tourID;
+        temp["totalLike"] = this.state.tours[i].likeCount;
+        console.log(
+          "find",
+          likeList.find(item => this.state.tours[i].tourID == item)
+        );
+        for (var j = 0; j < likeList.length; j++) {
+          if (likeList[j] == this.state.tours[i].tourID) {
+            temp["liked"] = true;
+            console.log("Liked");
+          }
+        }
+        likeInfo.push(temp);
+        console.log(likeList, likeInfo);
+        await this.setState({ likeInfo });
+      }
+    }
+
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
   };
 
+  handleLike = id => {
+    let { likeInfo } = this.state;
+    for (var i = 0; i < likeInfo.length; i++) {
+      if (likeInfo[i].tourID == id) {
+        likeInfo[i].liked = !likeInfo[i].liked;
+        if (likeInfo[i].liked == true) {
+          //tour api add like
+
+          likeInfo[i].totalLike++;
+        } else {
+          //tour api drop like
+          likeInfo[i].totalLike--;
+        }
+      }
+    }
+    this.setState({ likeInfo });
+    userServices.likeCount(id);
+  };
   handleCompare = async (id, title) => {
     console.log(id);
     TourServices.editCompareList(id, title);
     await this.getCompareChips();
   };
   render() {
-    const { tours, compareChips, searchTag } = this.state;
-    console.log(compareChips);
+    const { tours, likeInfo, compareChips, searchTag } = this.state;
+    console.log(this.state.likeList);
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -155,6 +205,8 @@ class Search extends Component {
                   items={tour}
                   compare={this.handleCompare}
                   compareChips={compareChips}
+                  liked={likeInfo.filter(item => tour.tourID == item.tourID)}
+                  onLike={this.handleLike}
                 />
               ))
             ) : (

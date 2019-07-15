@@ -1,12 +1,17 @@
 import React, { Component } from "react";
+import userServices from "../../services/userServices";
 import Icon from "@material-ui/core/Icon";
 import "../../css/likeButton.css";
+import { throwStatement } from "@babel/types";
 
 class LikeButton extends Component {
   state = {
-    likeCount: this.props.likeCount,
-    liked: this.props.liked
+    liked: ""
   };
+
+  iconName() {
+    return this.props.liked ? "favorite" : "favorite_border";
+  }
 
   render() {
     return (
@@ -14,28 +19,12 @@ class LikeButton extends Component {
       //favorite_border
       //favorite
       <React.Fragment>
-        <a onClick={this.likeOnClick}>
+        <a onClick={this.props.onLike}>
           <Icon className="iconStyle">{this.iconName()}</Icon>
         </a>
-        <span className="fontPosition marginRight">
-          {" "}
-          {this.state.likeCount}
-        </span>
+        <span className="fontPosition marginRight">{this.props.count}</span>
       </React.Fragment>
     );
-  }
-
-  addLike() {
-    this.setState({ likeCount: this.state.likeCount + 1, liked: true });
-  }
-  delLike() {
-    this.setState({ likeCount: this.state.likeCount - 1, liked: false });
-  }
-  likeOnClick = () => {
-    this.state.liked ? this.delLike() : this.addLike();
-  };
-  iconName() {
-    return this.state.liked ? "favorite" : "favorite_border";
   }
 }
 export default LikeButton;
