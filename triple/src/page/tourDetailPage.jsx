@@ -14,29 +14,29 @@ import TextComment from "../components/commentBox/textComment";
 import TourServices from "../services/tourServices";
 import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
+import authServices from "../services/authServices";
+import userServices from "../services/userServices";
+import { async } from "q";
 
 class TourDetailPage extends Component {
   state = {
     isLogin: false,
     bookmarked: false,
-    rating: 4.5,
-    commentCount: 3,
-    likeCount: 4,
-    liked: false,
     tour: {},
     isLoading: true,
     photoArr: [],
     photoNum: 1,
-    features: []
+    features: [],
+    liked: false,
+    likeCount: 0,
+    comments: []
   };
 
   getTour = async id => {
     const tour = await TourServices.getTourById(id);
     this.setState({ tour: tour[0] });
     this.setState({ photoArr: tour[0].image });
-
-    console.log("tour", this.state.tour);
-    console.log("photo", this.state.photoArr);
+    this.setState({ likeCount: tour[0].likeCount });
   };
 
   getFeaturesTour = async () => {
@@ -46,16 +46,29 @@ class TourDetailPage extends Component {
     console.log(features);
   };
 
+  getComment = async () => {
+    const comments = await TourServices.getComment(this.state.tour.tourID, 1);
+    this.setState({ comments: comments });
+  };
+
   componentDidMount = async () => {
     const { match: params } = this.props;
     await this.getTour(params.params.id);
+
+    await this.getFeaturesTour();
+
+    await this.getComment();
+
+    if (authServices.getJwt()) {
+      this.checkLiked();
+      this.checkBookmark();
+    }
 
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
 
     console.log(this.state.isLoading);
-    await this.getFeaturesTour();
   };
 
   loading() {
@@ -65,18 +78,28 @@ class TourDetailPage extends Component {
     }
   }
 
+  checkLiked = async () => {
+    const likedList = await userServices.getLikeCount();
+    console.log(
+      "likedList",
+      likedList.find(item => this.state.tour.tourID == item)
+    );
+    console.log(" this.state.tour.tourID", this.state.tour.tourID);
+
+    if (likedList.find(item => this.state.tour.tourID == item)) {
+      await this.setState({ liked: true });
+    }
+  };
+  checkBookmark = async () => {
+    const bookmarkedList = await userServices.getBookmark();
+    if (bookmarkedList.find(item => this.state.tour.tourID == item)) {
+      await this.setState({ bookmarked: true });
+    }
+  };
+
   icon() {
     return this.state.bookmarked ? "bookmark" : "bookmark_border";
   }
-  bookmark() {
-    this.setState({ bookmarked: true });
-  }
-  cancelBookmark() {
-    this.setState({ bookmarked: false });
-  }
-  bookmarkOnClick = () => {
-    this.state.bookmarked ? this.cancelBookmark() : this.bookmark();
-  };
 
   printPrice() {
     const originalPrice = this.state.tour.originalPrice;
@@ -103,12 +126,37 @@ class TourDetailPage extends Component {
     }
   }
 
-  render() {
-    const { tour } = this.state;
-    const { features } = this.state;
-    console.log("test", tour);
-    console.log("test2: ", features);
+  handleLike = async id => {
+    if (authServices.getJwt()) {
+      let { likeCount } = this.state;
+      if (this.state.liked == true) {
+        likeCount--;
+        await this.setState({ liked: false });
+      } else {
+        likeCount++;
+        await this.setState({ liked: true });
+      }
+      await this.setState({ likeCount: likeCount });
+      userServices.likeCount(id);
+    } else {
+      alert("請先登入!");
+    }
+  };
+  handleBookmark = async id => {
+    if (authServices.getJwt()) {
+      if (this.state.bookmarked == true) {
+        await this.setState({ bookmarked: false });
+      } else {
+        await this.setState({ bookmarked: true });
+      }
+      userServices.bookmark(id);
+    } else {
+      alert("請先登入!");
+    }
+  };
 
+  render() {
+    const { tour, features, liked, onLike } = this.state;
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -130,7 +178,7 @@ class TourDetailPage extends Component {
               <div className="col s12">
                 <div className="card-panel">
                   <a
-                    onClick={this.bookmarkOnClick}
+                    onClick={() => this.handleBookmark(tour.tourID)}
                     className="color right fontSize bookmarkPosition"
                   >
                     <Icon>{this.icon()}</Icon>
@@ -161,11 +209,13 @@ class TourDetailPage extends Component {
                       <div className="tourIntro__row">{this.printPrice()}</div>
                       <br />
                       <div className="tourIntro__row clearfix">
-                        <LikeButton likeCount={this.state.likeCount} />
+                        <LikeButton
+                          liked={this.state.liked}
+                          count={this.state.likeCount}
+                          onLike={() => this.handleLike(this.state.tour.tourID)}
+                        />
                         <a href="#comment">
-                          <CommentButton
-                            commentCount={this.state.commentCount}
-                          />
+                          <CommentButton commentCount={tour.commentCount} />
                         </a>
                       </div>
                       <div className="tourIntro__row">
@@ -189,8 +239,14 @@ class TourDetailPage extends Component {
                   </div>
                   <TextComment />
                   <br />
-                  <CommentBox />
-                  <CommentBox />
+                  {this.state.comments.map(comment => (
+                    <CommentBox
+                      userName={comment.username}
+                      commentDate={comment.updateBy}
+                      comment={comment.comment}
+                      star={comment.star}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

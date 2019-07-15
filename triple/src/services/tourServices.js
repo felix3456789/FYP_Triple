@@ -80,6 +80,24 @@ export async function getSearchByKeyword(keyword, page) {
   return response.data;
 }
 
+export async function getComment(tourID, page) {
+  const response = await http.get(
+    Backend_Api + "comment/" + tourID + "/" + page
+  );
+  console.log(response.data);
+  return response.data;
+}
+// export async function postComment(data) {
+//   let data1 = {
+//     tourId: "LATAS08W",
+//     star: 4,
+//     comment: "HI! This is a Comment!"
+//   };
+//   const response = await http.post(Backend_Api + "comment/insert", data1);
+//   console.log(response.data);
+//   return response.data;
+// }
+
 export default {
   getTourById,
   getFeatureTour,
@@ -88,5 +106,6 @@ export default {
   insertHistory,
   editCompareList,
   getCompareList,
-  getSearchByKeyword
+  getSearchByKeyword,
+  getComment
 };

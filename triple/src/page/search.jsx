@@ -101,17 +101,18 @@ class Search extends Component {
     const { match: params } = this.props;
     await this.getCompareChips();
 
-    if (authServices.getJwt()) {
-      let likeInfo = [];
-      let likeList = await userServices.getLikeCount();
-      for (var i = 0; i < this.state.tours.length; i++) {
-        let temp = {
-          tourID: "",
-          totalLike: "",
-          liked: false
-        };
-        temp["tourID"] = this.state.tours[i].tourID;
-        temp["totalLike"] = this.state.tours[i].likeCount;
+    let likeInfo = [];
+
+    for (var i = 0; i < this.state.tours.length; i++) {
+      let temp = {
+        tourID: "",
+        totalLike: "",
+        liked: false
+      };
+      temp["tourID"] = this.state.tours[i].tourID;
+      temp["totalLike"] = this.state.tours[i].likeCount;
+      if (authServices.getJwt()) {
+        let likeList = await userServices.getLikeCount();
         console.log(
           "find",
           likeList.find(item => this.state.tours[i].tourID == item)
@@ -122,10 +123,9 @@ class Search extends Component {
             console.log("Liked");
           }
         }
-        likeInfo.push(temp);
-        console.log(likeList, likeInfo);
-        await this.setState({ likeInfo });
       }
+      likeInfo.push(temp);
+      await this.setState({ likeInfo });
     }
 
     setTimeout(() => {
@@ -134,22 +134,23 @@ class Search extends Component {
   };
 
   handleLike = id => {
-    let { likeInfo } = this.state;
-    for (var i = 0; i < likeInfo.length; i++) {
-      if (likeInfo[i].tourID == id) {
-        likeInfo[i].liked = !likeInfo[i].liked;
-        if (likeInfo[i].liked == true) {
-          //tour api add like
-
-          likeInfo[i].totalLike++;
-        } else {
-          //tour api drop like
-          likeInfo[i].totalLike--;
+    if (authServices.getJwt()) {
+      let { likeInfo } = this.state;
+      for (var i = 0; i < likeInfo.length; i++) {
+        if (likeInfo[i].tourID == id) {
+          likeInfo[i].liked = !likeInfo[i].liked;
+          if (likeInfo[i].liked == true) {
+            likeInfo[i].totalLike++;
+          } else {
+            likeInfo[i].totalLike--;
+          }
         }
       }
+      this.setState({ likeInfo });
+      userServices.likeCount(id);
+    } else {
+      alert("請先登入!");
     }
-    this.setState({ likeInfo });
-    userServices.likeCount(id);
   };
   handleCompare = async (id, title) => {
     console.log(id);
