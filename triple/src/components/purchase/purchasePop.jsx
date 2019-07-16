@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import "../../css/purchase.css";
+import PaymentPop from "../purchase/paymentPop";
+import { async } from "q";
+import tourServices from "../../services/tourServices";
 
 class PurchasePop extends Component {
   state = {
@@ -8,8 +11,16 @@ class PurchasePop extends Component {
     baby: 0,
     child: 0,
     childBed: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    read: false,
+    paymentPop: false
   };
+
+  togglePopup() {
+    this.setState({
+      paymentPop: !this.state.paymentPop
+    });
+  }
 
   calPrice = async () => {
     const { index, adult, baby, child, childBed } = this.state;
@@ -57,11 +68,10 @@ class PurchasePop extends Component {
     for (var i = 0; i < price.length; i++) {
       if (this.compareToday(price[i].departureDate) == true) {
         list.push(price[i].departureDate);
-        console.log("TourDate", price[i].departureDate);
       }
     }
     console.log("list", list);
-
+    var num = price.length - list.length;
     for (var i = 0; i < list.length; i++) {
       date.push(this.date(list[i]));
       content.push(
@@ -71,7 +81,7 @@ class PurchasePop extends Component {
               className="with-gap btn--radio"
               name="tourDate"
               type="radio"
-              value={i}
+              value={i + num}
               onClick={this.handleOnClick}
               defaultChecked={i == 0 ? "checked" : ""}
             />
@@ -125,7 +135,47 @@ class PurchasePop extends Component {
   }
 
   componentDidMount = async () => {
+    const { price } = this.props;
+    let list = [];
+
+    for (var i = 0; i < price.length; i++) {
+      if (this.compareToday(price[i].departureDate) == true) {
+        list.push(price[i].departureDate);
+      }
+    }
+    await this.setState({ index: price.length - list.length });
+
     await this.calPrice();
+  };
+
+  read = async () => {
+    await this.setState({ read: true });
+  };
+
+  handleNext = () => {
+    if (this.state.read) {
+      this.togglePopup();
+    } else {
+      alert("請先閱讀及同意網上條款!");
+    }
+  };
+
+  handleSubmit = async () => {
+    const data = {
+      tourId: this.props.id,
+      tourName: this.props.title,
+      departureDate: this.valueDate(
+        this.props.price[this.state.index].departureDate
+      ),
+      totalPrice: this.state.totalPrice,
+      numOfAdult: this.state.adult,
+      numOfChild: this.state.baby + this.state.child + this.state.childBed
+    };
+    console.log("submit", data);
+
+    await tourServices.postPurchase(data);
+
+    window.location = "/user/dashboard";
   };
 
   render() {
@@ -222,6 +272,22 @@ class PurchasePop extends Component {
                     合共: HKD {this.state.totalPrice}
                   </div>
                 </div>
+
+                <div className="row">
+                  <div className="col s6 offset-s3">
+                    <label className="text--blue">
+                      <input
+                        class="with-gap"
+                        name="agreement"
+                        type="radio"
+                        onClick={this.read}
+                      />
+                      <span>本人已細讀及同意網上條款</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div />
               </div>
 
               <div className="col s12">
@@ -232,9 +298,21 @@ class PurchasePop extends Component {
                   >
                     取消
                   </a>
-                  <a className="popUp--btn btn--blue">下一步</a>
+                  <a className="popUp--btn btn--blue" onClick={this.handleNext}>
+                    下一步
+                  </a>
                 </div>
               </div>
+
+              {this.state.paymentPop ? (
+                <PaymentPop
+                  closePopup={this.togglePopup.bind(this)}
+                  price={this.props.prices}
+                  title={this.props.title}
+                  tourID={this.props.id}
+                  handleSubmit={this.handleSubmit}
+                />
+              ) : null}
             </div>
           </div>
         </div>

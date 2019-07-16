@@ -99,6 +99,12 @@ export async function postComment(data) {
   return response.data;
 }
 
+export async function postPurchase(data) {
+  const response = await http.post(Backend_Api + "purchase/", data);
+
+  return response.data;
+}
+
 export default {
   getTourById,
   getFeatureTour,
@@ -109,5 +115,6 @@ export default {
   getCompareList,
   getSearchByKeyword,
   getComment,
-  postComment
+  postComment,
+  postPurchase
 };
