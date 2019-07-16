@@ -10,11 +10,7 @@ class DashBoardNav extends Component {
     const { user } = this.props;
     return (
       <React.Fragment>
-        <NavBar
-          position="absolute"
-          color="nav--color"
-          textColor="loginNav--ul"
-        />
+        <NavBar position="fixed" color="nav--color" textColor="loginNav--ul" />
         <div className="sidenav z-depth-1">
           <div>
             <NavLink to="/user/dashboard" exact>
@@ -35,12 +31,7 @@ class DashBoardNav extends Component {
                 <div className="sidenav__title">收藏</div>
               </div>
             </NavLink>
-            <NavLink to="/user/dashboard" exact>
-              <div className="sidenav__item">
-                <Icon className="sidenav__icon">help_outline</Icon>
-                <div className="sidenav__title">幫助</div>
-              </div>
-            </NavLink>
+
             <NavLink to="/logout" exact>
               <div className="sidenav__item">
                 <Icon className="sidenav__icon">arrow_forward</Icon>

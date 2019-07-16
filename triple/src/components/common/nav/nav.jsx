@@ -11,6 +11,7 @@ class NavBar extends Component {
       <nav
         Style={position ? "position:" + position : "position:absolute"}
         id={id}
+        className="z-depth-2"
       >
         <div className={"nav-wrapper  " + color}>
           <a href="/" className="brand-logo">
