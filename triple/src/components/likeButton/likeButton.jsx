@@ -20,7 +20,7 @@ class LikeButton extends Component {
       //favorite
       <React.Fragment>
         <a onClick={this.props.onLike}>
-          <Icon className="iconStyle">{this.iconName()}</Icon>
+          <Icon className="iconStyle marginRight--5">{this.iconName()}</Icon>
         </a>
         <span className="fontPosition marginRight">{this.props.count}</span>
       </React.Fragment>

@@ -16,8 +16,7 @@ import DetailTabs from "../components/detailTabs/detailTabs";
 import LoadingScreen from "../components/loading/loadingScreen";
 import authServices from "../services/authServices";
 import userServices from "../services/userServices";
-import { async } from "q";
-import tourServices from "../services/tourServices";
+import PurchasePop from "../components/purchase/purchasePop";
 
 class TourDetailPage extends Component {
   state = {
@@ -30,7 +29,8 @@ class TourDetailPage extends Component {
     features: [],
     liked: false,
     likeCount: 0,
-    comments: []
+    comments: [],
+    showPopup: false
   };
 
   getTour = async id => {
@@ -164,6 +164,12 @@ class TourDetailPage extends Component {
     }
   };
 
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
   render() {
     const { tour, features, liked, onLike } = this.state;
     return (
@@ -228,7 +234,10 @@ class TourDetailPage extends Component {
                         </a>
                       </div>
                       <div className="tourIntro__row">
-                        <a className=" tourIntro__btn background--blue white-text">
+                        <a
+                          className=" tourIntro__btn background--blue white-text"
+                          onClick={this.togglePopup.bind(this)}
+                        >
                           立即報團
                         </a>
                         <a className=" tourIntro__btn background--white color">
@@ -237,6 +246,15 @@ class TourDetailPage extends Component {
                       </div>
                     </div>
                   </div>
+
+                  {this.state.showPopup ? (
+                    <PurchasePop
+                      closePopup={this.togglePopup.bind(this)}
+                      price={tour.prices}
+                      title={tour.title}
+                      id={tour.tourID}
+                    />
+                  ) : null}
 
                   <DetailTabs pdf={tour.detail} tourContent={tour} />
 

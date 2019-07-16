@@ -13,3 +13,7 @@
 .marginRight {
     margin-right: 15px;
 }
+
+.marginRight--5 {
+    margin-right: 5px;
+}
