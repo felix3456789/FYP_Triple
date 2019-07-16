@@ -1,0 +1,21 @@
+.bookmark {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bookmark__img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.bookmark__delete {
+  float: right;
+  cursor: pointer;
+}
+
+.bookmark__title {
+  font-size: 20px;
+  color: #0d47a1;
+  margin: 20px 0px 0px 0px;
+}
