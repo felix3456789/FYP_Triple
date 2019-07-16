@@ -3,7 +3,7 @@ import Login from "./page/login";
 import Test from "./page/test";
 import Home from "./page/home";
 import TourDetailPage from "./page/tourDetailPage";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import "materialize-css/dist/css/materialize.css";
 import "materialize-css/dist/js/materialize";
 import "materialize-css/dist/css/materialize.min.css";
@@ -45,14 +45,20 @@ class App extends Component {
           <Route path="/tour-detail/:id" component={TourDetailPage} />
           <Route path="/loading" component={LoadingScreen} />
           <Route path="/logout" component={Logout} />
-          <Route path="/login" component={Login} />
+          <Route
+            path="/login"
+            render={props => {
+              if (!user) return <Login />;
+              else return <Redirect to="/user/dashboard" />;
+            }}
+          />
           <Route path="/search" exact component={Search} />
           <Route path="/search/:keyword" component={Search} />
           <Route path="/search/:keyword/:page" component={Search} />
           {/* <Route path="/user/dashboard" component={UserDashBoard} /> */}
           <ProtectRoute
             authed={user}
-            path="/user/"
+            path="/user/dashboard"
             exact
             component={UserDashBoard}
           />
