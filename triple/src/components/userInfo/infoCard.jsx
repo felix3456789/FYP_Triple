@@ -5,7 +5,6 @@ class InfoCard extends Component {
     console.log(data);
     return (
       <div className="basicInfo z-depth-2 ">
-        <span className="right">hi</span>
         <div className="basinInfo__card">
           <div className="row">
             <h4>{title}</h4>
