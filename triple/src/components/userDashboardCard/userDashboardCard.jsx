@@ -144,10 +144,11 @@ class userCard extends Component {
   }
 
   render() {
+    const { info } = this.props;
     return (
       <React.Fragment>
         <div className="marginButtonZero row">
-          <div className="col s12 m10 l8">
+          <div className="col s12 ">
             <div className="card-panel panelPadding">
               <a
                 onClick={this.bookmarkOnClick}
@@ -159,41 +160,31 @@ class userCard extends Component {
                 <div className="col s12 m5 l3">
                   <img
                     className="responsive-img marginTop10 radius5px"
-                    src="./image/845.jpg"
+                    src={info.img}
                   />
                 </div>
                 <div className="col s11 m7 l9">
                   <div className="row marginButtonZero">
                     <span className="col s12 fontPositon---21 fontSize18 color width60">
-                      {this.state.tourName}
-                      {this.printTourValid()}
+                      {info.title}
                     </span>
-                    <span className="col s12 fontPositon---21 color fontSize14 ">
-                      {this.state.basicDes}
-                    </span>
+
                     <div className="col s5 color paddingleftZero">
                       <span className="row">
                         <span className="col s12">出發日子: </span>
-                        <span className="col s12">
-                          {this.printDepartDate()}
-                        </span>
+                        <span className="col s12">{info.depDate}</span>
                       </span>
                     </div>
                     <div className="col s4 color paddingleftZero">
                       <span className="row">
                         <span className="col s12">報團人數: </span>
-                        <span className="col s12">{this.printAdultNum()}</span>
-                        <span className="col s12">{this.printChildNum()}</span>
-                        <span className="col s12">
-                          {this.printChildWithoutBedNum()}
-                        </span>
-                        <span className="col s12">{this.printBabyNum()}</span>
+                        <span className="col s12">{info.totalNum}人</span>
                       </span>
                     </div>
                     <div className="col s3 color paddingleftZero">
                       <span className="row">
                         <span className="col s12">付款情況: </span>
-                        {this.checkPayment()}
+                        <span className="col s12">${info.totalPrice}</span>
                       </span>
                     </div>
                   </div>

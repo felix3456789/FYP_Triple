@@ -44,17 +44,9 @@ class App extends Component {
           <Route exact path="/tour-detail/" component={TourDetailPage} />
           <Route path="/tour-detail/:id" component={TourDetailPage} />
           <Route path="/loading" component={LoadingScreen} />
-          <Route path="/logout" component={Logout} />
-          <Route
-            path="/login"
-            render={props => {
-              if (!user) return <Login />;
-              else return <Redirect to="/user/dashboard" />;
-            }}
-          />
           <Route path="/search" exact component={Search} />
-          <Route path="/search/:keyword" component={Search} />
-          <Route path="/search/:keyword/:page" component={Search} />
+          <Route path="/search/:keyword" exact component={Search} />
+          <Route path="/search/:keyword/:page" exact component={Search} />
           {/* <Route path="/user/dashboard" component={UserDashBoard} /> */}
           <ProtectRoute
             authed={user}
@@ -69,8 +61,15 @@ class App extends Component {
             exact
           />
           <ProtectRoute authed={user} path="/user/info" component={UserInfo} />
-          <Route path="/user/help" component={UserDashBoard} />
           <Route path="/compare" component={Compare} />
+          <Route
+            path="/login"
+            render={props => {
+              if (!user) return <Login />;
+              else return <Redirect to="/user/dashboard" />;
+            }}
+          />
+          <Route path="/logout" component={Logout} />
           <Route exact path="/" component={Home} />
         </Switch>
       </div>
