@@ -131,10 +131,6 @@ class Test extends Component {
           <UserCard />
         </TestSection>
 
-        <TestSection title="searchBox">
-          <SearchBox items={tour} />
-        </TestSection>
-
         <TestSection title="ProductBlock">
           <ProductBlock img="/image/845.jpg" title="日本東京三日兩夜賞櫻團" />
           <ProductBlock img="/image/Travel.jpg" title="新加坡三日兩夜美食團" />

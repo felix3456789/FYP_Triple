@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 class NavBar extends Component {
   state = {};
   render() {
-    const { color, id } = this.props;
+    const { color, id, position } = this.props;
     return (
-      <nav Style="position:fixed" id={id}>
+      <nav
+        Style={position ? "position:" + position : "position:absolute"}
+        id={id}
+      >
         <div className={"nav-wrapper  " + color}>
           <a href="/" className="brand-logo">
             Triple

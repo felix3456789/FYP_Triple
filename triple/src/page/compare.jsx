@@ -89,7 +89,7 @@ class Compare extends Component {
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
           {this.loading()}
         </div>
-        <Nav color="white-text" />
+        <Nav position="absolute" color="white-text" />
 
         <div className="div--background">
           <span className="bg--text">

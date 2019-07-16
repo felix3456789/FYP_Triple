@@ -10,40 +10,38 @@ class DashBoardNav extends Component {
     const { user } = this.props;
     return (
       <React.Fragment>
-        <NavBar color="nav--color" textColor="loginNav--ul" />
+        <NavBar
+          position="absolute"
+          color="nav--color"
+          textColor="loginNav--ul"
+        />
         <div className="sidenav z-depth-1">
           <div>
-            <NavLink to="/dashboard" exact>
+            <NavLink to="/user/dashboard" exact>
               <div className="sidenav__item">
                 <Icon className="sidenav__icon">share</Icon>
                 <div className="sidenav__title">我的旅行團</div>
               </div>
             </NavLink>
-            <NavLink to="/dashboard" exact>
+            <NavLink to="/user/info" exact>
               <div className="sidenav__item">
                 <Icon className="sidenav__icon">edit</Icon>
                 <div className="sidenav__title">個人資料</div>
               </div>
             </NavLink>
-            <NavLink to="/dashboard" exact>
+            <NavLink to="/user/bookmark" exact>
               <div className="sidenav__item">
                 <Icon className="sidenav__icon">folder</Icon>
                 <div className="sidenav__title">收藏</div>
               </div>
             </NavLink>
-            <NavLink to="/dashboard" exact>
+            <NavLink to="/user/dashboard" exact>
               <div className="sidenav__item">
                 <Icon className="sidenav__icon">help_outline</Icon>
                 <div className="sidenav__title">幫助</div>
               </div>
             </NavLink>
-            <NavLink to="/dashboard" exact>
-              <div className="sidenav__item">
-                <Icon className="sidenav__icon">settings</Icon>
-                <div className="sidenav__title">設定</div>
-              </div>
-            </NavLink>
-            <NavLink to="/dashboard" exact>
+            <NavLink to="/logout" exact>
               <div className="sidenav__item">
                 <Icon className="sidenav__icon">arrow_forward</Icon>
                 <div className="sidenav__title">登出</div>

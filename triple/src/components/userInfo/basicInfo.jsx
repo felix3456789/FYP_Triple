@@ -65,16 +65,16 @@ class BasicInfo extends Component {
               </div>
               <div className="col s8">
                 <div className="clearfix basic__column">
-                  <span className="basicInfo__column--title">會員編號: </span>
                   <span className="basicInfo__column--title">會員稱號: </span>
                   <span className="basicInfo__column--title">積分: </span>
                 </div>
                 <div className="clearfix basic__column">
-                  <span className="basicInfo__column--content">1</span>
                   <span className="basicInfo__column--content">
-                    Felix Tsang
+                    {info ? info.username : null}
                   </span>
-                  <span className="basicInfo__column--content">1234</span>
+                  <span className="basicInfo__column--content">
+                    {info ? info.credit : null}
+                  </span>
                 </div>
               </div>
             </div>

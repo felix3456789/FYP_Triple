@@ -7,7 +7,7 @@ import UserServices from "../services/userServices";
 class UserInfo extends Component {
   state = {
     basicInfo: {},
-    payment1: [
+    payment: [
       { title: "信用卡號碼", value: "123456789" },
       { title: "持卡人姓名", value: "Tsang Ho Ching" }
     ],
@@ -26,6 +26,8 @@ class UserInfo extends Component {
     const response = await UserServices.getUserInfo();
     let { basicInfo } = this.state;
     basicInfo = {
+      username: response.username,
+      credit: response.Credit,
       firstNameEng: response.firstNameEng,
       lastNameEng: response.lastNameEng,
       title: response.title,
@@ -35,9 +37,20 @@ class UserInfo extends Component {
       email: response.email,
       phoneNum: response.phoneNum
     };
-    this.setState({ basicInfo });
+    let { payment } = this.state;
+    for (var i = 0; i < response.Payment.length; i++) {
+      let temp = { title: "信用卡號碼", value: response.Payment[i].cardNumber };
+      payment.push(temp);
+    }
+
+    this.setState({ basicInfo, payment });
     console.log("UserInfo", response);
   };
+
+  getPayment = async () => {
+    const response = await UserServices.getPayment();
+  };
+
   componentDidMount() {
     this.getUserInfo();
   }
@@ -48,16 +61,13 @@ class UserInfo extends Component {
         <div className="container">
           <p className="dashboard__pageTitle">個人資料</p>
           <div className="row">
-            <div className="col s4">
+            <div className="col s5">
               <BasicInfo info={basicInfo} />
             </div>
-            <div className="col s4">
-              <InfoCard title="付款方式一" data={this.state.payment1} />
+            <div className="col s5">
+              <InfoCard title="付款方式一" data={this.state.payment} />
               <InfoCard title="緊急聯絡人" data={this.state.emerContact} />
               <InfoCard title="同行朋友" data={this.state.friend1} />
-            </div>
-            <div className="col s4">
-              <BasicInfo />
             </div>
           </div>
         </div>

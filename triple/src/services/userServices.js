@@ -38,11 +38,21 @@ export async function updateUserInfo(data) {
   return response.data;
 }
 
+export async function getPurchase() {
+  const response = await http.get(API.Backend_Api + "purchase");
+  return response.data;
+}
+
+export async function getPayment() {
+  const response = await http.get;
+}
+
 export default {
   getUserInfo,
   likeCount,
   bookmark,
   getLikeCount,
   getBookmark,
-  updateUserInfo
+  updateUserInfo,
+  getPurchase
 };

@@ -75,11 +75,11 @@ class Search extends Component {
     let tours = null;
     if (keyword) {
       tours = await TourServices.getSearchByKeyword(keyword, page);
-      console.log(tours);
     } else {
-      tours = await TourServices.getSearchByTag("加拿大");
+      tours = await TourServices.getSearchByTag("加拿大", page);
+      console.log(tours);
     }
-    this.setState({ tours: tours });
+    await this.setState({ tours: tours.data });
     console.log(this.state.tours);
   };
 
@@ -159,13 +159,12 @@ class Search extends Component {
   };
   render() {
     const { tours, likeInfo, compareChips, searchTag } = this.state;
-    console.log(this.state.likeList);
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
           {this.loading()}
         </div>
-        <Nav color="white-text" />
+        <Nav position="absolute" color="white-text" />
 
         <div className="div--background">
           <span className="bg--text">
@@ -213,7 +212,7 @@ class Search extends Component {
                 </i>
               </div>
             ))}
-            {tours.length >= 0 ? (
+            {tours && tours.length ? (
               tours.map(tour => (
                 <SearchBox
                   items={tour}

@@ -179,6 +179,7 @@ class TourDetailPage extends Component {
         </div>
         <div className="marginBottom">
           <NavBar
+            position="absolute"
             color="grey lighten-5 loginNav__textColor"
             textColor="loginNav--ul"
           />

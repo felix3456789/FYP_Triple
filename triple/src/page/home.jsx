@@ -25,8 +25,8 @@ class Home extends Component {
     }
 
     window.addEventListener("scroll", this.handleScroll);
-    console.log(this.state.isLogin)
-    let features = []
+    console.log(this.state.isLogin);
+    let features = [];
     if (this.state.isLogin) {
       let recommendTag = await tourService.getRecommendTag();
       await this.setState({ tags: recommendTag.recommendTags });
@@ -40,7 +40,6 @@ class Home extends Component {
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
-
   }
 
   loading() {
@@ -64,7 +63,7 @@ class Home extends Component {
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
           {this.loading()}
         </div>
-        <Nav id="homeNav" color=" loginNav__textColor" />
+        <Nav position="absolute" id="homeNav" color=" loginNav__textColor" />
         <div className="enquiry__layout">
           <Enquiry />
         </div>
@@ -84,12 +83,14 @@ class Home extends Component {
           <div className="fontSize36 paddingBottom25">你可能喜歡</div>
           {features
             ? features.map(feature => (
-              <ProductBlock id={feature.tourID} img={feature.image[1]} title={feature.title} />
-            ))
+                <ProductBlock
+                  id={feature.tourID}
+                  img={feature.image[1]}
+                  title={feature.title}
+                />
+              ))
             : null}
         </div>
-
-
       </React.Fragment>
     );
   }
