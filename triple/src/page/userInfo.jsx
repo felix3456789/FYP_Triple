@@ -7,19 +7,9 @@ import UserServices from "../services/userServices";
 class UserInfo extends Component {
   state = {
     basicInfo: {},
-    payment: [
-      { title: "信用卡號碼", value: "123456789" },
-      { title: "持卡人姓名", value: "Tsang Ho Ching" }
-    ],
-    emerContact: [
-      { title: "中文姓名", value: "曾蟹蟹" },
-      { title: "英文姓名", value: "Tsang Hi Hi" },
-      { title: "聯絡電話", value: "22334455" }
-    ],
-    friend1: [
-      { title: "中文姓名", value: "梁皓銓" },
-      { title: "英文姓名", value: "Leung Ho Chuen, Allen" }
-    ]
+    payment: [],
+    emerContact: [],
+    friend1: []
   };
 
   getUserInfo = async () => {
@@ -39,11 +29,35 @@ class UserInfo extends Component {
     };
     let { payment } = this.state;
     for (var i = 0; i < response.Payment.length; i++) {
-      let temp = { title: "信用卡號碼", value: response.Payment[i].cardNumber };
+      let temp = [
+        { title: "信用卡號碼", value: response.Payment[i].cardNumber },
+        { title: "持卡人姓名", value: response.Payment[i].cardHolderName }
+      ];
       payment.push(temp);
     }
-
-    this.setState({ basicInfo, payment });
+    let { friend } = this.state;
+    for (var i = 0; i < response.Friend.length; i++) {
+      let temp = [
+        { title: "姓名", value: response.Friend[i].friendName },
+        { title: "生日日期", value: response.Friend[i].BOD },
+        { title: "證件號碼", value: response.Friend[i].passportNum },
+        { title: "證件有效日期", value: response.Friend[i].passportDate },
+        { title: "電郵", value: response.Friend[i].email },
+        { title: "電話", value: response.Friend[i].phoneNum }
+      ];
+      friend.push(temp);
+    }
+    let { emerContact } = this.state;
+    for (var i = 0; i < response.EmerContact.length; i++) {
+      let temp = [
+        { title: "姓名", value: response.EmerContact[i].emerContactName },
+        { title: "關係", value: response.EmerContact[i].relationship },
+        { title: "電話", value: response.EmerContact[i].phoneNum },
+        { title: "電郵", value: response.EmerContact[i].email }
+      ];
+      emerContact.push(temp);
+    }
+    this.setState({ basicInfo, payment, friend, emerContact });
     console.log("UserInfo", response);
   };
 
