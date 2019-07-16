@@ -76,7 +76,7 @@ class Search extends Component {
     if (keyword) {
       tours = await TourServices.getSearchByKeyword(keyword, page);
     } else {
-      tours = await TourServices.getSearchByTag("加拿大", page);
+      tours = await TourServices.getSearchByKeyword("加拿大", page);
       console.log(tours);
     }
     await this.setState({ tours: tours.data });

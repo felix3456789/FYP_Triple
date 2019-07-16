@@ -19,7 +19,7 @@ class Login extends Component {
 
       alert("成功登入");
 
-      if (auth) this.props.history.push("/");
+      if (auth) window.location = "/";
     }
     if (option == 2) {
       let auth = await AuthServices.register(data);

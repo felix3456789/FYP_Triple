@@ -18,35 +18,31 @@ class NavBar extends Component {
           </a>
           <ul id="nav-mobile" className="hide-on-med-and-down loginNav--ul">
             <li>
-              <a href="sass.html">旅遊資訊</a>
+              <Link to="/">旅遊資訊</Link>
             </li>
             <li>
-              <a href="badges.html">獨立報團</a>
+              <Link to="/">獨立報團</Link>
             </li>
             <li>
-              <a href="collapsible.html">加入我們</a>
+              <Link to="/">加入我們</Link>
             </li>
             <li>
-              <a href="collapsible.html">關於我們</a>
+              <Link to="/">關於我們</Link>
             </li>
             <li>
-              <a href="collapsible.html">聯絡我們</a>
+              <Link to="/">聯絡我們</Link>
             </li>
             <li>
-              <a href="collapsible.html">公司資料</a>
+              <Link to="/">公司資料</Link>
             </li>
           </ul>
           <ul id="nav-mobile" className="right hide-on-med-and-down ">
             <li>
-              <a href="/test">
+              <a href="/search">
                 <Icon className="vertMiddle">search</Icon>
               </a>
             </li>
-            <li>
-              <a href="badges.html">
-                <Icon className="vertMiddle">notifications</Icon>
-              </a>
-            </li>
+
             <li>
               <Link to={"/login"}>
                 <Icon className="vertMiddle">person</Icon>

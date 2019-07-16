@@ -3,10 +3,9 @@ import tourService from "../../../services/tourServices";
 import authService from "../../../services/authServices";
 import "./productBlock.css";
 
-
 class ProductBlock extends Component {
   handleClick = async () => {
-    if (authService.getJwt()) await tourService.inserHistory(this.props.id);
+    if (authService.getJwt()) await tourService.insertHistory(this.props.id);
     window.location = "/tour-detail/" + this.props.id;
   };
   render() {
