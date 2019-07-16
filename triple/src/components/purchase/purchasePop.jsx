@@ -169,7 +169,10 @@ class PurchasePop extends Component {
       ),
       totalPrice: this.state.totalPrice,
       numOfAdult: this.state.adult,
-      numOfChild: this.state.baby + this.state.child + this.state.childBed
+      numOfChild:
+        parseInt(this.state.baby, 10) +
+        parseInt(this.state.child, 10) +
+        parseInt(this.state.childBed, 10)
     };
     console.log("submit", data);
 
