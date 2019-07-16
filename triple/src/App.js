@@ -45,8 +45,8 @@ class App extends Component {
           <Route path="/tour-detail/:id" component={TourDetailPage} />
           <Route path="/loading" component={LoadingScreen} />
           <Route path="/search" exact component={Search} />
-          <Route path="/search/:keyword" component={Search} />
-          <Route path="/search/:keyword/:page" component={Search} />
+          <Route path="/search/:keyword" exact component={Search} />
+          <Route path="/search/:keyword/:page" exact component={Search} />
           {/* <Route path="/user/dashboard" component={UserDashBoard} /> */}
           <ProtectRoute
             authed={user}

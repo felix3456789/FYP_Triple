@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import TourServices from "../services/tourServices";
 import Nav from "../components/common/nav/nav";
 import SearchBox from "../components/search/searchBox";
@@ -9,6 +10,7 @@ import userServices from "../services/userServices";
 
 class Search extends Component {
   state = {
+    totalPage: [],
     tours: [],
     isLoading: true,
     compareList: [],
@@ -68,7 +70,6 @@ class Search extends Component {
     const { match: params } = this.props;
     let page = params.params.page;
     const keyword = params.params.keyword;
-
     console.log("params", params);
     console.log("keyword + page ");
     if (page == null) page = 1;
@@ -79,8 +80,11 @@ class Search extends Component {
       tours = await TourServices.getSearchByKeyword("加拿大", page);
       console.log(tours);
     }
-    await this.setState({ tours: tours.data });
-    console.log(this.state.tours);
+    let { totalPage } = this.state;
+    for (var i = 1; i <= tours.totalPage; i++) {
+      totalPage.push(i);
+    }
+    await this.setState({ tours: tours.data, totalPage });
   };
 
   getCompareChips = async () => {
@@ -158,7 +162,10 @@ class Search extends Component {
     await this.getCompareChips();
   };
   render() {
-    const { tours, likeInfo, compareChips, searchTag } = this.state;
+    const { tours, likeInfo, compareChips, searchTag, totalPage } = this.state;
+    const { match: params } = this.props;
+    let currentPage = params.params.page;
+    let keyword = params.params.keyword;
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -226,6 +233,15 @@ class Search extends Component {
               <h1>沒有結果</h1>
             )}
           </div>
+        </div>
+        <div className="row container">
+          <ul class="pagination">
+            {totalPage.map(page => (
+              <li class={currentPage == page ? "active" : "waves-effect"}>
+                <a href={"/search/" + keyword + "/" + page}>{page}</a>
+              </li>
+            ))}
+          </ul>
         </div>
       </React.Fragment>
     );

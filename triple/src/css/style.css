@@ -91,3 +91,14 @@ nav {
 .basicInfo__columnInfo--content input:disabled {
   border: unset !important;
 }
+
+.pagination li {
+  margin: 0px 2px;
+}
+.pagination li.active {
+  background-color: #0d47a1 !important;
+}
+.waves-effect {
+  border: 1px solid #0d47a1;
+  border-radius: 7px;
+}
