@@ -52,17 +52,28 @@ class PurchasePop extends Component {
     const { price } = this.props;
     let date = [];
     let content = [];
+    let list = [];
+
     for (var i = 0; i < price.length; i++) {
-      date.push(this.date(price[i].departureDate));
+      if (this.compareToday(price[i].departureDate) == true) {
+        list.push(price[i].departureDate);
+        console.log("TourDate", price[i].departureDate);
+      }
+    }
+    console.log("list", list);
+
+    for (var i = 0; i < list.length; i++) {
+      date.push(this.date(list[i]));
       content.push(
         <p>
           <label className="text--blue">
             <input
               className="with-gap btn--radio"
-              name="group3"
+              name="tourDate"
               type="radio"
               value={i}
               onClick={this.handleOnClick}
+              defaultChecked={i == 0 ? "checked" : ""}
             />
             <span>{date[i]}</span>
           </label>
@@ -71,6 +82,14 @@ class PurchasePop extends Component {
     }
     return content;
   };
+
+  compareToday(TourDate) {
+    const departDate = TourDate;
+    var today = new Date();
+    var tourDate = new Date(departDate);
+
+    return today > tourDate ? false : true;
+  }
 
   date(day) {
     const departDate = day;
