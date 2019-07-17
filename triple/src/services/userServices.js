@@ -6,15 +6,15 @@ const Bookmark_Api = API.Backend_Api + "bookmark";
 const _ = require("lodash");
 
 export async function getUserInfo() {
-  console.log(Backend_Api + "/me");
+  // console.log(Backend_Api + "/me");
   const response = await http.get(Backend_Api + "/me");
   return response.data;
 }
 
 export async function likeCount(tourID) {
   const response = await http.post(Like_Api + "/" + tourID, "");
-  console.log("LIKE", tourID);
-  console.log("LIKE", response.data);
+  // console.log("LIKE", tourID);
+  // console.log("LIKE", response.data);
   return response.data;
 }
 
@@ -46,6 +46,36 @@ export async function getPurchase() {
 export async function getPayment() {
   const response = await http.get;
 }
+export async function addPayment(data) {
+  // console.log(data);
+  const response = await http.post(Backend_Api + "/addPayment", data);
+  // console.log(response.data);
+}
+export async function addFriend(data) {
+  // console.log(data);
+  const response = await http.post(Backend_Api + "/addFriend", data);
+  // console.log(response.data);
+}
+export async function addEmerContact(data) {
+  // console.log(data);
+  const response = await http.post(Backend_Api + "/addEmerContact", data);
+  // console.log(response.data);
+}
+export async function delPayment(data) {
+  // console.log(data);
+  const response = await http.post(Backend_Api + "/delPayment/" + data);
+  // console.log(response.data);
+}
+export async function delFriend(data) {
+  // console.log(data);
+  const response = await http.post(Backend_Api + "/delFriend/" + data);
+  // console.log(response.data);
+}
+export async function delEmerContact(data) {
+  // console.log(data);
+  const response = await http.post(Backend_Api + "/delEmerContact/" + data);
+  // console.log(response.data);
+}
 
 export default {
   getUserInfo,
@@ -54,5 +84,11 @@ export default {
   getLikeCount,
   getBookmark,
   updateUserInfo,
-  getPurchase
+  getPurchase,
+  addFriend,
+  addEmerContact,
+  addPayment,
+  delFriend,
+  delEmerContact,
+  delPayment
 };
