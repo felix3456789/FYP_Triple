@@ -165,9 +165,13 @@ class TourDetailPage extends Component {
   };
 
   togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
+    if (authServices.getJwt()) {
+      this.setState({
+        showPopup: !this.state.showPopup
+      });
+    } else {
+      alert("請先登入!");
+    }
   }
 
   render() {
