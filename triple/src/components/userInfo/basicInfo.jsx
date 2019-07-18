@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import UserServices from "../../services/userServices";
 import "./basicInfo.css";
+import authServices from "../../services/authServices";
+import userServices from "../../services/userServices";
 class BasicInfo extends Component {
   state = {
     data: {
@@ -30,9 +32,26 @@ class BasicInfo extends Component {
     console.log("submit");
   };
 
+  initInfo = async () => {
+    const info = await userServices.getUserInfo();
+    const { data } = this.state;
+
+    if (info.lastNameEng) data["lastNameEng"] = info.lastNameEng;
+    if (info.firstNameEng) data["firstNameEng"] = info.firstNameEng;
+    if (info.BOD) data["BOD"] = info.BOD;
+    if (info.title) data["title"] = info.title;
+    if (info.passportNum) data["passportNum"] = info.passportNum;
+    if (info.passportDate) data["passportDate"] = info.passportDate;
+    if (info.email) data["email"] = info.email;
+    if (info.phoneNum) data["phoneNum"] = info.phoneNum;
+    await this.setState({ data });
+  };
+
+  componentDidMount = async () => {
+    await this.initInfo();
+  };
   render() {
     const { info } = this.props;
-    console.log(this.state.data);
     return (
       <div className="basicInfo z-depth-2 ">
         <form onSubmit={e => this.handleSubmit(e)}>

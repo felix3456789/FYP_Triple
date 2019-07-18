@@ -3,10 +3,27 @@ import "../../css/paymentPop.css";
 import userService from "../../services/userServices";
 import authService from "../../services/authServices";
 import { async } from "q";
+import { throwStatement } from "@babel/types";
 
 class PaymentPop extends Component {
   state = {
-    myInfo: []
+    myInfo: [],
+    data: {
+      lastNameEng: "",
+      firstNameEng: "",
+      BOD: "",
+      title: "",
+      passportNum: "",
+      passportDate: "",
+      email: "",
+      phoneNum: "",
+      cardNumber: "",
+      cardHolderName: "",
+      emerContactName: "",
+      relationship: "",
+      emerEmail: "",
+      emerPhoneNum: ""
+    }
   };
 
   getMyInfo = async () => {
@@ -34,10 +51,51 @@ class PaymentPop extends Component {
 
   componentDidMount = async () => {
     await this.getMyInfo();
+    this.insertData();
+  };
+
+  insertData = () => {
+    const info = this.state.myInfo;
+    const data = { ...this.state.data };
+    if (info.lastNameEng) data["lastNameEng"] = info.lastNameEng;
+    if (info.firstNameEng) data["firstNameEng"] = info.firstNameEng;
+    if (info.BOD) data["BOD"] = info.BOD;
+    if (info.title) data["title"] = info.title;
+    if (info.passportNum) data["passportNum"] = info.passportNum;
+    if (info.passportDate) data["passportDate"] = info.passportDate;
+    if (info.email) data["email"] = info.email;
+    if (info.phoneNum) data["phoneNum"] = info.phoneNum;
+    if (info.Payment && info.Payment.length > 0)
+      data["cardNumber"] = info.Payment[0].cardNumber;
+    if (info.Payment && info.Payment.length > 0)
+      data["cardHolderName"] = info.Payment[0].cardHolderName;
+    if (info.EmerContact && info.EmerContact.length > 0)
+      data["emerContactName"] = info.EmerContact[0].emerContactName;
+
+    if (info.EmerContact && info.EmerContact.length > 0)
+      data["relationship"] = info.EmerContact[0].relationship;
+
+    if (info.EmerContact && info.EmerContact.length > 0)
+      data["emerEmail"] = info.EmerContact[0].email;
+    if (info.EmerContact && info.EmerContact.length > 0)
+      data["emerPhoneNum"] = info.EmerContact[0].phoneNum;
+
+    this.setState({ data });
+    console.log(data);
+  };
+
+  handleChange = e => {
+    const data = { ...this.state.data };
+    data[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ data });
+    console.log(data);
+  };
+
+  handleSubmit = () => {
+    this.props.handleSubmit(this.state.data);
   };
 
   render() {
-    console.log("myInfo", this.state.myInfo);
     var { myInfo } = this.state;
     return (
       <div className="popUp">
@@ -64,6 +122,8 @@ class PaymentPop extends Component {
                       defaultValue={
                         myInfo.lastNameEng ? myInfo.lastNameEng : ""
                       }
+                      name="lastNameEng"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
@@ -71,16 +131,23 @@ class PaymentPop extends Component {
                       defaultValue={
                         myInfo.firstNameEng ? myInfo.firstNameEng : ""
                       }
+                      name="firstNameEng"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
                       className="validate"
                       defaultValue={myInfo.BOD ? this.date(myInfo.BOD) : ""}
+                      name="BOD"
+                      placeholder="YYYY-MM-DD"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
                       className="validate"
                       defaultValue={myInfo.title ? myInfo.title : ""}
+                      name="title"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
@@ -88,6 +155,8 @@ class PaymentPop extends Component {
                       defaultValue={
                         myInfo.passportNum ? myInfo.passportNum : ""
                       }
+                      name="passportNum"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
@@ -97,16 +166,23 @@ class PaymentPop extends Component {
                           ? this.date(myInfo.passportDate)
                           : ""
                       }
+                      name="passportDate"
+                      placeholder="YYYY-MM-DD"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="email"
                       className="validate"
                       defaultValue={myInfo.email ? myInfo.email : ""}
+                      name="email"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
                       className="validate"
                       defaultValue={myInfo.phoneNum ? myInfo.phoneNum : ""}
+                      name="phoneNum"
+                      onChange={this.handleChange}
                     />
                   </div>
                 </div>
@@ -123,15 +199,23 @@ class PaymentPop extends Component {
                       type="text"
                       className="validate"
                       defaultValue={
-                        myInfo.Payment ? myInfo.Payment[0].cardNumber : ""
+                        myInfo.Payment && myInfo.Payment.length > 0
+                          ? myInfo.Payment[0].cardNumber
+                          : ""
                       }
+                      name="cardNumber"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
                       className="validate"
                       defaultValue={
-                        myInfo.Payment ? myInfo.Payment[0].cardHolderName : ""
+                        myInfo.Payment && myInfo.Payment.length > 0
+                          ? myInfo.Payment[0].cardHolderName
+                          : ""
                       }
+                      name="cardHolderName"
+                      onChange={this.handleChange}
                     />
                   </div>
                 </div>
@@ -148,33 +232,45 @@ class PaymentPop extends Component {
                       type="text"
                       className="validate"
                       defaultValue={
-                        myInfo.EmerContact
+                        myInfo.EmerContact && myInfo.EmerContact.length > 0
                           ? myInfo.EmerContact[0].emerContactName
                           : ""
                       }
+                      name="emerContactName"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
                       className="validate"
                       defaultValue={
-                        myInfo.EmerContact
+                        myInfo.EmerContact && myInfo.EmerContact.length > 0
                           ? myInfo.EmerContact[0].relationship
                           : ""
                       }
+                      name="relationship"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="email"
                       className="validate"
                       defaultValue={
-                        myInfo.EmerContact ? myInfo.EmerContact[0].email : ""
+                        myInfo.EmerContact && myInfo.EmerContact.length > 0
+                          ? myInfo.EmerContact[0].email
+                          : ""
                       }
+                      name="emerEmail"
+                      onChange={this.handleChange}
                     />
                     <input
                       type="text"
                       className="validate"
                       defaultValue={
-                        myInfo.EmerContact ? myInfo.EmerContact[0].phoneNum : ""
+                        myInfo.EmerContact && myInfo.EmerContact.length > 0
+                          ? myInfo.EmerContact[0].phoneNum
+                          : ""
                       }
+                      name="emerPhoneNum"
+                      onChange={this.handleChange}
                     />
                   </div>
                 </div>
@@ -189,7 +285,7 @@ class PaymentPop extends Component {
                   </a>
                   <a
                     className="popUp--btn btn--blue"
-                    onClick={this.props.handleSubmit}
+                    onClick={this.handleSubmit}
                   >
                     付款
                   </a>

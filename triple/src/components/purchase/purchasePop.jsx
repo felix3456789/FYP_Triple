@@ -3,9 +3,11 @@ import "../../css/purchase.css";
 import PaymentPop from "../purchase/paymentPop";
 import { async } from "q";
 import tourServices from "../../services/tourServices";
+import userServices from "../../services/userServices";
 
 class PurchasePop extends Component {
   state = {
+    myinfo: {},
     index: 0,
     adult: 1,
     baby: 0,
@@ -136,6 +138,8 @@ class PurchasePop extends Component {
 
   componentDidMount = async () => {
     const { price } = this.props;
+    var userInfo = await userServices.getUserInfo();
+    await this.setState({ myInfo: userInfo });
     let list = [];
 
     for (var i = 0; i < price.length; i++) {
@@ -160,8 +164,47 @@ class PurchasePop extends Component {
     }
   };
 
-  handleSubmit = async () => {
-    const data = {
+  handleSubmit = async data => {
+    const myInfo = this.state.myinfo;
+    var newPayment = true;
+    var newEmer = true;
+
+    if (myInfo.Payment && myInfo.Payment.length > 0) {
+      myInfo.Payment.foreach(payment => {
+        if (payment.cardNumber == data.cardNumber) newPayment = false;
+      });
+    }
+    if (myInfo.EmerContact && myInfo.EmerContact.length > 0) {
+      myInfo.EmerContact.foreach(emerContact => {
+        if (emerContact.emerContactName == data.emerContactName)
+          newEmer = false;
+      });
+    }
+
+    const updateInfoData = {
+      firstNameEng: data.firstNameEng,
+      lastNameEng: data.lastNameEng,
+      title: data.title,
+      BOD: data.BOD,
+      passportNum: data.passportNum,
+      passportDate: data.passportDate,
+      email: data.email,
+      phoneNum: data.phoneNum
+    };
+
+    const updatePaymentData = {
+      cardNumber: data.cardNumber,
+      cardHolderName: data.cardHolderName
+    };
+
+    const updateEmerData = {
+      emerContactName: data.emerContactName,
+      relationship: data.relationship,
+      email: data.emerEmail,
+      phoneNum: data.emerPhoneNum
+    };
+
+    const purchaseData = {
       tourId: this.props.id,
       tourName: this.props.title,
       departureDate: this.valueDate(
@@ -174,9 +217,15 @@ class PurchasePop extends Component {
         parseInt(this.state.child, 10) +
         parseInt(this.state.childBed, 10)
     };
-    console.log("submit", data);
 
-    await tourServices.postPurchase(data);
+    userServices.updateUserInfo(updateInfoData);
+    if (newPayment) {
+      userServices.addPayment(updatePaymentData);
+    }
+    if (newEmer) {
+      userServices.addEmerContact(updateEmerData);
+    }
+    await tourServices.postPurchase(purchaseData);
 
     window.location = "/user/dashboard";
   };

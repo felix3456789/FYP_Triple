@@ -118,6 +118,8 @@ textarea.materialize-textarea.valid:focus,
 }
 
 .register__tnc--layout {
+  overflow-y: scroll;
+  color: #0d47a1;
   display: inline-block;
   width: 40%;
   height: 80%;

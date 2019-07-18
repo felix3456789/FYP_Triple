@@ -22,7 +22,7 @@ export function logout() {
 export async function register(data) {
   let data1 = {
     username: data.newAccount,
-    firstNameEng: data.engName,
+    firstNameEng: data.chineseName,
     lastNameEng: data.engName,
     email: data.email,
     password: data.newPassword

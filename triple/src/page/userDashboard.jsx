@@ -17,13 +17,15 @@ class UserDashBoard extends Component {
         depDate: "",
         totalNum: "",
         totalPrice: "",
-        img: ""
+        img: "",
+        tourID: ""
       };
       temp.title = response[i].tourName;
       temp.depDate = moment(response[i].departureDate).format("YYYY-MM-DD");
       temp.totalNum = 0 + response[i].numOfAdult + response[i].numOfChild;
       temp.totalPrice = response[i].totalPrice;
       temp.img = response[i].image;
+      temp.tourID = response[i].tourId;
       console.log(temp);
       purchase.push(temp);
     }

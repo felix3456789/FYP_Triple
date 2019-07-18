@@ -143,8 +143,14 @@ class userCard extends Component {
     }
   }
 
+  goTourPage = () => {
+    const { info } = this.props;
+    window.location = "/tour-detail/" + info.tourID;
+  };
+
   render() {
     const { info } = this.props;
+    console.log("INFO", info);
     return (
       <React.Fragment>
         <div className="marginButtonZero row">
@@ -159,13 +165,17 @@ class userCard extends Component {
               <div className="marginButtonZero row">
                 <div className="col s12 m5 l3">
                   <img
-                    className="responsive-img marginTop10 radius5px"
+                    className="responsive-img marginTop10 radius5px pointerCursor"
                     src={info.img}
+                    onClick={this.goTourPage}
                   />
                 </div>
                 <div className="col s11 m7 l9">
                   <div className="row marginButtonZero">
-                    <span className="col s12 fontPositon---21 fontSize18 color width60">
+                    <span
+                      className="col s12 fontPositon---21 fontSize18 color width60 pointerCursor"
+                      onClick={this.goTourPage}
+                    >
                       {info.title}
                     </span>
 
