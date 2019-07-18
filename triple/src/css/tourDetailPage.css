@@ -255,6 +255,10 @@ body {
   font-size: 32px;
 }
 
+.fontSize--20 {
+  font-size: 20px;
+}
+
 .marginTop20 {
   margin-top: 20px;
 }

@@ -17,6 +17,7 @@ import LoadingScreen from "../components/loading/loadingScreen";
 import authServices from "../services/authServices";
 import userServices from "../services/userServices";
 import PurchasePop from "../components/purchase/purchasePop";
+import tourServices from "../services/tourServices";
 
 class TourDetailPage extends Component {
   state = {
@@ -176,6 +177,7 @@ class TourDetailPage extends Component {
 
   render() {
     const { tour, features, liked, onLike } = this.state;
+    console.log("comment", this.state.comments);
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
@@ -269,11 +271,21 @@ class TourDetailPage extends Component {
                   >
                     評論
                   </div>
-                  <TextComment
-                    tourID={tour.tourID}
-                    handleSubmit={this.handleSubmit}
-                  />
-                  <br />
+                  {authServices.getJwt() ? (
+                    <TextComment
+                      userName={authServices.getUsername()}
+                      tourID={tour.tourID}
+                      handleSubmit={this.handleSubmit}
+                    />
+                  ) : (
+                    ""
+                  )}
+
+                  {this.state.comments.length == 0 ? (
+                    <div className="color fontSize--20 ">沒有評論</div>
+                  ) : (
+                    ""
+                  )}
                   {this.state.comments.map(comment => (
                     <CommentBox
                       userName={comment.username}

@@ -12,6 +12,7 @@ export async function login(data) {
   let response = await http.post(apiEndPoint, data1);
   console.log("login", response.data);
   localStorage.setItem(tokenKey, response.data);
+  localStorage.setItem("username", data1.username);
   return response.data;
 }
 
@@ -38,10 +39,18 @@ export function getJwt() {
   }
   return null;
 }
+export function getUsername() {
+  console.log(localStorage.getItem("username"));
+  if (localStorage.getItem("username")) {
+    return localStorage.getItem("username");
+  }
+  return null;
+}
 
 export default {
   login,
   register,
   getJwt,
-  logout
+  logout,
+  getUsername
 };

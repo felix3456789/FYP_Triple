@@ -23,6 +23,7 @@ class TextComment extends Component {
       comment: this.state.comment
     };
     this.props.handleSubmit(data);
+    document.location.reload();
   };
 
   handleChange = event => {
@@ -43,7 +44,7 @@ class TextComment extends Component {
             className="circle responsive-img pict col s1"
           />
           <div className="commentBox">
-            <b className="col s2">Felix Tsang</b>
+            <b className="col s2">{this.props.userName}</b>
             <StarRatingComponent
               name="rate1"
               value={rating}
