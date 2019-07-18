@@ -30,11 +30,11 @@
   color: #0d47a1;
 }
 
-.home__photoSlider {
-}
+.home__photoSlider {}
 
 .enquiry__layout {
   overflow: hidden;
+  opacity: 1;
 }
 
 .feature__layout {
