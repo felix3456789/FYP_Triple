@@ -115,22 +115,20 @@ class BasicInfo extends Component {
                 <input
                   name="firstNameEng"
                   onChange={e => this.handleInput(e)}
-                  defaultValue={info ? info.firstNameEng : null}
+                  defaultValue={info ? info.lastNameEng : null}
                   disabled={this.state.editable ? false : true}
                   className="basicInfo__columnInput--content"
                 />
                 <input
                   name="lastNameEng"
                   onChange={e => this.handleInput(e)}
-                  defaultValue={info ? info.lastNameEng : null}
-                  defaultValue={info ? info.lastNameEng : null}
+                  defaultValue={info ? info.firstNameEng : null}
                   disabled={this.state.editable ? false : true}
                   className="basicInfo__columnInput--content"
                 />
                 <input
                   name="BOD"
                   onChange={e => this.handleInput(e)}
-                  defaultValue={info ? info.BOD : null}
                   defaultValue={info ? info.BOD : null}
                   disabled={this.state.editable ? false : true}
                   className="basicInfo__columnInput--content"

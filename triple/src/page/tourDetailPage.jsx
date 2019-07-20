@@ -311,8 +311,6 @@ class TourDetailPage extends Component {
                 />
               ))
             : null}
-
-          <a className="right black-text paddingTop15 fontSize20">更多 ></a>
         </div>
       </React.Fragment>
     );
