@@ -57,7 +57,7 @@ class Home extends Component {
   render() {
     const { tags } = this.state;
     const { features } = this.state;
-    console.log("tags1231231", tags[0]);
+
     return (
       <React.Fragment>
         <div className={this.state.isLoading ? "loadingBg1" : "loadingBg0"}>
